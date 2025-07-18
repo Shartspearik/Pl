@@ -10,14 +10,28 @@ public class Planet : MonoBehaviour
     public float orbitalSpeed;
     public float speedPlanet;
     public float scaleSpeed = 0.5f;
+    public Stats stats;
+
+    public int speedMine;
+    public int speedCloud;
+    public int bankNow;
+    public int bankMax;
+    public int countShip;
+    public int cloudShipNow;
+    public int cloudShipNeed;
+    public string name;
 
     public bool isCurrent;
     public float orbitRadius; // радиус орбиты, известен заранее
     public float radius;
     public bool isSun;
+    public int idPlanet;
+
+    private SpawnerSpaceShip spawnerSpaceShip;
 
     void Start()
     {
+        spawnerSpaceShip = GetComponent<SpawnerSpaceShip>();
         if (isSun) return;
         PlacePlanetOnOrbit();
     }
@@ -57,5 +71,17 @@ public class Planet : MonoBehaviour
         Vector3 spawnPosition = transform.position + Vector3.up * 1.0f;
         GameObject floatingNumberObj = Instantiate(prefNumber, spawnPosition, Quaternion.identity);
         floatingNumberObj.GetComponent<FloatingNumber>().Initialize(castValue);
+    }
+
+    public void FinishShip()
+    {
+        countShip++;
+        //stats.countShipInPlanet[idPlanet]++;
+    }
+
+    public void ComeHomeShip()
+    {
+        countShip--;
+        spawnerSpaceShip.SpawnShip(2, idPlanet);
     }
 }

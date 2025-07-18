@@ -58,6 +58,7 @@ public class SpaceShipController : MonoBehaviour
 
             if (targetPlanet != null && Vector2.Distance(transform.position, targetPlanet.position) < detectionDistance)
             {
+                targetPlanet.GetComponent<Planet>().FinishShip();
                 Destroy(gameObject);
             }
         }

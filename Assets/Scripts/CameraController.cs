@@ -24,6 +24,8 @@ public class CameraController : MonoBehaviour
     private Vector3 dragStartCameraPos;     // позици€ камеры при начале
     private bool isReturning;
 
+    public MenegerUI menegerUI;
+
     void Start()
     {
         cam = Camera.main;
@@ -204,7 +206,7 @@ public class CameraController : MonoBehaviour
     {
         followingPlanet = false;
         targetPlanet = null;
-
+        menegerUI.OffPanelPlanet();
         // ѕлавно интерполируем позицию и зум обратно к начальному состо€нию
 
         //transform.position = Vector3.Lerp(transform.position, new Vector3(0,0,-10), Time.deltaTime * moveSpeed);

@@ -53,6 +53,11 @@ MonoBehaviour:
   orbitSpeed: 100
   isOrbiting: 0
   rangPlanet: 0
+  stats: {fileID: 0}
+  attack: 0
+  HP: 0
+  HPRegen: 0
+  id: 1
 --- !u!1 &3077876968157569631
 GameObject:
   m_ObjectHideFlags: 0

@@ -15,19 +15,24 @@ public class Planet : MonoBehaviour
     public int speedMine;
     public int speedCloud;
     public int bankNow;
+    public int mine;
+    public int cloud;
     public int bankMax;
     public int countShip;
     public int cloudShipNow;
     public int cloudShipNeed;
-    public string name;
+    public string namePlanet;
 
     public bool isCurrent;
     public float orbitRadius; // радиус орбиты, известен заранее
     public float radius;
     public bool isSun;
     public int idPlanet;
+    public bool isActive;
 
     private SpawnerSpaceShip spawnerSpaceShip;
+    private float timerMine;
+    private float timerCloud;
 
     void Start()
     {
@@ -51,6 +56,40 @@ public class Planet : MonoBehaviour
 
     void Update()
     {
+        if (isActive)
+        {
+            if (bankNow != bankMax)
+            {
+                timerMine += Time.deltaTime;
+
+                if (timerMine >= speedMine)
+                {
+                    timerMine = 0f;
+                    bankNow += mine;
+                    if (bankNow >= bankMax)
+                    {
+                        bankNow = bankMax;
+                    }
+                }
+            }
+            if(countShip != 0)
+            {
+                timerCloud += Time.deltaTime;
+
+                if (timerCloud >= speedCloud)
+                {
+                    timerCloud = 0f;
+                    cloudShipNow += cloud;
+                    if (cloudShipNow >= cloudShipNeed)
+                    {
+                        cloudShipNow = 0;
+                        countShip--;
+                        spawnerSpaceShip.SpawnShip(2, idPlanet);
+                    }
+                }
+            }
+        }
+
         if (isSun) return;
         transform.RotateAround(sun.position, Vector3.forward, orbitalSpeed * Time.deltaTime * scaleSpeed * speedPlanet);
     }
@@ -76,7 +115,6 @@ public class Planet : MonoBehaviour
     public void FinishShip()
     {
         countShip++;
-        //stats.countShipInPlanet[idPlanet]++;
     }
 
     public void ComeHomeShip()

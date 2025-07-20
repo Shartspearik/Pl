@@ -15,6 +15,13 @@ public class SpaceShipController : MonoBehaviour
     private Quaternion targetRotation;
     private Transform currentOrbitPlanet;
     public float rangPlanet;
+    public Stats stats;
+    public GameObject earth;
+
+    public int attack;
+    public int HP;
+    public int HPRegen;
+    public int id;
 
     private float currentOrbitRadius; // Текущий радиус орбиты
     private int orbitDirection = 1; // 1 - по часовой, -1 - против часовой
@@ -59,6 +66,10 @@ public class SpaceShipController : MonoBehaviour
             if (targetPlanet != null && Vector2.Distance(transform.position, targetPlanet.position) < detectionDistance)
             {
                 targetPlanet.GetComponent<Planet>().FinishShip();
+                if(targetPlanet.gameObject == earth)
+                {
+                    stats.SetCloud(id);
+                }
                 Destroy(gameObject);
             }
         }

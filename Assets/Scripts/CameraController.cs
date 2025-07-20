@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 public class CameraController : MonoBehaviour
 {
@@ -156,7 +158,7 @@ public class CameraController : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, planetPos2D, step);
 
             // Плавное приближение к минимальному зуму при следовании
-            cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, targetPlanet.GetComponent<Planet>().radius * 2.5f, Time.deltaTime * zoomSpeed);
+            cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, targetPlanet.GetComponent<Planet>().radius * 5f, Time.deltaTime * zoomSpeed);
         }
     }
 
@@ -172,10 +174,10 @@ public class CameraController : MonoBehaviour
 
             if (hit.collider != null)
             {
-                Debug.Log("Hit object: " + hit.collider.gameObject.name);
-                if (hit.collider.CompareTag("Planet") && hit.transform != targetPlanet)
+                if (hit.collider.CompareTag("Planet") && hit.transform != targetPlanet && hit.collider.GetComponent<Planet>().idPlanet != 10)
                 {
-                    ClickPlanet(hit.transform);
+                    print(hit.collider.GetComponent<Planet>().idPlanet);
+                    menegerUI.ClickPlanet(hit.collider.GetComponent<Planet>().idPlanet +1);
                 }
             }
         }
@@ -183,7 +185,6 @@ public class CameraController : MonoBehaviour
 
     public void ClickPlanet(Transform obj)
     {
-        print(111);
         if(targetPlanet != null && targetPlanet == obj)
         {
             ReturnToInitial();

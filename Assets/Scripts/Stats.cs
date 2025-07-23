@@ -42,9 +42,9 @@ public class Stats : MonoBehaviour
     private float[] chance3 = { 50 , 30, 20 };
     private float[] chance4 = { 42.3f , 32.3f , 18.5f, 6.9f };
     private float[] chance5 = { 38.0f, 27.0f, 18.0f, 11.5f, 5.5f };
-    private float[] chance6 = { 34.0f, 24.0f, 16.5f, 10.5f, 6.5f, 3.5f };
-    private float[] chance7 = { 30.5f, 21.5f, 15.0f, 10.0f, 6.5f, 4.0f, 2.5f };
-    private float[] chance8 = { 27.5f, 19.5f, 14.0f, 10.0f, 6.5f, 4.5f, 3.0f, 2.0f };
+    private float[] chance6 = { 39.0f, 24.0f, 16.5f, 10.5f, 6.5f, 3.5f };
+    private float[] chance7 = { 40.5f, 21.5f, 15.0f, 10.0f, 6.5f, 4.0f, 2.5f };
+    private float[] chance8 = { 40.5f, 19.5f, 14.0f, 10.0f, 6.5f, 4.5f, 3.0f, 2.0f };
 
     public List<Planet> planats = new List<Planet>();
     public List<int> ore = new List<int>();
@@ -53,6 +53,10 @@ public class Stats : MonoBehaviour
     public float indexUp;
     public float indexPrice;
 
+    private void Start()
+    {
+        
+    }
 
     #region Обновление статов
     public void SetCloud(int idShip)
@@ -151,7 +155,6 @@ public class Stats : MonoBehaviour
     #region Цены
     public void ResetPrice(Transform trans)
     {
-        SelectByWeight(chance3);
         int count = RandomCountOre();
         print("Количество руд = " + count);
 
@@ -196,6 +199,7 @@ public class Stats : MonoBehaviour
 
 
 
+
         if (count == 3)                            // Если 3 ресурс
         {
             int idOre = RandomOre();
@@ -233,6 +237,35 @@ public class Stats : MonoBehaviour
         }
     }
 
+    public int FindName(Transform trans)
+    {
+        if (trans.name == "Price1_1") return costShipSpeed[0];
+        if (trans.name == "Price2_1") return costShipSpeed[1];
+        if (trans.name == "Price3_1") return costShipSpeed[2];
+        if (trans.name == "Price4_1") return costShipSpeed[3];
+        if (trans.name == "Price5_1") return costShipSpeed[4];
+        if (trans.name == "Price6_1") return costShipSpeed[5];
+        if (trans.name == "Price7_1") return costShipSpeed[6];
+
+        if (trans.name == "Price1_2") return costShipSpeed[0];
+        if (trans.name == "Price2_2") return costShipSpeed[1];
+        if (trans.name == "Price3_2") return costShipSpeed[2];
+        if (trans.name == "Price4_2") return costShipSpeed[3];
+        if (trans.name == "Price5_2") return costShipSpeed[4];
+        if (trans.name == "Price6_2") return costShipSpeed[5];
+        if (trans.name == "Price7_2") return costShipSpeed[6];
+
+        if (trans.name == "Price1_3") return costShipCloudMax[0];
+        if (trans.name == "Price2_3") return costShipCloudMax[1];
+        if (trans.name == "Price3_3") return costShipCloudMax[2];
+        if (trans.name == "Price4_3") return costShipCloudMax[3];
+        if (trans.name == "Price5_3") return costShipCloudMax[4];
+        if (trans.name == "Price6_3") return costShipCloudMax[5];
+        if (trans.name == "Price7_3") return costShipCloudMax[6];
+
+
+        return 10000;
+    }
     public string CheckOre(int idOre)
     {
         switch (idOre)
@@ -275,18 +308,14 @@ public class Stats : MonoBehaviour
             if (chance < 60) return 2;
             else return 1;
         }
-        else if (countBuyPlanet == 3)
+        else if (countBuyPlanet >= 3)
         {
             if (chance < 50) return 3;
             else if (chance < 80) return 2;
             else return 1;
         }
-
-
-        if (chance < 40) return 2;
-        else if (chance < 60) return 1;
-        else if (chance < 80) return 3;
-        else  return 4;
+        else
+            return 0;
     }
 
     public int RandomOre()

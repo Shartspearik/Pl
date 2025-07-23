@@ -17560,7 +17560,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1969880173}
   m_Layer: 5
-  m_Name: Price
+  m_Name: Price1_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -58,21 +58,28 @@ public class Planet : MonoBehaviour
     {
         if (isActive)
         {
-            if (bankNow != bankMax)
+            if (bankNow != bankMax)           //майнинг
             {
                 timerMine += Time.deltaTime;
 
                 if (timerMine >= speedMine)
                 {
                     timerMine = 0f;
-                    bankNow += mine;
-                    if (bankNow >= bankMax)
+                    if(idPlanet == 2)
                     {
-                        bankNow = bankMax;
+                        stats.SetCloud(2);
+                    }
+                    else
+                    {
+                        bankNow += mine;
+                        if (bankNow >= bankMax)
+                        {
+                            bankNow = bankMax;
+                        }
                     }
                 }
             }
-            if(countShip != 0)
+            if(countShip != 0)            
             {
                 timerCloud += Time.deltaTime;
 

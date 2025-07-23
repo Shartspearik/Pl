@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3077876967821535002}
   - component: {fileID: 3077876967821535001}
   m_Layer: 0
-  m_Name: Mars_SpaceShip
+  m_Name: Uranus_SpaceShip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -54,10 +54,11 @@ MonoBehaviour:
   isOrbiting: 0
   rangPlanet: 0
   stats: {fileID: 0}
+  earth: {fileID: 0}
   attack: 0
   HP: 0
   HPRegen: 0
-  id: 3
+  id: 6
 --- !u!1 &3077876968157569631
 GameObject:
   m_ObjectHideFlags: 0
@@ -83,8 +84,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3077876968157569631}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.11, y: -1.54, z: 0.39528242}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.11, y: -1.54, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 3077876967821535002}
   m_RootOrder: 0
@@ -129,7 +130,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 438d7bb6949ac254ea2a9e048a29436b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 60a2f2722e696084b9bdde2eab429d77, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

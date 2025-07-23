@@ -176,7 +176,6 @@ public class CameraController : MonoBehaviour
             {
                 if (hit.collider.CompareTag("Planet") && hit.transform != targetPlanet && hit.collider.GetComponent<Planet>().idPlanet != 10)
                 {
-                    print(hit.collider.GetComponent<Planet>().idPlanet);
                     menegerUI.ClickPlanet(hit.collider.GetComponent<Planet>().idPlanet +1);
                 }
             }

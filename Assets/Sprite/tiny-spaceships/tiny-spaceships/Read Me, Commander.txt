@@ -1,0 +1,102 @@
+Thanks for downloading this pack! You are free to do anything you want with it, except resell it, or use it in NFT and blockchain-related projects. 
+
+
+tinyShip1
+	Ship size: 24x25 (first frame, idle), 24x29 (with animation) 
+	Frame 1: default state (standalone, no animation)
+	Frames 2-5: looped animation while the ship is moving (engine on)
+		Note: Do NOT use frame 1 when the ship is moving.
+	
+tinyShip2
+This ship has a melee attack (spikes) that requires it to get closer to the enemy. 
+	Ship size: 34x30 (first frame, idle), 34x36 (with animation) 
+	Frame 1: default state (standalone, no animation)
+	Frames 2-6: attack animation (also changes the side lights from blue to red)
+
+tinyShip3
+	Ship size: 26x26, fire: 10x6
+
+tinyShip4
+	Ship size: 28x22. The animation is always active (loop). All frames are used. 
+
+tinyShip5
+	Ship size: 34x27 (first frame, idle), 34x38 (with animation) 
+
+tinyShip6
+	Ship size: 40x22. The animation is always active (loop). All frames are used. 
+
+tinyShip7
+	Ship size: 46x35 
+	Frame 1: default state (standalone, no animation)
+	Frames 2-5: looped animation while the ship is moving (engine on)
+		Note: Do NOT use frame 1 when the ship is moving.
+
+tinyShip8
+	Ship size: 32x22 (first frame, idle), 32x29 (with animation) 
+	Frame 1: default state (standalone, no animation)
+	Frames 2-4: looped animation while the ship is moving (engine on)
+		Note: Must also USE frame 1 when the ship is moving!
+
+tinyShip9
+	Ship size: 34x30
+
+tinyShip10
+	Ship size: 40x28
+
+tinyShip11
+	Ship size: 36x27. The animation is always active (loop). All frames are used. 
+
+tinyShip12
+	Ship size: 26x23 (first frame, idle), 26x26 (with animation) 
+	Frame 1: default state (standalone, no animation)
+	Frames 2-5: looped animation while the ship is moving (engine on)
+		Note: Do NOT use frame 1 when the ship is moving.
+
+tinyShip13
+	Ship size: 36x36 (first frame, idle), 36x40 (with animation) 
+	Frame 1: default state (standalone, no animation)
+	Frames 2-8: looped animation while the ship is moving (engine on)
+		Note: Must also USE frame 1 when the ship is moving!
+
+tinyShip14
+	Ship size: 52x31
+	Frame 1: default state (standalone, no animation)
+	Frames 2-4: looped animation while the ship is firing
+		Note: Must also USE frame 1 when the ship is firing! 
+
+tinyShip15
+	Ship size: 38x25. The animation is always active (loop). All frames are used. 
+
+tinyShip16
+	Ship size: 28x27
+	Frame 1: default state (standalone, no animation)
+	Frames 2-4: looped animation while the ship is moving (engine on)
+		Note: Must also USE frame 1 when the ship is moving!
+
+tinyShip17
+	Ship size: 34x24. The animation is always active (loop). All frames are used. 
+
+tinyShip18
+	Ship size: 32x29
+	Frame 1: default state (standalone, no animation)
+	Frames 2-4: looped animation while the ship is firing
+		Note: Must also USE frame 1 when the ship is firing! 	
+
+tinyShip19
+	Ship size: 42x27
+	Frame 1: default state (standalone, no animation)
+	Frames 2-4: looped animation while the ship is firing
+		Note: Must also USE frame 1 when the ship is firing! 
+
+tinyShip20
+	Ship size: 44x39
+
+
+Well, that's it for now. I hope you'll put this pack to good use. 
+If you need custom assets, hit me up on Discord: disruptorart
+
+Or send an email to: sgchr@yahoo.com
+
+
+Have a great day, Commander! 	
+Silviu from Romania

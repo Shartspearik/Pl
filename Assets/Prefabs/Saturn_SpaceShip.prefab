@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3077876967821535002}
   - component: {fileID: 3077876967821535001}
   m_Layer: 0
-  m_Name: Venus_SpaceShip
+  m_Name: Saturn_SpaceShip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -54,10 +54,11 @@ MonoBehaviour:
   isOrbiting: 0
   rangPlanet: 0
   stats: {fileID: 0}
+  earth: {fileID: 0}
   attack: 0
   HP: 0
   HPRegen: 0
-  id: 1
+  id: 5
 --- !u!1 &3077876968157569631
 GameObject:
   m_ObjectHideFlags: 0
@@ -84,7 +85,7 @@ Transform:
   m_GameObject: {fileID: 3077876968157569631}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.11, y: -1.54, z: 0.39528242}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 4, y: 4, z: 1}
   m_Children: []
   m_Father: {fileID: 3077876967821535002}
   m_RootOrder: 0
@@ -129,8 +130,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 6ed6c28dfca5fac4eaa4c6b13cfcf3ec, type: 3}
-  m_Color: {r: 0.6367924, g: 0.6738708, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 062f42fa4441eaa47855a02ca3596e66, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

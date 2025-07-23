@@ -72,6 +72,7 @@ public class MenegerUI : MonoBehaviour
             planets[id].GetComponent<Planet>().isActive = true;
         }
             panelPlenets[id].SetActive(true);
+        stats.countBuyPlanet++;
     }
 
     public void OffOn(GameObject button)

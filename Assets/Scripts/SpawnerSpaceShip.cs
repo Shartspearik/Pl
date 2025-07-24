@@ -41,9 +41,6 @@ public class SpawnerSpaceShip : MonoBehaviour
         ship.GetComponent<SpaceShipController>().targetPlanet = planats[idPlanet].transform;
         ship.GetComponent<SpaceShipController>().planetParant = gameObject;
         ship.GetComponent<SpaceShipController>().speed = stats.shipSpeed[idShip];
-        ship.GetComponent<SpaceShipController>().attack = stats.shipAttack[idShip];
-        ship.GetComponent<SpaceShipController>().HP = stats.shipHP[idShip];
-        ship.GetComponent<SpaceShipController>().HPRegen = stats.shipHPRegen[idShip];
         ship.GetComponent<SpaceShipController>().stats = stats;
         ship.GetComponent<SpaceShipController>().earth = planats[2];
     }

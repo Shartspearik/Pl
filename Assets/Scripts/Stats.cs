@@ -12,20 +12,18 @@ public class Stats : MonoBehaviour
 
     [Header("Параметры")]
     public List<int> shipCloudMax = new List<int>();
+    public List<int> shipCount = new List<int>();
     public List<int> shipBankMax = new List<int>();
     public List<int> shipSpeed = new List<int>();
-    public List<int> shipAttack = new List<int>();
-    public List<int> shipHP = new List<int>();
-    public List<int> shipHPRegen = new List<int>();
+
 
 
     [Header("Колличество покупок")]
     public List<int> costShipCloudMax = new List<int>();
+    public List<int> costShipCount = new List<int>();
     public List<int> costShipBankMax = new List<int>();
     public List<int> costShipSpeed = new List<int>();
-    public List<int> costShipAttack = new List<int>();
-    public List<int> costShipHP = new List<int>();
-    public List<int> costShipHPRegen = new List<int>();
+
 
     [Header("Текст цен")]
     public List<Transform> textShip1 = new List<Transform>();
@@ -55,7 +53,34 @@ public class Stats : MonoBehaviour
 
     private void Start()
     {
-        
+        foreach (Transform item in textShip1)
+        {
+            ResetPrice(item);
+        }
+        foreach (Transform item in textShip2)
+        {
+            ResetPrice(item);
+        }
+        foreach (Transform item in textShip3)
+        {
+            ResetPrice(item);
+        }
+        foreach (Transform item in textShip4)
+        {
+            ResetPrice(item);
+        }
+        foreach (Transform item in textShip5)
+        {
+            ResetPrice(item);
+        }
+        foreach (Transform item in textShip6)
+        {
+            ResetPrice(item);
+        }
+        foreach (Transform item in textShip7)
+        {
+            ResetPrice(item);
+        }
     }
 
     #region Обновление статов
@@ -80,21 +105,6 @@ public class Stats : MonoBehaviour
     public void SetSpeedShip(int count, int idShip)
     {
         shipSpeed[idShip] += count;
-    }
-
-    public void SetAttack(int count, int idShip)
-    {
-        shipAttack[idShip] += count;
-    }
-
-    public void SetHP(int count, int idShip)
-    {
-        shipHP[idShip] += count;
-    }
-
-    public void SetHPRegen(int count, int idShip)
-    {
-        shipHPRegen[idShip] += count;
     }
 #endregion
 
@@ -157,12 +167,12 @@ public class Stats : MonoBehaviour
     {
         int count = RandomCountOre();
         print("Количество руд = " + count);
-
+        int cost = FindName(trans);
 
         if(count == 1)                           // Если 1 ресурс
         {
             int idOre = RandomOre();
-            int price = PriseOre(costShipCloudMax[0], idOre);
+            int price = PriseOre(cost, idOre);
             trans.GetChild(0).GetChild(0).GetComponent<Image>().sprite = icone[idOre];
             trans.GetChild(0).GetChild(1).GetComponent<TextMeshProUGUI>().text = price + "";
 
@@ -176,7 +186,7 @@ public class Stats : MonoBehaviour
         {
             int idOre = RandomOre();
             int idOre1 = 0;
-            int price = PriseOre(costShipCloudMax[0], idOre);
+            int price = PriseOre(cost, idOre);
             trans.GetChild(1).GetChild(0).GetComponent<Image>().sprite = icone[idOre];
             trans.GetChild(1).GetChild(2).GetComponent<TextMeshProUGUI>().text = price + "";
 
@@ -186,7 +196,7 @@ public class Stats : MonoBehaviour
                 if(idOre1 != idOre)
                 break;
             }
-            price = PriseOre(costShipCloudMax[0], idOre1);
+            price = PriseOre(cost, idOre1);
             trans.GetChild(1).GetChild(1).GetComponent<Image>().sprite = icone[idOre1];
             trans.GetChild(1).GetChild(3).GetComponent<TextMeshProUGUI>().text = price + "";
 
@@ -205,7 +215,7 @@ public class Stats : MonoBehaviour
             int idOre = RandomOre();
             int idOre1 = 0;
             int idOre2 = 0;
-            int price = PriseOre(costShipCloudMax[0], idOre);
+            int price = PriseOre(cost, idOre);
             trans.GetChild(2).GetChild(0).GetComponent<Image>().sprite = icone[idOre];
             trans.GetChild(2).GetChild(3).GetComponent<TextMeshProUGUI>().text = price + "";
 
@@ -215,7 +225,7 @@ public class Stats : MonoBehaviour
                 if (idOre1 != idOre)
                     break;
             }
-            price = PriseOre(costShipCloudMax[0], idOre1);
+            price = PriseOre(cost, idOre1);
             trans.GetChild(2).GetChild(1).GetComponent<Image>().sprite = icone[idOre1];
             trans.GetChild(2).GetChild(4).GetComponent<TextMeshProUGUI>().text = price + "";
 
@@ -225,7 +235,7 @@ public class Stats : MonoBehaviour
                 if (idOre2 != idOre && idOre2 != idOre1)
                     break;
             }
-            price = PriseOre(costShipCloudMax[0], idOre2);
+            price = PriseOre(cost, idOre2);
             trans.GetChild(2).GetChild(2).GetComponent<Image>().sprite = icone[idOre2];
             trans.GetChild(2).GetChild(5).GetComponent<TextMeshProUGUI>().text = price + "";
 
@@ -239,13 +249,15 @@ public class Stats : MonoBehaviour
 
     public int FindName(Transform trans)
     {
-        if (trans.name == "Price1_1") return costShipSpeed[0];
-        if (trans.name == "Price2_1") return costShipSpeed[1];
-        if (trans.name == "Price3_1") return costShipSpeed[2];
-        if (trans.name == "Price4_1") return costShipSpeed[3];
-        if (trans.name == "Price5_1") return costShipSpeed[4];
-        if (trans.name == "Price6_1") return costShipSpeed[5];
-        if (trans.name == "Price7_1") return costShipSpeed[6];
+        print(trans.name);
+        print(trans.gameObject.name);
+        if (trans.name == "Price1_1") return costShipCount[0];
+        if (trans.name == "Price2_1") return costShipCount[1];
+        if (trans.name == "Price3_1") return costShipCount[2];
+        if (trans.name == "Price4_1") return costShipCount[3];
+        if (trans.name == "Price5_1") return costShipCount[4];
+        if (trans.name == "Price6_1") return costShipCount[5];
+        if (trans.name == "Price7_1") return costShipCount[6];
 
         if (trans.name == "Price1_2") return costShipSpeed[0];
         if (trans.name == "Price2_2") return costShipSpeed[1];

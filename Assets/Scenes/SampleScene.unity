@@ -3502,11 +3502,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 543134968}
         m_TargetAssemblyTypeName: Stats, Assembly-CSharp
-        m_MethodName: ResetPrice
-        m_Mode: 1
+        m_MethodName: Buffing
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 2017132275}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3943,7 +3943,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -5436,7 +5436,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -5544,11 +5544,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 543134968}
         m_TargetAssemblyTypeName: Stats, Assembly-CSharp
-        m_MethodName: ResetPrice
-        m_Mode: 1
+        m_MethodName: Buffing
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1478231141}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -5715,7 +5715,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 543134968}
         m_TargetAssemblyTypeName: Stats, Assembly-CSharp
-        m_MethodName: ResetPrice
+        m_MethodName: Buffing
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1969880173}
@@ -6264,13 +6264,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 277241920}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2.4048, y: 2.4048, z: 2.4048}
   m_Children: []
   m_Father: {fileID: 230349784}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 413.4, y: 174}
@@ -6768,7 +6768,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -9595,11 +9595,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 543134968}
         m_TargetAssemblyTypeName: Stats, Assembly-CSharp
-        m_MethodName: ResetPrice
-        m_Mode: 1
+        m_MethodName: Buffing
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1217756125}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -13048,15 +13048,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxShip: 0
   nowShip: 0
-  countBuyPlanet: 8
-  shipCloudMax: 0a0000000b0000000c0000000d0000000e0000000f0000001000000011000000
-  shipCount: 
+  countBuyPlanet: 1
+  shipCloudMax: 0000000014000000140000001400000014000000140000001400000014000000
+  shipCount: 0000000001000000010000000100000001000000010000000100000001000000
   shipBankMax: 1400000014000000140000001400000014000000140000001400000014000000
-  shipSpeed: 0100000002000000000000000300000004000000050000000600000007000000
-  costShipCloudMax: 0100000001000000010000000100000001000000010000000100000001000000
-  costShipCount: 00000000000000000000000000000000000000000000000000000000
-  costShipBankMax: 0100000001000000010000000100000001000000010000000100000001000000
-  costShipSpeed: 0100000001000000010000000100000001000000010000000100000001000000
+  shipSpeed: 0000000001000000010000000100000001000000010000000100000001000000
+  costShipCloudMax: 0000000001000000010000000100000001000000010000000100000001000000
+  costShipCount: 0000000001000000010000000100000001000000010000000100000001000000
+  costShipBankMax: 0000000001000000010000000100000001000000010000000100000001000000
+  costShipSpeed: 0000000001000000010000000100000001000000010000000100000001000000
   textShip1:
   - {fileID: 1969880173}
   - {fileID: 1622116464}
@@ -13103,7 +13103,7 @@ MonoBehaviour:
   - {fileID: 1493752716}
   - {fileID: 1959096240}
   - {fileID: 64050214}
-  ore: 0000000000000000000000000000000000000000000000000000000000000000
+  ore: 570400005704000057040000672b000057040000570400005704000057040000
   menegerUI: {fileID: 1319428602}
   indexUp: 1.05
   indexPrice: 1.15
@@ -15081,7 +15081,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 543134968}
         m_TargetAssemblyTypeName: Stats, Assembly-CSharp
-        m_MethodName: ResetPrice
+        m_MethodName: Buffing
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 2073353582}
@@ -18154,11 +18154,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 543134968}
         m_TargetAssemblyTypeName: Stats, Assembly-CSharp
-        m_MethodName: ResetPrice
-        m_Mode: 1
+        m_MethodName: Buffing
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 443364372}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -19317,11 +19317,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 543134968}
         m_TargetAssemblyTypeName: Stats, Assembly-CSharp
-        m_MethodName: ResetPrice
-        m_Mode: 1
+        m_MethodName: Buffing
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1622116464}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -19449,11 +19449,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 543134968}
         m_TargetAssemblyTypeName: Stats, Assembly-CSharp
-        m_MethodName: ResetPrice
-        m_Mode: 1
+        m_MethodName: Buffing
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1712414522}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -21288,7 +21288,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -23578,7 +23578,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 543134968}
         m_TargetAssemblyTypeName: Stats, Assembly-CSharp
-        m_MethodName: ResetPrice
+        m_MethodName: Buffing
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 762158532}
@@ -25746,7 +25746,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -26695,7 +26695,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 543134968}
         m_TargetAssemblyTypeName: Stats, Assembly-CSharp
-        m_MethodName: ResetPrice
+        m_MethodName: Buffing
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1548087092}
@@ -27202,11 +27202,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 543134968}
         m_TargetAssemblyTypeName: Stats, Assembly-CSharp
-        m_MethodName: ResetPrice
-        m_Mode: 1
+        m_MethodName: Buffing
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1311187477}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -31980,11 +31980,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 543134968}
         m_TargetAssemblyTypeName: Stats, Assembly-CSharp
-        m_MethodName: ResetPrice
-        m_Mode: 1
+        m_MethodName: Buffing
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1513604073}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -32858,11 +32858,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 543134968}
         m_TargetAssemblyTypeName: Stats, Assembly-CSharp
-        m_MethodName: ResetPrice
-        m_Mode: 1
+        m_MethodName: Buffing
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1035239957}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -35261,16 +35261,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fba70acd637d5c42af1420062105757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollRect: {fileID: 1421696642}
   content: {fileID: 103866031}
-  items:
-  - {fileID: 2026465596}
-  - {fileID: 1461923753}
-  - {fileID: 2048529195}
-  - {fileID: 557831245}
-  - {fileID: 2102214359}
-  - {fileID: 1252610097}
-  - {fileID: 205356935}
+  buttonLeft: {fileID: 277241920}
+  buttonRight: {fileID: 595103347}
+  count: 0
   smoothSpeed: 10
 --- !u!1 &1424852649
 GameObject:
@@ -39716,11 +39710,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 543134968}
         m_TargetAssemblyTypeName: Stats, Assembly-CSharp
-        m_MethodName: ResetPrice
-        m_Mode: 1
+        m_MethodName: Buffing
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1981453278}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -40894,7 +40888,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 543134968}
         m_TargetAssemblyTypeName: Stats, Assembly-CSharp
-        m_MethodName: ResetPrice
+        m_MethodName: Buffing
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 3992405}
@@ -43987,7 +43981,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -46695,11 +46689,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 543134968}
         m_TargetAssemblyTypeName: Stats, Assembly-CSharp
-        m_MethodName: ResetPrice
-        m_Mode: 1
+        m_MethodName: Buffing
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 918334829}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -47148,11 +47142,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 543134968}
         m_TargetAssemblyTypeName: Stats, Assembly-CSharp
-        m_MethodName: ResetPrice
-        m_Mode: 1
+        m_MethodName: Buffing
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1697451121}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -48100,7 +48094,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 543134968}
         m_TargetAssemblyTypeName: Stats, Assembly-CSharp
-        m_MethodName: ResetPrice
+        m_MethodName: Buffing
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1603400188}
@@ -48716,11 +48710,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 543134968}
         m_TargetAssemblyTypeName: Stats, Assembly-CSharp
-        m_MethodName: ResetPrice
-        m_Mode: 1
+        m_MethodName: Buffing
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 2107161696}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -51996,11 +51990,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 543134968}
         m_TargetAssemblyTypeName: Stats, Assembly-CSharp
-        m_MethodName: ResetPrice
-        m_Mode: 1
+        m_MethodName: Buffing
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 70929953}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -53698,7 +53692,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 543134968}
         m_TargetAssemblyTypeName: Stats, Assembly-CSharp
-        m_MethodName: ResetPrice
+        m_MethodName: Buffing
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1624363220}

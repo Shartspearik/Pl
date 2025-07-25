@@ -106,60 +106,95 @@ public class Stats : MonoBehaviour
     {
         shipSpeed[idShip] += count;
     }
-#endregion
+    #endregion
 
+    public void Buffing2(Transform trans, int idOre, int price)
+    {
+        print("Покупаю!!!");
+        int idShip = FindNameId(trans.name, 0);
+        int idBuff = FindNameId(trans.name, 1);
+        if (idBuff == 1)
+        {
+            costShipCount[idShip]++;
+            shipCount[idShip]++;
+            ore[idOre] -= price;
+
+        }
+        if (idBuff == 2)
+        {
+            costShipSpeed[idShip]++;
+            shipSpeed[idShip]++;
+            ore[idOre] -= price;
+
+        }
+        if (idBuff == 3)
+        {
+            costShipCloudMax[idShip]++;
+            shipCloudMax[idShip]++;
+            ore[idOre] -= price;
+
+        }
+    }
 
     #region Конопки бафов
-    //public void ButtomSetMaxCloudShip(int idShip)
-    //{
-    //    print(idShip);
-    //    int cost = (int)(10 * Mathf.Pow(indexUp, costShipCloudMax[idShip]));
-    //    costShipCloudMax[idShip]++;
-    //    shipCloudMax[idShip] = cost;
-    //    planats[idShip].cloudShipNeed = cost;
-    //    ResetPrice();
-    //}
+    public void Buffing(Transform trans)
+    {
+        if (trans.GetChild(0).gameObject.activeSelf)
+        {
+            int idOre1 = FindIconeInOre(trans.GetChild(0).GetChild(0).GetComponent<Image>().sprite);
+            int price1 = int.Parse(trans.GetChild(0).GetChild(1).GetComponent<TextMeshProUGUI>().text);
+            if (ore[idOre1] >= price1)
+            {
+                Buffing2(trans, idOre1, price1);
+            }
+            else
+            {
+                print("Не покупаю!!!");
+            }
+        }
+        if (trans.GetChild(1).gameObject.activeSelf)
+        {
+            int idOre1 = FindIconeInOre(trans.GetChild(1).GetChild(0).GetComponent<Image>().sprite);
+            int price1 = int.Parse(trans.GetChild(1).GetChild(2).GetComponent<TextMeshProUGUI>().text);
 
-    //public void ButtomSetMaxbankPlanet(int idShip)
-    //{
-    //    int cost = (int)(10 * Mathf.Pow(indexUp, costShipBankMax[idShip]));
-    //    costShipBankMax[idShip]++;
-    //    shipBankMax[idShip] = cost;
-    //    planats[idShip].bankMax = cost;
-    //    ResetPrice();
-    //}
+            int idOre2 = FindIconeInOre(trans.GetChild(1).GetChild(1).GetComponent<Image>().sprite);
+            int price2 = int.Parse(trans.GetChild(1).GetChild(3).GetComponent<TextMeshProUGUI>().text);
 
-    //public void ButtonSetSpeedShip(int idShip)
-    //{
-    //    int cost = (int)(10 * Mathf.Pow(indexUp, costShipSpeed[idShip]));
-    //    costShipSpeed[idShip]++;
-    //    shipSpeed[idShip] = cost;
-    //    ResetPrice();
-    //}
+            if (ore[idOre1] >= price1 && ore[idOre2] >= price2)
+            {
+                Buffing2(trans, idOre1, price1);
+                Buffing2(trans, idOre2, price2);
+                ResetPrice(trans);
+            }
+            else
+            {
+                print("Не покупаю!!!");
+            }
+        }
+        if (trans.GetChild(2).gameObject.activeSelf)
+        {
+            int idOre1 = FindIconeInOre(trans.GetChild(2).GetChild(0).GetComponent<Image>().sprite);
+            int price1 = int.Parse(trans.GetChild(2).GetChild(3).GetComponent<TextMeshProUGUI>().text);
 
-    //public void ButtonSetAttack(int idShip)
-    //{
-    //    int cost = (int)(10 * Mathf.Pow(indexUp, costShipAttack[idShip]));
-    //    costShipAttack[idShip]++;
-    //    shipAttack[idShip] = cost;
-    //    ResetPrice();
-    //}
+            int idOre2 = FindIconeInOre(trans.GetChild(2).GetChild(1).GetComponent<Image>().sprite);
+            int price2 = int.Parse(trans.GetChild(2).GetChild(4).GetComponent<TextMeshProUGUI>().text);
 
-    //public void ButtonSetHP(int idShip)
-    //{
-    //    int cost = (int)(10 * Mathf.Pow(indexUp, costShipHP[idShip]));
-    //    costShipHP[idShip]++;
-    //    shipHP[idShip] = cost;
-    //    ResetPrice();
-    //}
+            int idOre3 = FindIconeInOre(trans.GetChild(2).GetChild(2).GetComponent<Image>().sprite);
+            int price3 = int.Parse(trans.GetChild(2).GetChild(5).GetComponent<TextMeshProUGUI>().text);
 
-    //public void ButtonSetHPRegen(int idShip)
-    //{
-    //    int cost = (int)(10 * Mathf.Pow(indexUp, costShipHPRegen[idShip]));
-    //    costShipHPRegen[idShip]++;
-    //    shipHPRegen[idShip] = cost;
-    //    ResetPrice();
-    //}
+            if (ore[idOre1] >= price1 && ore[idOre2] >= price2 && ore[idOre3] >= price3)
+            {
+                Buffing2(trans, idOre1, price1);
+                Buffing2(trans, idOre2, price2);
+                Buffing2(trans, idOre3, price3);
+                ResetPrice(trans);
+            }
+            else
+            {
+                print("Не покупаю!!!");
+            }
+        }
+    }
     #endregion
 
     #region Цены
@@ -247,10 +282,17 @@ public class Stats : MonoBehaviour
         }
     }
 
+    public int FindNameId(string nameShip, int id)
+    {
+        string numbersPart = nameShip.Replace("Price", ""); // "1_2"
+
+        // Разобьём строку по символу подчёркивания '_'
+        string[] parts = numbersPart.Split('_');
+        return int.Parse(parts[id]);
+    }
+
     public int FindName(Transform trans)
     {
-        print(trans.name);
-        print(trans.gameObject.name);
         if (trans.name == "Price1_1") return costShipCount[0];
         if (trans.name == "Price2_1") return costShipCount[1];
         if (trans.name == "Price3_1") return costShipCount[2];
@@ -278,6 +320,19 @@ public class Stats : MonoBehaviour
 
         return 10000;
     }
+
+    public int FindIconeInOre(Sprite sprite)
+    {
+        for (int i = 0; i < icone.Count; i++)
+        {
+            if (icone[i] == sprite)
+            {
+                return i;
+            }
+        }
+        return 10000;
+    }
+
     public string CheckOre(int idOre)
     {
         switch (idOre)
@@ -365,9 +420,9 @@ public class Stats : MonoBehaviour
 
     public int PriseOre(int buff, int idOre)
     {
-        if (idOre == 0) return (int)(10 * Mathf.Pow(indexPrice, buff - 30) * 1.4f);
-        if (idOre == 1) return (int)(10 * Mathf.Pow(indexPrice, buff - 15) * 1.2f);
-        if (idOre == 2) return (int)(10 * Mathf.Pow(indexPrice, buff));
+        if (idOre == 0) return (int)(10 * Mathf.Pow(indexPrice, buff));
+        if (idOre == 1) return (int)(10 * Mathf.Pow(indexPrice, buff - 15) * 1.4f);
+        if (idOre == 2) return (int)(10 * Mathf.Pow(indexPrice, buff - 30) * 1.2f);
         if (idOre == 3) return (int)(10 * Mathf.Pow(indexPrice, buff - 45) * 1.6f);
         if (idOre == 4) return (int)(10 * Mathf.Pow(indexPrice, buff - 60) * 1.8f);
         if (idOre == 5) return (int)(10 * Mathf.Pow(indexPrice, buff - 75) * 2f);

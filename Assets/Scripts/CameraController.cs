@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.EventSystems;
 
 public class CameraController : MonoBehaviour
 {
@@ -65,13 +66,13 @@ public class CameraController : MonoBehaviour
 
     void HandleMouseDrag()
     {
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(1) && EventSystem.current.IsPointerOverGameObject())
         {
             isDragging = true;
             dragStartMouseWorldPos = GetMouseWorldPosition();
             dragStartCameraPos = transform.position;
         }
-        else if (Input.GetMouseButtonUp(1))
+        else if (Input.GetMouseButtonUp(1) && EventSystem.current.IsPointerOverGameObject())
         {
             isDragging = false;
         }
@@ -164,7 +165,7 @@ public class CameraController : MonoBehaviour
 
     void DetectPlanetClick()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && EventSystem.current.IsPointerOverGameObject())
         {
             Vector3 mouseScreenPos = Input.mousePosition;
             mouseScreenPos.z = Mathf.Abs(cam.transform.position.z);

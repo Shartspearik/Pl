@@ -50,8 +50,8 @@ public class ScrollSnapController : MonoBehaviour
     {
         if (!isScrolling)
         {
-            count--;
-            targetPosition = content.anchoredPosition + new Vector2(900, 0);
+            count++;
+            targetPosition = content.anchoredPosition - new Vector2(900, 0);
             isScrolling = true;
             OffSet();
         }
@@ -61,8 +61,8 @@ public class ScrollSnapController : MonoBehaviour
     {
         if (!isScrolling)
         {
-            count++;
-            targetPosition = content.anchoredPosition - new Vector2(900, 0);
+            count--;
+            targetPosition = content.anchoredPosition + new Vector2(900, 0);
             isScrolling = true;
             OffSet();
         }

@@ -65,7 +65,7 @@ public class Planet : MonoBehaviour
                 if (timerMine >= speedMine)
                 {
                     timerMine = 0f;
-                    if(idPlanet == 2)
+                    if (idPlanet == 2)
                     {
                         stats.SetCloud(2);
                     }
@@ -79,7 +79,7 @@ public class Planet : MonoBehaviour
                     }
                 }
             }
-            if(countShip != 0)            
+            if (countShip != 0)
             {
                 timerCloud += Time.deltaTime;
 

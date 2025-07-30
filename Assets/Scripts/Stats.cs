@@ -110,8 +110,7 @@ public class Stats : MonoBehaviour
 
     public void Buffing2(Transform trans, int idOre, int price)
     {
-        print("Покупаю!!!");
-        int idShip = FindNameId(trans.name, 0);
+        int idShip = FindNameId(trans.name, 0) - 1;
         int idBuff = FindNameId(trans.name, 1);
         if (idBuff == 1)
         {
@@ -146,10 +145,10 @@ public class Stats : MonoBehaviour
             if (ore[idOre1] >= price1)
             {
                 Buffing2(trans, idOre1, price1);
+                ResetPrice(trans);
             }
             else
             {
-                print("Не покупаю!!!");
             }
         }
         if (trans.GetChild(1).gameObject.activeSelf)
@@ -168,7 +167,6 @@ public class Stats : MonoBehaviour
             }
             else
             {
-                print("Не покупаю!!!");
             }
         }
         if (trans.GetChild(2).gameObject.activeSelf)
@@ -191,7 +189,7 @@ public class Stats : MonoBehaviour
             }
             else
             {
-                print("Не покупаю!!!");
+
             }
         }
     }
@@ -201,7 +199,6 @@ public class Stats : MonoBehaviour
     public void ResetPrice(Transform trans)
     {
         int count = RandomCountOre();
-        print("Количество руд = " + count);
         int cost = FindName(trans);
 
         if(count == 1)                           // Если 1 ресурс
@@ -427,7 +424,6 @@ public class Stats : MonoBehaviour
         if (idOre == 4) return (int)(10 * Mathf.Pow(indexPrice, buff - 60) * 1.8f);
         if (idOre == 5) return (int)(10 * Mathf.Pow(indexPrice, buff - 75) * 2f);
         if (idOre == 6) return (int)(10 * Mathf.Pow(indexPrice, buff - 90) * 2.2f);
-        if (idOre == 7) return (int)(10 * Mathf.Pow(indexPrice, buff - 105) * 2.4f);
         return 0;    
     }
     #endregion

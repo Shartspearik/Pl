@@ -1985,7 +1985,6 @@ MonoBehaviour:
   prefShips:
   - {fileID: 3077876967821535000, guid: b7861570be2a13547be540d00f030b96, type: 3}
   - {fileID: 3077876967821535000, guid: 3c7ff806a4d5e6e4c8894b5b5c60703b, type: 3}
-  - {fileID: 3077876967821535000, guid: 3c7ff806a4d5e6e4c8894b5b5c60703b, type: 3}
   - {fileID: 3077876967821535000, guid: 8f74e39c587188e429d4d68611c62802, type: 3}
   - {fileID: 3077876967821535000, guid: 88ec2851a08522340a8a0d9467d52973, type: 3}
   - {fileID: 3077876967821535000, guid: 9dd1d4a2a812513469d2fb1305cffde1, type: 3}
@@ -1994,7 +1993,6 @@ MonoBehaviour:
   planats:
   - {fileID: 358340515}
   - {fileID: 559912574}
-  - {fileID: 796258074}
   - {fileID: 596440323}
   - {fileID: 1304230522}
   - {fileID: 1493752714}
@@ -2003,6 +2001,7 @@ MonoBehaviour:
   spawnInterval: 1
   stats: {fileID: 543134968}
   count: 0
+  earth: {fileID: 796258074}
   testSpawn: 0
 --- !u!1 &68501477
 GameObject:
@@ -8696,7 +8695,6 @@ MonoBehaviour:
   prefShips:
   - {fileID: 3077876967821535000, guid: b7861570be2a13547be540d00f030b96, type: 3}
   - {fileID: 3077876967821535000, guid: 3c7ff806a4d5e6e4c8894b5b5c60703b, type: 3}
-  - {fileID: 3077876967821535000, guid: 3c7ff806a4d5e6e4c8894b5b5c60703b, type: 3}
   - {fileID: 3077876967821535000, guid: 8f74e39c587188e429d4d68611c62802, type: 3}
   - {fileID: 3077876967821535000, guid: 88ec2851a08522340a8a0d9467d52973, type: 3}
   - {fileID: 3077876967821535000, guid: 9dd1d4a2a812513469d2fb1305cffde1, type: 3}
@@ -8705,7 +8703,6 @@ MonoBehaviour:
   planats:
   - {fileID: 358340515}
   - {fileID: 559912574}
-  - {fileID: 796258074}
   - {fileID: 596440323}
   - {fileID: 1304230522}
   - {fileID: 1493752714}
@@ -8714,6 +8711,7 @@ MonoBehaviour:
   spawnInterval: 1
   stats: {fileID: 543134968}
   count: 0
+  earth: {fileID: 796258074}
   testSpawn: 0
 --- !u!1 &360547754
 GameObject:
@@ -13049,14 +13047,14 @@ MonoBehaviour:
   maxShip: 0
   nowShip: 0
   countBuyPlanet: 1
-  shipCloudMax: 0000000014000000140000001400000014000000140000001400000014000000
-  shipCount: 0000000001000000010000000100000001000000010000000100000001000000
-  shipBankMax: 1400000014000000140000001400000014000000140000001400000014000000
-  shipSpeed: 0000000001000000010000000100000001000000010000000100000001000000
-  costShipCloudMax: 0000000001000000010000000100000001000000010000000100000001000000
-  costShipCount: 0000000001000000010000000100000001000000010000000100000001000000
-  costShipBankMax: 0000000001000000010000000100000001000000010000000100000001000000
-  costShipSpeed: 0000000001000000010000000100000001000000010000000100000001000000
+  shipCloudMax: 14000000140000001400000014000000140000001400000014000000
+  shipCount: 01000000010000000100000001000000010000000100000001000000
+  shipBankMax: 14000000140000001400000014000000140000001400000014000000
+  shipSpeed: 01000000010000000100000001000000010000000100000001000000
+  costShipCloudMax: 01000000010000000100000001000000010000000100000001000000
+  costShipCount: 01000000010000000100000001000000010000000100000001000000
+  costShipBankMax: 01000000010000000100000001000000010000000100000001000000
+  costShipSpeed: 01000000010000000100000001000000010000000100000001000000
   textShip1:
   - {fileID: 1969880173}
   - {fileID: 1622116464}
@@ -13097,13 +13095,12 @@ MonoBehaviour:
   planats:
   - {fileID: 358340517}
   - {fileID: 559912576}
-  - {fileID: 796258076}
   - {fileID: 596440325}
   - {fileID: 1304230524}
   - {fileID: 1493752716}
   - {fileID: 1959096240}
   - {fileID: 64050214}
-  ore: 570400005704000057040000672b000057040000570400005704000057040000
+  ore: ffffff7f5704000057040000672b000057040000570400005704000057040000
   menegerUI: {fileID: 1319428602}
   indexUp: 1.05
   indexPrice: 1.15
@@ -13402,7 +13399,6 @@ MonoBehaviour:
   prefShips:
   - {fileID: 3077876967821535000, guid: b7861570be2a13547be540d00f030b96, type: 3}
   - {fileID: 3077876967821535000, guid: 3c7ff806a4d5e6e4c8894b5b5c60703b, type: 3}
-  - {fileID: 3077876967821535000, guid: 3c7ff806a4d5e6e4c8894b5b5c60703b, type: 3}
   - {fileID: 3077876967821535000, guid: 8f74e39c587188e429d4d68611c62802, type: 3}
   - {fileID: 3077876967821535000, guid: 88ec2851a08522340a8a0d9467d52973, type: 3}
   - {fileID: 3077876967821535000, guid: 9dd1d4a2a812513469d2fb1305cffde1, type: 3}
@@ -13411,7 +13407,6 @@ MonoBehaviour:
   planats:
   - {fileID: 358340515}
   - {fileID: 559912574}
-  - {fileID: 796258074}
   - {fileID: 596440323}
   - {fileID: 1304230522}
   - {fileID: 1493752714}
@@ -13420,6 +13415,7 @@ MonoBehaviour:
   spawnInterval: 1
   stats: {fileID: 543134968}
   count: 0
+  earth: {fileID: 796258074}
   testSpawn: 0
 --- !u!1 &560703948
 GameObject:
@@ -14193,7 +14189,6 @@ MonoBehaviour:
   prefShips:
   - {fileID: 3077876967821535000, guid: b7861570be2a13547be540d00f030b96, type: 3}
   - {fileID: 3077876967821535000, guid: 3c7ff806a4d5e6e4c8894b5b5c60703b, type: 3}
-  - {fileID: 3077876967821535000, guid: 3c7ff806a4d5e6e4c8894b5b5c60703b, type: 3}
   - {fileID: 3077876967821535000, guid: 8f74e39c587188e429d4d68611c62802, type: 3}
   - {fileID: 3077876967821535000, guid: 88ec2851a08522340a8a0d9467d52973, type: 3}
   - {fileID: 3077876967821535000, guid: 9dd1d4a2a812513469d2fb1305cffde1, type: 3}
@@ -14202,7 +14197,6 @@ MonoBehaviour:
   planats:
   - {fileID: 358340515}
   - {fileID: 559912574}
-  - {fileID: 796258074}
   - {fileID: 596440323}
   - {fileID: 1304230522}
   - {fileID: 1493752714}
@@ -14211,6 +14205,7 @@ MonoBehaviour:
   spawnInterval: 1
   stats: {fileID: 543134968}
   count: 0
+  earth: {fileID: 796258074}
   testSpawn: 0
 --- !u!1 &597063631
 GameObject:
@@ -17601,7 +17596,6 @@ MonoBehaviour:
   prefShips:
   - {fileID: 3077876967821535000, guid: b7861570be2a13547be540d00f030b96, type: 3}
   - {fileID: 3077876967821535000, guid: 3c7ff806a4d5e6e4c8894b5b5c60703b, type: 3}
-  - {fileID: 3077876967821535000, guid: 88ec2851a08522340a8a0d9467d52973, type: 3}
   - {fileID: 3077876967821535000, guid: 8f74e39c587188e429d4d68611c62802, type: 3}
   - {fileID: 3077876967821535000, guid: 88ec2851a08522340a8a0d9467d52973, type: 3}
   - {fileID: 3077876967821535000, guid: 9dd1d4a2a812513469d2fb1305cffde1, type: 3}
@@ -17610,7 +17604,6 @@ MonoBehaviour:
   planats:
   - {fileID: 358340515}
   - {fileID: 559912574}
-  - {fileID: 796258074}
   - {fileID: 596440323}
   - {fileID: 1304230522}
   - {fileID: 1493752714}
@@ -17619,6 +17612,7 @@ MonoBehaviour:
   spawnInterval: 1
   stats: {fileID: 543134968}
   count: 0
+  earth: {fileID: 796258074}
   testSpawn: 1
 --- !u!1 &797324623
 GameObject:
@@ -30802,7 +30796,6 @@ MonoBehaviour:
   prefShips:
   - {fileID: 3077876967821535000, guid: b7861570be2a13547be540d00f030b96, type: 3}
   - {fileID: 3077876967821535000, guid: 3c7ff806a4d5e6e4c8894b5b5c60703b, type: 3}
-  - {fileID: 3077876967821535000, guid: 3c7ff806a4d5e6e4c8894b5b5c60703b, type: 3}
   - {fileID: 3077876967821535000, guid: 8f74e39c587188e429d4d68611c62802, type: 3}
   - {fileID: 3077876967821535000, guid: 88ec2851a08522340a8a0d9467d52973, type: 3}
   - {fileID: 3077876967821535000, guid: 9dd1d4a2a812513469d2fb1305cffde1, type: 3}
@@ -30811,7 +30804,6 @@ MonoBehaviour:
   planats:
   - {fileID: 358340515}
   - {fileID: 559912574}
-  - {fileID: 796258074}
   - {fileID: 596440323}
   - {fileID: 1304230522}
   - {fileID: 1493752714}
@@ -30820,6 +30812,7 @@ MonoBehaviour:
   spawnInterval: 1
   stats: {fileID: 543134968}
   count: 0
+  earth: {fileID: 796258074}
   testSpawn: 0
 --- !u!1 &1304449488
 GameObject:
@@ -35265,7 +35258,7 @@ MonoBehaviour:
   buttonLeft: {fileID: 277241920}
   buttonRight: {fileID: 595103347}
   count: 0
-  smoothSpeed: 10
+  smoothSpeed: 20
 --- !u!1 &1424852649
 GameObject:
   m_ObjectHideFlags: 0
@@ -37512,7 +37505,6 @@ MonoBehaviour:
   prefShips:
   - {fileID: 3077876967821535000, guid: b7861570be2a13547be540d00f030b96, type: 3}
   - {fileID: 3077876967821535000, guid: 3c7ff806a4d5e6e4c8894b5b5c60703b, type: 3}
-  - {fileID: 3077876967821535000, guid: 3c7ff806a4d5e6e4c8894b5b5c60703b, type: 3}
   - {fileID: 3077876967821535000, guid: 8f74e39c587188e429d4d68611c62802, type: 3}
   - {fileID: 3077876967821535000, guid: 88ec2851a08522340a8a0d9467d52973, type: 3}
   - {fileID: 3077876967821535000, guid: 9dd1d4a2a812513469d2fb1305cffde1, type: 3}
@@ -37521,7 +37513,6 @@ MonoBehaviour:
   planats:
   - {fileID: 358340515}
   - {fileID: 559912574}
-  - {fileID: 796258074}
   - {fileID: 596440323}
   - {fileID: 1304230522}
   - {fileID: 1493752714}
@@ -37530,6 +37521,7 @@ MonoBehaviour:
   spawnInterval: 1
   stats: {fileID: 543134968}
   count: 0
+  earth: {fileID: 796258074}
   testSpawn: 0
 --- !u!1 &1496893339
 GameObject:
@@ -49751,7 +49743,6 @@ MonoBehaviour:
   prefShips:
   - {fileID: 3077876967821535000, guid: b7861570be2a13547be540d00f030b96, type: 3}
   - {fileID: 3077876967821535000, guid: 3c7ff806a4d5e6e4c8894b5b5c60703b, type: 3}
-  - {fileID: 3077876967821535000, guid: 3c7ff806a4d5e6e4c8894b5b5c60703b, type: 3}
   - {fileID: 3077876967821535000, guid: 8f74e39c587188e429d4d68611c62802, type: 3}
   - {fileID: 3077876967821535000, guid: 88ec2851a08522340a8a0d9467d52973, type: 3}
   - {fileID: 3077876967821535000, guid: 9dd1d4a2a812513469d2fb1305cffde1, type: 3}
@@ -49760,7 +49751,6 @@ MonoBehaviour:
   planats:
   - {fileID: 358340515}
   - {fileID: 559912574}
-  - {fileID: 796258074}
   - {fileID: 596440323}
   - {fileID: 1304230522}
   - {fileID: 1493752714}
@@ -49769,6 +49759,7 @@ MonoBehaviour:
   spawnInterval: 1
   stats: {fileID: 543134968}
   count: 0
+  earth: {fileID: 796258074}
   testSpawn: 0
 --- !u!1 &1967344103
 GameObject:

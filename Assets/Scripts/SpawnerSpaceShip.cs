@@ -10,6 +10,7 @@ public class SpawnerSpaceShip : MonoBehaviour
     public Stats stats;
     private float timer = 0f;
     public int count;
+    public GameObject earth;
 
     public bool testSpawn;
 
@@ -21,14 +22,9 @@ public class SpawnerSpaceShip : MonoBehaviour
         if (timer >= spawnInterval)
         {
             timer = 0f;
-            if (count == 2)
-            {
-                count++;
-                return;
-            }
             SpawnShip(count, count);
             count++;
-            if(count >= 8)
+            if(count >= 7)
             {
                 count = 0;
             }
@@ -42,7 +38,7 @@ public class SpawnerSpaceShip : MonoBehaviour
         ship.GetComponent<SpaceShipController>().planetParant = gameObject;
         ship.GetComponent<SpaceShipController>().speed = stats.shipSpeed[idShip];
         ship.GetComponent<SpaceShipController>().stats = stats;
-        ship.GetComponent<SpaceShipController>().earth = planats[2];
+        ship.GetComponent<SpaceShipController>().earth = earth;
     }
 
 

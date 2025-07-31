@@ -22,7 +22,7 @@ public class SpawnerSpaceShip : MonoBehaviour
         if (timer >= spawnInterval)
         {
             timer = 0f;
-            SpawnShip(count, count);
+            SpawnShip(6, 6);
             count++;
             if(count >= 7)
             {
@@ -34,7 +34,15 @@ public class SpawnerSpaceShip : MonoBehaviour
     public void SpawnShip(int idPlanet, int idShip)
     {
         GameObject ship = Instantiate(prefShips[idShip], transform.position, Quaternion.identity);
-        ship.GetComponent<SpaceShipController>().targetPlanet = planats[idPlanet].transform;
+
+        if (idPlanet == 10)
+        {
+            ship.GetComponent<SpaceShipController>().targetPlanet = earth.transform;
+        }
+        else
+        {
+            ship.GetComponent<SpaceShipController>().targetPlanet = planats[idPlanet].transform;
+        }
         ship.GetComponent<SpaceShipController>().planetParant = gameObject;
         ship.GetComponent<SpaceShipController>().speed = stats.shipSpeed[idShip];
         ship.GetComponent<SpaceShipController>().stats = stats;

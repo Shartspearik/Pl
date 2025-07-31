@@ -22,14 +22,15 @@ public class MenegerUI : MonoBehaviour
     public TextMeshProUGUI textCountShip;
 
 
-
+    public Transform content;
+    public Transform contentPlanets;
     Planet planet;
     public GameObject currentPanel;
     public Stats stats;
 
     public void OreTextPanel(int id)
     {
-        orePanels[id].text = stats.ore[id] + "";
+        orePanels[id].text = stats.FormatGold(stats.ore[id]);
     }
 
     public void ClickPlanet(int id)
@@ -63,16 +64,124 @@ public class MenegerUI : MonoBehaviour
 
     public void Colonizetion(int id)
     {
-        if (id > 1)
+        switch (id)
         {
-            planets[id + 1].GetComponent<Planet>().isActive = true;
+            case 0: 
+                if(stats.ore[0] >= 10)
+                {
+                    stats.ore[0] -= 10;
+                    break;
+                }
+                else
+                {
+                    print("не хватает");
+                    return;
+                }
+            case 1:
+                if (stats.ore[0] >= 10 && stats.ore[1] >= 10)
+                {
+                    stats.ore[0] -= 10;
+                    stats.ore[1] -= 10;
+                    break;
+                }
+                else
+                {
+                    print("не хватает");
+                    return;
+                }
+            case 2:
+                if (stats.ore[0] >= 10 && stats.ore[1] >= 10 && stats.ore[2] >= 10)
+                {
+                    stats.ore[0] -= 10;
+                    stats.ore[1] -= 10;
+                    stats.ore[2] -= 10;
+                    break;
+                }
+                else
+                {
+                    print("не хватает");
+                    return;
+                }
+            case 3:
+                if (stats.ore[0] >= 10 && stats.ore[1] >= 10 && stats.ore[2] >= 10 && stats.ore[3] >= 10)
+                {
+                    stats.ore[0] -= 10;
+                    stats.ore[1] -= 10;
+                    stats.ore[2] -= 10;
+                    stats.ore[3] -= 10;
+                    break;
+                }
+                else
+                {
+                    print("не хватает");
+                    return;
+                }
+            case 4:
+                if (stats.ore[0] >= 10 && stats.ore[1] >= 10 && stats.ore[2] >= 10 && stats.ore[3] >= 10 && stats.ore[4] >= 10)
+                {
+                    stats.ore[0] -= 10;
+                    stats.ore[1] -= 10;
+                    stats.ore[2] -= 10;
+                    stats.ore[3] -= 10;
+                    stats.ore[4] -= 10;
+                    break;
+                }
+                else
+                {
+                    print("не хватает");
+                    return;
+                }
+            case 5:
+                if (stats.ore[0] >= 10 && stats.ore[1] >= 10 && stats.ore[2] >= 10 && stats.ore[3] >= 10 && stats.ore[4] >= 10 && stats.ore[5] >= 10)
+                {
+                    stats.ore[0] -= 10;
+                    stats.ore[1] -= 10;
+                    stats.ore[2] -= 10;
+                    stats.ore[3] -= 10;
+                    stats.ore[4] -= 10;
+                    stats.ore[5] -= 10;
+                    break;
+                }
+                else
+                {
+                    print("не хватает");
+                    return;
+                }
+            case 6:
+                if (stats.ore[0] >= 10 && stats.ore[1] >= 10 && stats.ore[2] >= 10 && stats.ore[3] >= 10 && stats.ore[4] >= 10 && stats.ore[5] >= 10)
+                {
+                    stats.ore[0] -= 10;
+                    stats.ore[1] -= 10;
+                    stats.ore[2] -= 10;
+                    stats.ore[3] -= 10;
+                    stats.ore[4] -= 10;
+                    stats.ore[5] -= 10;
+                    break;
+                }
+                else
+                {
+                    print("не хватает");
+                    return;
+                }
         }
-        else
-        {
-            planets[id].GetComponent<Planet>().isActive = true;
-        }
-            panelPlenets[id].SetActive(true);
+
+        OffPanelPlanet();
+        content.GetChild(id).GetChild(1).gameObject.SetActive(false);
+        content.GetChild(id).GetChild(2).gameObject.SetActive(true);
+        content.GetChild(id).GetChild(3).gameObject.SetActive(false);
+        content.GetChild(id).GetChild(4).gameObject.SetActive(false);
+        content.GetChild(id).GetChild(5).gameObject.SetActive(true);
+        contentPlanets.GetChild(id + 2).GetChild(0).gameObject.SetActive(true);
+
+        planets[id].GetComponent<Planet>().isActive = true;
+        panelPlenets[id].SetActive(true);
         stats.countBuyPlanet++;
+        stats.RePrintBuyPlanet();
+        if(id < 6)
+        {
+            content.GetChild(id + 1).GetChild(1).gameObject.SetActive(true);
+            content.GetChild(id + 1).GetChild(4).gameObject.SetActive(true);
+        }
     }
 
     public void OffOn(GameObject button)

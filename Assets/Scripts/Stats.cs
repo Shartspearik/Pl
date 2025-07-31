@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class Stats : MonoBehaviour
 {
@@ -45,11 +46,12 @@ public class Stats : MonoBehaviour
     private float[] chance8 = { 40.5f, 19.5f, 14.0f, 10.0f, 6.5f, 4.5f, 3.0f, 2.0f };
 
     public List<Planet> planats = new List<Planet>();
-    public List<int> ore = new List<int>();
+    public List<double> ore = new List<double>();
     public MenegerUI menegerUI;
 
     public float indexUp;
     public float indexPrice;
+    public Transform content;
 
     private void Start()
     {
@@ -86,8 +88,8 @@ public class Stats : MonoBehaviour
     #region Обновление статов
     public void SetCloud(int idShip)
     {
-        ore[idShip] += shipCloudMax[idShip];
-        menegerUI.OreTextPanel(idShip);
+        ore[idShip + 1] += shipCloudMax[idShip];
+        menegerUI.OreTextPanel(idShip + 1);
     }
 
     public void SetMaxCloudShip(int count, int idShip)
@@ -107,8 +109,31 @@ public class Stats : MonoBehaviour
         shipSpeed[idShip] += count;
     }
     #endregion
+    public void PrintBuyPlanet(Transform trans)
+    {
+        trans.parent.GetChild(2).gameObject.SetActive(false);
+        trans.parent.GetChild(3).gameObject.SetActive(false);
 
-    public void Buffing2(Transform trans, int idOre, int price)
+        trans.parent.GetChild(5).gameObject.SetActive(true);
+
+        trans.parent.GetChild(5).GetComponent<TextMeshProUGUI>().text = "Откройте " + (countBuyPlanet + 1) + " планету";
+    }
+
+    public void RePrintBuyPlanet()
+    {
+        for (int i = 0; i < 7; i++)
+        {
+            for (int a = 0; a < 3; a++)
+            {
+                content.GetChild(i).GetChild(2 + a).GetChild(2).gameObject.SetActive(true);
+                content.GetChild(i).GetChild(2 + a).GetChild(3).gameObject.SetActive(true);
+
+                content.GetChild(i).GetChild(2 + a).GetChild(5).gameObject.SetActive(false);
+            }
+        } 
+    }
+
+    public void Buffing2(Transform trans, int idOre, double price)
     {
         int idShip = FindNameId(trans.name, 0) - 1;
         int idBuff = FindNameId(trans.name, 1);
@@ -117,21 +142,24 @@ public class Stats : MonoBehaviour
             costShipCount[idShip]++;
             shipCount[idShip]++;
             ore[idOre] -= price;
-
+            trans.parent.GetChild(4).GetComponent<TextMeshProUGUI>().text = shipCount[idShip] + "";
+            if (costShipCount[idShip] >= 5 * countBuyPlanet) PrintBuyPlanet(trans);
         }
         if (idBuff == 2)
         {
             costShipSpeed[idShip]++;
             shipSpeed[idShip]++;
             ore[idOre] -= price;
-
+            trans.parent.GetChild(4).GetComponent<TextMeshProUGUI>().text = shipSpeed[idShip] + "";
+            if (costShipSpeed[idShip] >= 20 * countBuyPlanet) PrintBuyPlanet(trans);
         }
         if (idBuff == 3)
         {
             costShipCloudMax[idShip]++;
             shipCloudMax[idShip]++;
             ore[idOre] -= price;
-
+            trans.parent.GetChild(4).GetComponent<TextMeshProUGUI>().text = shipCloudMax[idShip] + "";
+            if (costShipCloudMax[idShip] >= 20 * countBuyPlanet) PrintBuyPlanet(trans);
         }
     }
 
@@ -141,7 +169,7 @@ public class Stats : MonoBehaviour
         if (trans.GetChild(0).gameObject.activeSelf)
         {
             int idOre1 = FindIconeInOre(trans.GetChild(0).GetChild(0).GetComponent<Image>().sprite);
-            int price1 = int.Parse(trans.GetChild(0).GetChild(1).GetComponent<TextMeshProUGUI>().text);
+            double price1 = ReFormatGold(trans.GetChild(0).GetChild(1).GetComponent<TextMeshProUGUI>().text);
             if (ore[idOre1] >= price1)
             {
                 Buffing2(trans, idOre1, price1);
@@ -154,10 +182,10 @@ public class Stats : MonoBehaviour
         if (trans.GetChild(1).gameObject.activeSelf)
         {
             int idOre1 = FindIconeInOre(trans.GetChild(1).GetChild(0).GetComponent<Image>().sprite);
-            int price1 = int.Parse(trans.GetChild(1).GetChild(2).GetComponent<TextMeshProUGUI>().text);
+            double price1 = ReFormatGold(trans.GetChild(1).GetChild(2).GetComponent<TextMeshProUGUI>().text);
 
             int idOre2 = FindIconeInOre(trans.GetChild(1).GetChild(1).GetComponent<Image>().sprite);
-            int price2 = int.Parse(trans.GetChild(1).GetChild(3).GetComponent<TextMeshProUGUI>().text);
+            double price2 = ReFormatGold(trans.GetChild(1).GetChild(3).GetComponent<TextMeshProUGUI>().text);
 
             if (ore[idOre1] >= price1 && ore[idOre2] >= price2)
             {
@@ -172,13 +200,13 @@ public class Stats : MonoBehaviour
         if (trans.GetChild(2).gameObject.activeSelf)
         {
             int idOre1 = FindIconeInOre(trans.GetChild(2).GetChild(0).GetComponent<Image>().sprite);
-            int price1 = int.Parse(trans.GetChild(2).GetChild(3).GetComponent<TextMeshProUGUI>().text);
+            double price1 = ReFormatGold(trans.GetChild(2).GetChild(3).GetComponent<TextMeshProUGUI>().text);
 
             int idOre2 = FindIconeInOre(trans.GetChild(2).GetChild(1).GetComponent<Image>().sprite);
-            int price2 = int.Parse(trans.GetChild(2).GetChild(4).GetComponent<TextMeshProUGUI>().text);
+            double price2 = ReFormatGold(trans.GetChild(2).GetChild(4).GetComponent<TextMeshProUGUI>().text);
 
             int idOre3 = FindIconeInOre(trans.GetChild(2).GetChild(2).GetComponent<Image>().sprite);
-            int price3 = int.Parse(trans.GetChild(2).GetChild(5).GetComponent<TextMeshProUGUI>().text);
+            double price3 = ReFormatGold(trans.GetChild(2).GetChild(5).GetComponent<TextMeshProUGUI>().text);
 
             if (ore[idOre1] >= price1 && ore[idOre2] >= price2 && ore[idOre3] >= price3)
             {
@@ -196,6 +224,37 @@ public class Stats : MonoBehaviour
     #endregion
 
     #region Цены
+
+    public string FormatGold(double value)
+    {
+        string[] suffixes = { "", "a", "b", "c", "d", "e", "f", "g", "h", "i",
+                          "j", "k", "l", "m", "n", "o", "p", "q", "r", "s",
+                          "t", "u", "v", "w", "x", "y", "z" };
+
+        int suffixIndex = 0;
+        while (value >= 1000 && suffixIndex < suffixes.Length - 1)
+        {
+            value /= 1000;
+            suffixIndex++;
+        }
+        return value.ToString("0.#") + suffixes[suffixIndex];
+    }
+
+    public static double ReFormatGold(string input)
+    {
+        string suffixes = "abcdefghijklmnopqrstuvwxyz";
+        int i = 0;
+        while (i < input.Length &&
+              (char.IsDigit(input[i]) || input[i] == '.' || input[i] == ','))
+        {
+            i++;
+        }
+        double number = double.Parse(input.Substring(0, i).Replace(',', '.'));
+        int suffixIndex = suffixes.IndexOf(char.ToLower(input[i]));
+        double multiplier = Math.Pow(1000, suffixIndex + 1);
+        return number * multiplier;
+    }
+
     public void ResetPrice(Transform trans)
     {
         int count = RandomCountOre();
@@ -206,7 +265,7 @@ public class Stats : MonoBehaviour
             int idOre = RandomOre();
             int price = PriseOre(cost, idOre);
             trans.GetChild(0).GetChild(0).GetComponent<Image>().sprite = icone[idOre];
-            trans.GetChild(0).GetChild(1).GetComponent<TextMeshProUGUI>().text = price + "";
+            trans.GetChild(0).GetChild(1).GetComponent<TextMeshProUGUI>().text = FormatGold(price);
 
             for (int i = 0; i < 3; i++)
             {
@@ -220,7 +279,7 @@ public class Stats : MonoBehaviour
             int idOre1 = 0;
             int price = PriseOre(cost, idOre);
             trans.GetChild(1).GetChild(0).GetComponent<Image>().sprite = icone[idOre];
-            trans.GetChild(1).GetChild(2).GetComponent<TextMeshProUGUI>().text = price + "";
+            trans.GetChild(1).GetChild(2).GetComponent<TextMeshProUGUI>().text = FormatGold(price);
 
             while (true)
             {
@@ -230,7 +289,7 @@ public class Stats : MonoBehaviour
             }
             price = PriseOre(cost, idOre1);
             trans.GetChild(1).GetChild(1).GetComponent<Image>().sprite = icone[idOre1];
-            trans.GetChild(1).GetChild(3).GetComponent<TextMeshProUGUI>().text = price + "";
+            trans.GetChild(1).GetChild(3).GetComponent<TextMeshProUGUI>().text = FormatGold(price);
 
             for (int i = 0; i < 3; i++)
             {
@@ -365,7 +424,7 @@ public class Stats : MonoBehaviour
 
     public int RandomCountOre()
     {
-        int chance = Random.Range(0, 100);
+        int chance = UnityEngine.Random.Range(0, 100);
         if (countBuyPlanet == 1) return 1;
         else if(countBuyPlanet == 2)
         {
@@ -384,7 +443,7 @@ public class Stats : MonoBehaviour
 
     public int RandomOre()
     {
-        int chance = Random.Range(0, 100);
+        int chance = UnityEngine.Random.Range(0, 100);
         if (countBuyPlanet == 1) return 0;
         else if(countBuyPlanet == 2) return SelectByWeight(chance2);
         else if (countBuyPlanet == 3) return SelectByWeight(chance3);
@@ -400,7 +459,7 @@ public class Stats : MonoBehaviour
     public int SelectByWeight(float[] weights)
     {
         float total = 0f;
-        float roll = Random.Range(0f, 100f);
+        float roll = UnityEngine.Random.Range(0f, 100f);
 
         for (int i = 0; i < weights.Length; i++)
         {

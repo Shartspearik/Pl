@@ -58,7 +58,7 @@ MonoBehaviour:
   attack: 0
   HP: 0
   HPRegen: 0
-  id: 3
+  id: 2
 --- !u!1 &3077876968157569631
 GameObject:
   m_ObjectHideFlags: 0

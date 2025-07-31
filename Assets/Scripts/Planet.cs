@@ -65,9 +65,9 @@ public class Planet : MonoBehaviour
                 if (timerMine >= speedMine)
                 {
                     timerMine = 0f;
-                    if (idPlanet == 2)
+                    if (idPlanet == 0)
                     {
-                        stats.SetCloud(2);
+                        stats.SetCloud(0);
                     }
                     else
                     {
@@ -91,7 +91,7 @@ public class Planet : MonoBehaviour
                     {
                         cloudShipNow = 0;
                         countShip--;
-                        spawnerSpaceShip.SpawnShip(2, idPlanet);
+                        spawnerSpaceShip.SpawnShip(10, idPlanet);
                     }
                 }
             }
@@ -124,9 +124,9 @@ public class Planet : MonoBehaviour
         countShip++;
     }
 
-    public void ComeHomeShip()
-    {
-        countShip--;
-        spawnerSpaceShip.SpawnShip(2, idPlanet);
-    }
+    //public void ComeHomeShip()
+    //{
+    //    countShip--;
+    //    spawnerSpaceShip.SpawnShip(2, idPlanet);
+    //}
 }

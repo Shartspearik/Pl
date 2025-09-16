@@ -1,31 +1,49 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
-using System;
+using YG;
+
+
+namespace YG
+{
+    public partial class SavesYG
+    {
+        public int nowShip = 0;
+        public int countBuyPlanet = 1;
+        public int countReadyPlanet;
+
+        [Header("Параметры")]
+        public List<int> shipCloudMax = new List<int>() { 20, 20, 20, 20, 20, 20, 20, 20 };
+        public List<int> shipCount = new List<int>() { 1, 1, 1, 1, 1, 1, 1, 1 };
+        public List<int> shipBankMax = new List<int>() { 20, 20, 20, 20, 20, 20, 20 };
+        public List<int> shipSpeed = new List<int>() { 1, 1, 1, 1, 1, 1, 1, 1 };
+
+
+
+        [Header("Колличество покупок")]
+        public List<int> costShipCloudMax = new List<int>() { 1, 1, 1, 1, 1, 1, 1, 1 };
+        public List<int> costShipCount = new List<int>() { 1, 1, 1, 1, 1, 1, 1, 1 };
+        public List<int> costShipBankMax = new List<int>() { 1, 1, 1, 1, 1, 1, 1, 1 };
+        public List<int> costShipSpeed = new List<int>() { 1, 1, 1, 1, 1, 1, 1, 1 };
+        public List<int> costCountOreShipCount = new List<int>() { 1, 1, 1, 1, 1, 1, 1, 1 };
+        public List<int> costCountOreShipSpeed = new List<int>() { 1, 1, 1, 1, 1, 1, 1, 1 };
+        public List<int> costCountOreShipCloudMax = new List<int>() { 1, 1, 1, 1, 1, 1, 1, 1 };
+
+
+        [Header("Колличество ")]
+        public List<double> countOre = new List<double>() { 10000000, 10000000, 10000000, 10000000, 10000000, 10000000, 10000000, 10000000 };
+
+
+        public float indexUp = 1;
+        public float indexPrice = 1.2f;
+    }
+}
 
 public class Stats : MonoBehaviour
 {
-    public int maxShip;
-    public int nowShip;
-    public int countBuyPlanet = 1;
-
-    [Header("Параметры")]
-    public List<int> shipCloudMax = new List<int>();
-    public List<int> shipCount = new List<int>();
-    public List<int> shipBankMax = new List<int>();
-    public List<int> shipSpeed = new List<int>();
-
-
-
-    [Header("Колличество покупок")]
-    public List<int> costShipCloudMax = new List<int>();
-    public List<int> costShipCount = new List<int>();
-    public List<int> costShipBankMax = new List<int>();
-    public List<int> costShipSpeed = new List<int>();
-
-
     [Header("Текст цен")]
     public List<Transform> textShip1 = new List<Transform>();
     public List<Transform> textShip2 = new List<Transform>();
@@ -34,197 +52,212 @@ public class Stats : MonoBehaviour
     public List<Transform> textShip5 = new List<Transform>();
     public List<Transform> textShip6 = new List<Transform>();
     public List<Transform> textShip7 = new List<Transform>();
-
     public List<Sprite> icone = new List<Sprite>();
 
-    private float[] chance2 = { 60 , 40 };
-    private float[] chance3 = { 50 , 30, 20 };
-    private float[] chance4 = { 42.3f , 32.3f , 18.5f, 6.9f };
+    private float[] chance2 = { 60, 40 };
+    private float[] chance3 = { 50, 30, 20 };
+    private float[] chance4 = { 42.3f, 32.3f, 18.5f, 6.9f };
     private float[] chance5 = { 38.0f, 27.0f, 18.0f, 11.5f, 5.5f };
     private float[] chance6 = { 39.0f, 24.0f, 16.5f, 10.5f, 6.5f, 3.5f };
     private float[] chance7 = { 40.5f, 21.5f, 15.0f, 10.0f, 6.5f, 4.0f, 2.5f };
     private float[] chance8 = { 40.5f, 19.5f, 14.0f, 10.0f, 6.5f, 4.5f, 3.0f, 2.0f };
 
+    int[][] patterns = new int[][]
+        {
+        new int[] { 15, 1, 1, 1, 1, 1, 1, 1 },
+        new int[] { 30, 15, 1, 1, 1, 1, 1, 1 },
+        new int[] { 45, 30, 15, 1, 1, 1, 1, 1 },
+        new int[] { 60, 45, 30, 15, 1, 1, 1, 1 },
+        new int[] { 60, 60, 45, 30, 15, 1, 1, 1 },
+        new int[] { 60, 60, 60, 45, 30, 15, 1, 1 },
+        new int[] { 60, 60, 60, 60, 45, 30, 15, 1 }
+        };
+
+
     public List<Planet> planats = new List<Planet>();
-    public List<double> ore = new List<double>();
+
     public MenegerUI menegerUI;
 
-    public float indexUp;
-    public float indexPrice;
     public Transform content;
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            YG2.SaveProgress();
+        }
+    }
 
     private void Start()
     {
-        foreach (Transform item in textShip1)
+        for (int i = 1; i < 8; i++)
         {
-            ResetPrice(item);
-        }
-        foreach (Transform item in textShip2)
-        {
-            ResetPrice(item);
-        }
-        foreach (Transform item in textShip3)
-        {
-            ResetPrice(item);
-        }
-        foreach (Transform item in textShip4)
-        {
-            ResetPrice(item);
-        }
-        foreach (Transform item in textShip5)
-        {
-            ResetPrice(item);
-        }
-        foreach (Transform item in textShip6)
-        {
-            ResetPrice(item);
-        }
-        foreach (Transform item in textShip7)
-        {
-            ResetPrice(item);
+            for (int q = 1; q < 4; q++)
+            {
+                ResetPrice(i * 10 + q);
+            }
         }
     }
 
     #region Обновление статов
     public void SetCloud(int idShip)
     {
-        ore[idShip + 1] += shipCloudMax[idShip];
-        menegerUI.OreTextPanel(idShip + 1);
+        YG2.saves.countOre[idShip] += YG2.saves.shipCloudMax[idShip];
+        menegerUI.OreTextPanel(idShip);
     }
 
     public void SetMaxCloudShip(int count, int idShip)
     {
-        shipCloudMax[idShip] += count;
+        YG2.saves.shipCloudMax[idShip] += count;
         planats[idShip].cloudShipNeed += count;
     }
 
     public void SetMaxbankPlanet(int count, int idShip)
     {
-        shipBankMax[idShip] += count;
+        YG2.saves.shipBankMax[idShip] += count;
         planats[idShip].bankMax += count;
     }
 
     public void SetSpeedShip(int count, int idShip)
     {
-        shipSpeed[idShip] += count;
+        YG2.saves.shipSpeed[idShip] += count;
     }
     #endregion
+
+
+
     public void PrintBuyPlanet(Transform trans)
     {
-        trans.parent.GetChild(2).gameObject.SetActive(false);
-        trans.parent.GetChild(3).gameObject.SetActive(false);
-
-        trans.parent.GetChild(5).gameObject.SetActive(true);
-
-        trans.parent.GetChild(5).GetComponent<TextMeshProUGUI>().text = "Откройте " + (countBuyPlanet + 1) + " планету";
+        trans.GetChild(3).gameObject.SetActive(false);
+        trans.GetChild(4).gameObject.SetActive(false);
+        trans.GetChild(6).gameObject.SetActive(true);
+        trans.GetChild(6).GetComponent<TextMeshProUGUI>().text = "Откройте " + (YG2.saves.countBuyPlanet + 1) + " планету";
     }
-
-    public void RePrintBuyPlanet()
-    {
-        for (int i = 0; i < 7; i++)
-        {
-            for (int a = 0; a < 3; a++)
-            {
-                content.GetChild(i).GetChild(2 + a).GetChild(2).gameObject.SetActive(true);
-                content.GetChild(i).GetChild(2 + a).GetChild(3).gameObject.SetActive(true);
-
-                content.GetChild(i).GetChild(2 + a).GetChild(5).gameObject.SetActive(false);
-            }
-        } 
-    }
-
-    public void Buffing2(Transform trans, int idOre, double price)
-    {
-        int idShip = FindNameId(trans.name, 0) - 1;
-        int idBuff = FindNameId(trans.name, 1);
-        if (idBuff == 1)
-        {
-            costShipCount[idShip]++;
-            shipCount[idShip]++;
-            ore[idOre] -= price;
-            trans.parent.GetChild(4).GetComponent<TextMeshProUGUI>().text = shipCount[idShip] + "";
-            if (costShipCount[idShip] >= 5 * countBuyPlanet) PrintBuyPlanet(trans);
-        }
-        if (idBuff == 2)
-        {
-            costShipSpeed[idShip]++;
-            shipSpeed[idShip]++;
-            ore[idOre] -= price;
-            trans.parent.GetChild(4).GetComponent<TextMeshProUGUI>().text = shipSpeed[idShip] + "";
-            if (costShipSpeed[idShip] >= 20 * countBuyPlanet) PrintBuyPlanet(trans);
-        }
-        if (idBuff == 3)
-        {
-            costShipCloudMax[idShip]++;
-            shipCloudMax[idShip]++;
-            ore[idOre] -= price;
-            trans.parent.GetChild(4).GetComponent<TextMeshProUGUI>().text = shipCloudMax[idShip] + "";
-            if (costShipCloudMax[idShip] >= 20 * countBuyPlanet) PrintBuyPlanet(trans);
-        }
-    }
-
     #region Конопки бафов
-    public void Buffing(Transform trans)
+
+
+    public void CheckBuff15(int idShip, int idBuff)
     {
-        if (trans.GetChild(0).gameObject.activeSelf)
+        Transform panel = GameObject.Find("Price" + idShip + "_" + idBuff).transform.parent;
+
+
+        Debug.Log(
+                    "Число кораблей = " + string.Join(", ", YG2.saves.costShipCount) + "          " +
+                    "Скорость кораблей = " + string.Join(", ", YG2.saves.costShipSpeed) + "          " +
+                    "Емкость кораблей = " + string.Join(", ", YG2.saves.costShipCloudMax));
+
+
+        int index = idShip - 1;
+        bool countOk = YG2.saves.costShipCount[index] % 15 == 0;
+        bool speedOk = YG2.saves.costShipSpeed[index] % 15 == 0;
+        bool cloudMaxOk = YG2.saves.costShipCloudMax[index] % 15 == 0;
+
+        if (countOk && idBuff == 1)
         {
-            int idOre1 = FindIconeInOre(trans.GetChild(0).GetChild(0).GetComponent<Image>().sprite);
-            double price1 = ReFormatGold(trans.GetChild(0).GetChild(1).GetComponent<TextMeshProUGUI>().text);
-            if (ore[idOre1] >= price1)
+            PrintBuyPlanet(panel);
+
+        }
+        if (speedOk && idBuff == 2)
+        {
+            PrintBuyPlanet(panel);
+        }
+        if (cloudMaxOk && idBuff == 3)
+        {
+            PrintBuyPlanet(panel);
+        }
+
+        var pattern = patterns[YG2.saves.countReadyPlanet];
+        if (YG2.saves.costShipCount.SequenceEqual(pattern) &&
+            YG2.saves.costShipSpeed.SequenceEqual(pattern) &&
+            YG2.saves.costShipCloudMax.SequenceEqual(pattern))
+        {
+            YG2.saves.countReadyPlanet++;
+            content.GetChild(YG2.saves.countBuyPlanet - 1).GetChild(1).gameObject.SetActive(true);
+            content.GetChild(YG2.saves.countBuyPlanet - 1).GetChild(4).gameObject.SetActive(true);
+        }
+    }
+
+
+
+    public void Buffing(int id)
+    {
+        int idShip = id / 10;       // Номер планеты
+        int idBuff = id % 10;       // Номер бафа
+        int originalOres = 0;
+        int countBuff = 0;
+
+        switch (idBuff)
+        {
+            case 1:
+                originalOres = YG2.saves.costCountOreShipCount[idShip];
+                countBuff = YG2.saves.costShipCount[idShip];
+                break;
+            case 2:
+                originalOres = YG2.saves.costCountOreShipSpeed[idShip];
+                countBuff = YG2.saves.costShipSpeed[idShip];
+                break;
+            case 3:
+                originalOres = YG2.saves.costCountOreShipCloudMax[idShip];
+                countBuff = YG2.saves.costShipCloudMax[idShip];
+                break;
+        }
+        int ores = originalOres;    // Рабочая копия
+        bool itsBuy = true;
+
+        // Первый проход: проверка возможности покупки
+        while (ores != 0)
+        {
+            int q = ores % 10;      // Получаем цифру (тип руды)
+            ores /= 10;
+
+            if (YG2.saves.countOre[q - 1] < PriseOre(countBuff, q))
             {
-                Buffing2(trans, idOre1, price1);
-                ResetPrice(trans);
-            }
-            else
-            {
+                itsBuy = false;
+                break;  // Прерываем цикл, если хотя бы одного ресурса не хватает
             }
         }
-        if (trans.GetChild(1).gameObject.activeSelf)
+
+        // Второй проход: списание ресурсов
+        if (itsBuy)
         {
-            int idOre1 = FindIconeInOre(trans.GetChild(1).GetChild(0).GetComponent<Image>().sprite);
-            double price1 = ReFormatGold(trans.GetChild(1).GetChild(2).GetComponent<TextMeshProUGUI>().text);
+            ores = originalOres;  // Восстанавливаем исходное значение
 
-            int idOre2 = FindIconeInOre(trans.GetChild(1).GetChild(1).GetComponent<Image>().sprite);
-            double price2 = ReFormatGold(trans.GetChild(1).GetChild(3).GetComponent<TextMeshProUGUI>().text);
-
-            if (ore[idOre1] >= price1 && ore[idOre2] >= price2)
+            switch (idBuff)
             {
-                Buffing2(trans, idOre1, price1);
-                Buffing2(trans, idOre2, price2);
-                ResetPrice(trans);
+                case 1:
+                    YG2.saves.costShipCount[idShip - 1]++;
+                    break;
+                case 2:
+                    YG2.saves.costShipSpeed[idShip - 1]++;
+                    break;
+                case 3:
+                    YG2.saves.costShipCloudMax[idShip - 1]++;
+                    break;
             }
-            else
+            while (ores != 0)
             {
+                int q = ores % 10;      // Получаем цифру (тип руды)
+                ores /= 10;
+                YG2.saves.countOre[q - 1] -= PriseOre(countBuff, q);
+                menegerUI.OreTextPanel(q - 1);
             }
+            
+            //CheckUnlockBuff();
+            ResetPrice(id);
+            CheckBuff15(idShip, idBuff);
+            // Сохраняем изменения
+            //YG2.saves.SaveYG();
         }
-        if (trans.GetChild(2).gameObject.activeSelf)
+        else
         {
-            int idOre1 = FindIconeInOre(trans.GetChild(2).GetChild(0).GetComponent<Image>().sprite);
-            double price1 = ReFormatGold(trans.GetChild(2).GetChild(3).GetComponent<TextMeshProUGUI>().text);
-
-            int idOre2 = FindIconeInOre(trans.GetChild(2).GetChild(1).GetComponent<Image>().sprite);
-            double price2 = ReFormatGold(trans.GetChild(2).GetChild(4).GetComponent<TextMeshProUGUI>().text);
-
-            int idOre3 = FindIconeInOre(trans.GetChild(2).GetChild(2).GetComponent<Image>().sprite);
-            double price3 = ReFormatGold(trans.GetChild(2).GetChild(5).GetComponent<TextMeshProUGUI>().text);
-
-            if (ore[idOre1] >= price1 && ore[idOre2] >= price2 && ore[idOre3] >= price3)
-            {
-                Buffing2(trans, idOre1, price1);
-                Buffing2(trans, idOre2, price2);
-                Buffing2(trans, idOre3, price3);
-                ResetPrice(trans);
-            }
-            else
-            {
-
-            }
+            Debug.Log("Недостаточно ресурсов для покупки!");
         }
     }
     #endregion
 
-    #region Цены
 
+
+    #region Из 12.3f в 123000 и обратно
     public string FormatGold(double value)
     {
         string[] suffixes = { "", "a", "b", "c", "d", "e", "f", "g", "h", "i",
@@ -250,132 +283,196 @@ public class Stats : MonoBehaviour
             i++;
         }
         double number = double.Parse(input.Substring(0, i).Replace(',', '.'));
+        if (i >= input.Length)
+        {
+            // Нет суффикса, просто вернуть число
+            return number;
+        }
         int suffixIndex = suffixes.IndexOf(char.ToLower(input[i]));
         double multiplier = Math.Pow(1000, suffixIndex + 1);
         return number * multiplier;
     }
 
-    public void ResetPrice(Transform trans)
+    #endregion
+
+
+    #region Перезапись цен
+
+    public void ResetPrice(int id)
     {
-        int count = RandomCountOre();
-        int cost = FindName(trans);
+        int idShip = id / 10;
+        int idBuff = id % 10;
 
-        if(count == 1)                           // Если 1 ресурс
+        // Активируем нужную панель ресурсов
+        int countOre = RandomCountOre();
+        string namePanel = "Price" + idShip + "_" + idBuff;
+        if (!GameObject.Find(namePanel)) return;
+        Transform panelBuff = GameObject.Find(namePanel).transform;
+
+        for (int i = 0; i < 3; i++)
+            panelBuff.GetChild(i).gameObject.SetActive(i == countOre - 1);
+
+        switch (idBuff)
         {
-            int idOre = RandomOre();
-            int price = PriseOre(cost, idOre);
-            trans.GetChild(0).GetChild(0).GetComponent<Image>().sprite = icone[idOre];
-            trans.GetChild(0).GetChild(1).GetComponent<TextMeshProUGUI>().text = FormatGold(price);
-
-            for (int i = 0; i < 3; i++)
-            {
-                trans.GetChild(i).gameObject.SetActive(false);
-            }
-            trans.GetChild(0).gameObject.SetActive(true);
-        }
-        if (count == 2)                            // Если 2 ресурс
-        {
-            int idOre = RandomOre();
-            int idOre1 = 0;
-            int price = PriseOre(cost, idOre);
-            trans.GetChild(1).GetChild(0).GetComponent<Image>().sprite = icone[idOre];
-            trans.GetChild(1).GetChild(2).GetComponent<TextMeshProUGUI>().text = FormatGold(price);
-
-            while (true)
-            {
-                idOre1 = RandomOre();
-                if(idOre1 != idOre)
+            case 1:
+                idBuff = YG2.saves.costShipCount[idShip -1];
                 break;
-            }
-            price = PriseOre(cost, idOre1);
-            trans.GetChild(1).GetChild(1).GetComponent<Image>().sprite = icone[idOre1];
-            trans.GetChild(1).GetChild(3).GetComponent<TextMeshProUGUI>().text = FormatGold(price);
-
-            for (int i = 0; i < 3; i++)
-            {
-                trans.GetChild(i).gameObject.SetActive(false);
-            }
-            trans.GetChild(1).gameObject.SetActive(true);
+            case 2:
+                idBuff = YG2.saves.costShipSpeed[idShip -1];
+                break;
+            case 3:
+                idBuff = YG2.saves.costShipCloudMax[idShip - 1];
+                break;
         }
 
-
-
-
-        if (count == 3)                            // Если 3 ресурс
+        switch (idShip)
         {
-            int idOre = RandomOre();
-            int idOre1 = 0;
-            int idOre2 = 0;
-            int price = PriseOre(cost, idOre);
-            trans.GetChild(2).GetChild(0).GetComponent<Image>().sprite = icone[idOre];
-            trans.GetChild(2).GetChild(3).GetComponent<TextMeshProUGUI>().text = price + "";
+            case 2:
+                idBuff += 15;
+                break;
+            case 3:
+                idBuff += 30;
+                break;
+            case 4:
+                idBuff += 45;
+                break;
+            case 5:
+                idBuff += 60;
+                break;
+            case 6:
+                idBuff += 75;
+                break;
+            case 7:
+                idBuff += 90;
+                break;
+        }
 
-            while (true)
-            {
-                idOre1 = RandomOre();
-                if (idOre1 != idOre)
-                    break;
-            }
-            price = PriseOre(cost, idOre1);
-            trans.GetChild(2).GetChild(1).GetComponent<Image>().sprite = icone[idOre1];
-            trans.GetChild(2).GetChild(4).GetComponent<TextMeshProUGUI>().text = price + "";
-
-            while (true)
-            {
-                idOre2 = RandomOre();
-                if (idOre2 != idOre && idOre2 != idOre1)
-                    break;
-            }
-            price = PriseOre(cost, idOre2);
-            trans.GetChild(2).GetChild(2).GetComponent<Image>().sprite = icone[idOre2];
-            trans.GetChild(2).GetChild(5).GetComponent<TextMeshProUGUI>().text = price + "";
-
-            for (int i = 0; i < 3; i++)
-            {
-                trans.GetChild(i).gameObject.SetActive(false);
-            }
-            trans.GetChild(2).gameObject.SetActive(true);
+        switch (countOre)
+        {
+            case 1:
+                SetupSingleOre(panelBuff, idBuff);
+                break;
+            case 2:
+                SetupDoubleOre(panelBuff, idBuff);
+                break;
+            case 3:
+                SetupTripleOre(panelBuff, idBuff);
+                break;
+        }
+        switch (id % 10)
+        {
+            case 1:
+                panelBuff.parent.GetChild(5).GetComponent<TextMeshProUGUI>().text = YG2.saves.costShipCount[idShip - 1].ToString();
+                panelBuff.parent.GetChild(7).GetComponent<TextMeshProUGUI>().text = (YG2.saves.costShipCount[idShip - 1] * 13).ToString();
+                break;
+            case 2:
+                panelBuff.parent.GetChild(5).GetComponent<TextMeshProUGUI>().text = YG2.saves.costShipSpeed[idShip - 1].ToString();
+                panelBuff.parent.GetChild(7).GetComponent<TextMeshProUGUI>().text = (YG2.saves.costShipSpeed[idShip - 1] * 13).ToString();
+                break;
+            case 3:
+                panelBuff.parent.GetChild(5).GetComponent<TextMeshProUGUI>().text = YG2.saves.costShipCloudMax[idShip - 1].ToString();
+                panelBuff.parent.GetChild(7).GetComponent<TextMeshProUGUI>().text = (YG2.saves.costShipCloudMax[idShip - 1] * 13).ToString();
+                break;
         }
     }
 
-    public int FindNameId(string nameShip, int id)
+    private void SetupSingleOre(Transform panelBuff, int idBuff)
     {
-        string numbersPart = nameShip.Replace("Price", ""); // "1_2"
+        int idOre = RandomOre();
+        int price = PriseOre(idBuff, idOre);
 
-        // Разобьём строку по символу подчёркивания '_'
-        string[] parts = numbersPart.Split('_');
-        return int.Parse(parts[id]);
+        Transform singlePanel = panelBuff.GetChild(0);
+        singlePanel.GetChild(0).GetComponent<Image>().sprite = icone[idOre - 1];
+        singlePanel.GetChild(1).GetComponent<TextMeshProUGUI>().text = FormatGold(price);
     }
 
-    public int FindName(Transform trans)
+    private void SetupDoubleOre(Transform panelBuff, int idBuff)
     {
-        if (trans.name == "Price1_1") return costShipCount[0];
-        if (trans.name == "Price2_1") return costShipCount[1];
-        if (trans.name == "Price3_1") return costShipCount[2];
-        if (trans.name == "Price4_1") return costShipCount[3];
-        if (trans.name == "Price5_1") return costShipCount[4];
-        if (trans.name == "Price6_1") return costShipCount[5];
-        if (trans.name == "Price7_1") return costShipCount[6];
+        int idOre1 = RandomOre();
+        int idOre2;
 
-        if (trans.name == "Price1_2") return costShipSpeed[0];
-        if (trans.name == "Price2_2") return costShipSpeed[1];
-        if (trans.name == "Price3_2") return costShipSpeed[2];
-        if (trans.name == "Price4_2") return costShipSpeed[3];
-        if (trans.name == "Price5_2") return costShipSpeed[4];
-        if (trans.name == "Price6_2") return costShipSpeed[5];
-        if (trans.name == "Price7_2") return costShipSpeed[6];
+        do { idOre2 = RandomOre(); }
+        while (idOre2 == idOre1);
 
-        if (trans.name == "Price1_3") return costShipCloudMax[0];
-        if (trans.name == "Price2_3") return costShipCloudMax[1];
-        if (trans.name == "Price3_3") return costShipCloudMax[2];
-        if (trans.name == "Price4_3") return costShipCloudMax[3];
-        if (trans.name == "Price5_3") return costShipCloudMax[4];
-        if (trans.name == "Price6_3") return costShipCloudMax[5];
-        if (trans.name == "Price7_3") return costShipCloudMax[6];
+        Transform doublePanel = panelBuff.GetChild(1);
 
+        // Первая руда
+        int price1 = PriseOre(idBuff, idOre1);
+        doublePanel.GetChild(0).GetComponent<Image>().sprite = icone[idOre1 - 1];
+        doublePanel.GetChild(2).GetComponent<TextMeshProUGUI>().text = FormatGold(price1);
 
-        return 10000;
+        // Вторая руда
+        int price2 = PriseOre(idBuff, idOre2);
+        doublePanel.GetChild(1).GetComponent<Image>().sprite = icone[idOre2 - 1];
+        doublePanel.GetChild(3).GetComponent<TextMeshProUGUI>().text = FormatGold(price2);
     }
+
+    private void SetupTripleOre(Transform panelBuff, int idBuff)
+    {
+        int idOre1 = RandomOre();
+        int idOre2;
+        int idOre3;
+
+        do { idOre2 = RandomOre(); }
+        while (idOre2 == idOre1);
+
+        do { idOre3 = RandomOre(); }
+        while (idOre3 == idOre1 || idOre3 == idOre2);
+
+        Transform triplePanel = panelBuff.GetChild(2);
+
+        // Первая руда
+        int price1 = PriseOre(idBuff, idOre1);
+        triplePanel.GetChild(0).GetComponent<Image>().sprite = icone[idOre1 - 1];
+        triplePanel.GetChild(3).GetComponent<TextMeshProUGUI>().text = price1.ToString();
+
+        // Вторая руда
+        int price2 = PriseOre(idBuff, idOre2);
+        triplePanel.GetChild(1).GetComponent<Image>().sprite = icone[idOre2 - 1];
+        triplePanel.GetChild(4).GetComponent<TextMeshProUGUI>().text = price2.ToString();
+
+        // Третья руда
+        int price3 = PriseOre(idBuff, idOre3);
+        triplePanel.GetChild(2).GetComponent<Image>().sprite = icone[idOre3 - 1];
+        triplePanel.GetChild(5).GetComponent<TextMeshProUGUI>().text = price3.ToString();
+    }
+
+
+    #region Выбор рандомной руды
+    public int RandomOre()
+    {
+        int planetCount = YG2.saves.countBuyPlanet;
+
+        return planetCount switch
+        {
+            1 => 1, // Только первый ресурс (100%)
+            2 => SelectByWeight(chance2),
+            3 => SelectByWeight(chance3),
+            4 => SelectByWeight(chance4),
+            5 => SelectByWeight(chance5),
+            6 => SelectByWeight(chance6),
+            7 => SelectByWeight(chance7),
+            _ => SelectByWeight(chance8) // 8+ планет
+        };
+    }
+
+    public int SelectByWeight(float[] weights)
+    {
+        float roll = UnityEngine.Random.Range(0f, 100f);
+        float current = 0f;
+
+        for (int i = 0; i < weights.Length; i++)
+        {
+            current += weights[i];
+            if (roll < current)
+                return i + 1;
+        }
+
+        throw new Exception("Я ушел за предел, брат"); // На всякий случай
+    }
+
+    #endregion
+
 
     public int FindIconeInOre(Sprite sprite)
     {
@@ -395,97 +492,62 @@ public class Stats : MonoBehaviour
         {
             case 0:
                 return "Земля";
-      
-            case 1: 
+
+            case 1:
                 return "Меркурий";
-      
+
             case 2:
                 return "Венера";
-      
+
             case 3:
                 return "Марс";
-      
+
             case 4:
                 return "Юпитер";
-      
+
             case 5:
                 return "Сатурн";
-      
+
             case 6:
                 return "Уран";
-      
+
             case 7:
                 return "Нептун";
-    
+
             default: return "не нашел";
-      
+
         }
     }
 
     public int RandomCountOre()
     {
         int chance = UnityEngine.Random.Range(0, 100);
-        if (countBuyPlanet == 1) return 1;
-        else if(countBuyPlanet == 2)
+        int boughtPlanets = YG2.saves.countBuyPlanet;
+
+        switch (boughtPlanets)
         {
-            if (chance < 60) return 2;
-            else return 1;
+            case 1: return 1;
+            case 2: return chance < 60 ? 2 : 1;
+            case >= 3:
+                if (chance < 50) return 3;
+                if (chance < 80) return 2;
+                return 1;
+            default: return 0;
         }
-        else if (countBuyPlanet >= 3)
-        {
-            if (chance < 50) return 3;
-            else if (chance < 80) return 2;
-            else return 1;
-        }
-        else
-            return 0;
     }
 
-    public int RandomOre()
-    {
-        int chance = UnityEngine.Random.Range(0, 100);
-        if (countBuyPlanet == 1) return 0;
-        else if(countBuyPlanet == 2) return SelectByWeight(chance2);
-        else if (countBuyPlanet == 3) return SelectByWeight(chance3);
-        else if (countBuyPlanet == 4) return SelectByWeight(chance4);
-        else if (countBuyPlanet == 5) return SelectByWeight(chance5);
-        else if (countBuyPlanet == 6) return SelectByWeight(chance6);
-        else if (countBuyPlanet == 7) return SelectByWeight(chance7);
-        else  return SelectByWeight(chance8);
 
-
-    }
-
-    public int SelectByWeight(float[] weights)
-    {
-        float total = 0f;
-        float roll = UnityEngine.Random.Range(0f, 100f);
-
-        for (int i = 0; i < weights.Length; i++)
-        {
-            total += weights[i];
-            if (roll < total)
-            {
-
-                return i;
-            }
-        }
-
-        return 10000; // на случай ошибки 
-    }
 
     public int PriseOre(int buff, int idOre)
     {
-        if (idOre == 0) return (int)(10 * Mathf.Pow(indexPrice, buff));
-        if (idOre == 1) return (int)(10 * Mathf.Pow(indexPrice, buff - 15) * 1.4f);
-        if (idOre == 2) return (int)(10 * Mathf.Pow(indexPrice, buff - 30) * 1.2f);
-        if (idOre == 3) return (int)(10 * Mathf.Pow(indexPrice, buff - 45) * 1.6f);
-        if (idOre == 4) return (int)(10 * Mathf.Pow(indexPrice, buff - 60) * 1.8f);
-        if (idOre == 5) return (int)(10 * Mathf.Pow(indexPrice, buff - 75) * 2f);
-        if (idOre == 6) return (int)(10 * Mathf.Pow(indexPrice, buff - 90) * 2.2f);
-        return 0;    
+        if (idOre == 1) return (int)(10 * Mathf.Pow(YG2.saves.indexPrice, buff));
+        if (idOre == 2) return (int)(10 * Mathf.Pow(YG2.saves.indexPrice, buff - 15) * 1.2f);
+        if (idOre == 3) return (int)(10 * Mathf.Pow(YG2.saves.indexPrice, buff - 30) * 1.4f);
+        if (idOre == 4) return (int)(10 * Mathf.Pow(YG2.saves.indexPrice, buff - 45) * 1.6f);
+        if (idOre == 5) return (int)(10 * Mathf.Pow(YG2.saves.indexPrice, buff - 60) * 1.8f);
+        if (idOre == 6) return (int)(10 * Mathf.Pow(YG2.saves.indexPrice, buff - 75) * 2f);
+        if (idOre == 7) return (int)(10 * Mathf.Pow(YG2.saves.indexPrice, buff - 90) * 2.2f);
+        return 0;
     }
     #endregion
 }
-
-

@@ -1,10 +1,9 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public class ScrollSnapController : MonoBehaviour
 {
-    public RectTransform content;          
-    public GameObject buttonLeft;          
+    public RectTransform content;
+    public GameObject buttonLeft;
     public GameObject buttonRight;
     public int count = 0;
 
@@ -39,7 +38,7 @@ public class ScrollSnapController : MonoBehaviour
             content.anchoredPosition = Vector2.Lerp(content.anchoredPosition, targetPosition, Time.deltaTime * smoothSpeed);
             if (Vector2.Distance(content.anchoredPosition, targetPosition) < 0.1f)
             {
-                
+
                 content.anchoredPosition = targetPosition;
                 isScrolling = false;
             }

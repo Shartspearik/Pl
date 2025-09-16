@@ -66,9 +66,9 @@ public class SpaceShipController : MonoBehaviour
             if (targetPlanet != null && Vector2.Distance(transform.position, targetPlanet.position) < detectionDistance)
             {
                 targetPlanet.GetComponent<Planet>().FinishShip();
-                if(targetPlanet.gameObject == earth)
+                if (targetPlanet.gameObject == earth)
                 {
-                    stats.SetCloud(id);
+                    stats.SetCloud(id + 1);
                 }
                 Destroy(gameObject);
             }

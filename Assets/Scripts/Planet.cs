@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Planet : MonoBehaviour
@@ -65,7 +63,7 @@ public class Planet : MonoBehaviour
                 if (timerMine >= speedMine)
                 {
                     timerMine = 0f;
-                    if (idPlanet == 0)
+                    if (idPlanet == 10)
                     {
                         stats.SetCloud(0);
                     }

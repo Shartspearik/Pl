@@ -1,6 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using YG;
 
 public class SpawnerSpaceShip : MonoBehaviour
 {
@@ -22,15 +22,15 @@ public class SpawnerSpaceShip : MonoBehaviour
         if (timer >= spawnInterval)
         {
             timer = 0f;
-            SpawnShip(6, 6);
+            SpawnShip(count, count);
             count++;
-            if(count >= 7)
+            if (count >= 7)
             {
                 count = 0;
             }
         }
     }
-    
+
     public void SpawnShip(int idPlanet, int idShip)
     {
         GameObject ship = Instantiate(prefShips[idShip], transform.position, Quaternion.identity);
@@ -44,7 +44,7 @@ public class SpawnerSpaceShip : MonoBehaviour
             ship.GetComponent<SpaceShipController>().targetPlanet = planats[idPlanet].transform;
         }
         ship.GetComponent<SpaceShipController>().planetParant = gameObject;
-        ship.GetComponent<SpaceShipController>().speed = stats.shipSpeed[idShip];
+        ship.GetComponent<SpaceShipController>().speed = YG2.saves.shipSpeed[idShip];
         ship.GetComponent<SpaceShipController>().stats = stats;
         ship.GetComponent<SpaceShipController>().earth = earth;
     }

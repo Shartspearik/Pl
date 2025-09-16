@@ -1,12 +1,9 @@
 using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine.EventSystems;
 
 public class CameraController : MonoBehaviour
 {
     public float moveSpeed = 10f; // скорость перемещения
-    public float speedCamera; 
+    public float speedCamera;
     public float zoomSpeed = 2f;
     public float minSize = 2f;
     public float maxSize = 20f;
@@ -175,9 +172,9 @@ public class CameraController : MonoBehaviour
 
             if (hit.collider != null)
             {
-                if (hit.collider.CompareTag("Planet") && hit.transform != targetPlanet && hit.collider.GetComponent<Planet>().idPlanet != 10)
+                if (hit.collider.CompareTag("Planet") && hit.transform != targetPlanet && hit.collider.GetComponent<Planet>().idPlanet != 100)
                 {
-                    menegerUI.ClickPlanet(hit.collider.GetComponent<Planet>().idPlanet +1);
+                    menegerUI.ClickPlanet(hit.collider.GetComponent<Planet>().idPlanet);
                 }
             }
         }
@@ -185,7 +182,7 @@ public class CameraController : MonoBehaviour
 
     public void ClickPlanet(Transform obj)
     {
-        if(targetPlanet != null && targetPlanet == obj)
+        if (targetPlanet != null && targetPlanet == obj)
         {
             ReturnToInitial();
         }
@@ -213,14 +210,14 @@ public class CameraController : MonoBehaviour
         //transform.position = Vector3.Lerp(transform.position, new Vector3(0,0,-10), Time.deltaTime * moveSpeed);
         //cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, 10, Time.deltaTime * zoomSpeed);
 
-        transform.position =  new Vector3(0, 0, -10);
-        cam.orthographicSize =  10;
+        transform.position = new Vector3(0, 0, -10);
+        cam.orthographicSize = 10;
 
         // Проверяем достижение цели с учетом погрешности
         //if (Vector3.Distance(transform.position, new Vector3(0, 0, -10)) < 0.01f &&
         //   Mathf.Abs(cam.orthographicSize - 10) < 0.01f)
         //{
-            isReturning = false; // завершили возврат
+        isReturning = false; // завершили возврат
         //}
     }
 

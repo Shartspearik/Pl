@@ -1,0 +1,104 @@
+{
+    "intExample": 44,
+    "strExample": "уцк",
+    "boolExample": [
+        true,
+        false,
+        true,
+        true
+    ],
+    "idSave": 56,
+    "nowShip": 0,
+    "countBuyPlanet": 1,
+    "shipCloudMax": [
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20
+    ],
+    "shipCount": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+    ],
+    "shipBankMax": [
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20
+    ],
+    "shipSpeed": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+    ],
+    "costShipCloudMax": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+    ],
+    "costShipCount": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+    ],
+    "costShipBankMax": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+    ],
+    "costShipSpeed": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+    ],
+    "ore": [
+        460.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0
+    ],
+    "indexUp": 1.0,
+    "indexPrice": 1.2000000476837159
+}

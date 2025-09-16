@@ -1,5 +1,5 @@
-using UnityEngine;
 using TMPro; // если используете TextMeshPro
+using UnityEngine;
 
 public class FloatingNumber : MonoBehaviour
 {

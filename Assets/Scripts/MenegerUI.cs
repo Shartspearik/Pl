@@ -1,7 +1,7 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
+using YG;
 
 public class MenegerUI : MonoBehaviour
 {
@@ -23,20 +23,37 @@ public class MenegerUI : MonoBehaviour
 
 
     public Transform content;
+    public Transform contentBuff;
     public Transform contentPlanets;
     Planet planet;
     public GameObject currentPanel;
     public Stats stats;
+    public GameObject earth;
+
+    private void Start()
+    {
+        for (int i = 0; i < orePanels.Count; i++)
+        {
+            OreTextPanel(i);
+        }
+    }
 
     public void OreTextPanel(int id)
     {
-        orePanels[id].text = stats.FormatGold(stats.ore[id]);
+        orePanels[id].text = stats.FormatGold(YG2.saves.countOre[id]);
     }
 
     public void ClickPlanet(int id)
     {
         panelPlanet.SetActive(true);
-        currentPlanet = planets[id - 1];
+        if (id == 10)
+        {
+            currentPlanet = earth;
+        }
+        else
+        {
+            currentPlanet = planets[id];
+        }
         planet = currentPlanet.GetComponent<Planet>();
         cameraController.ClickPlanet(currentPlanet.transform);
     }
@@ -49,7 +66,7 @@ public class MenegerUI : MonoBehaviour
 
     private void Update()
     {
-        if(planet != null)
+        if (planet != null)
         {
             textSpeedMine.text = planet.speedMine + "";
             textName.text = planet.namePlanet + "";
@@ -66,10 +83,10 @@ public class MenegerUI : MonoBehaviour
     {
         switch (id)
         {
-            case 0: 
-                if(stats.ore[0] >= 10)
+            case 0:
+                if (YG2.saves.countOre[0] >= 10)
                 {
-                    stats.ore[0] -= 10;
+                    YG2.saves.countOre[0] -= 10;
                     break;
                 }
                 else
@@ -78,10 +95,10 @@ public class MenegerUI : MonoBehaviour
                     return;
                 }
             case 1:
-                if (stats.ore[0] >= 10 && stats.ore[1] >= 10)
+                if (YG2.saves.countOre[0] >= 10 && YG2.saves.countOre[1] >= 10)
                 {
-                    stats.ore[0] -= 10;
-                    stats.ore[1] -= 10;
+                    YG2.saves.countOre[0] -= 10;
+                    YG2.saves.countOre[1] -= 10;
                     break;
                 }
                 else
@@ -90,11 +107,11 @@ public class MenegerUI : MonoBehaviour
                     return;
                 }
             case 2:
-                if (stats.ore[0] >= 10 && stats.ore[1] >= 10 && stats.ore[2] >= 10)
+                if (YG2.saves.countOre[0] >= 10 && YG2.saves.countOre[1] >= 10 && YG2.saves.countOre[2] >= 10)
                 {
-                    stats.ore[0] -= 10;
-                    stats.ore[1] -= 10;
-                    stats.ore[2] -= 10;
+                    YG2.saves.countOre[0] -= 10;
+                    YG2.saves.countOre[1] -= 10;
+                    YG2.saves.countOre[2] -= 10;
                     break;
                 }
                 else
@@ -103,12 +120,12 @@ public class MenegerUI : MonoBehaviour
                     return;
                 }
             case 3:
-                if (stats.ore[0] >= 10 && stats.ore[1] >= 10 && stats.ore[2] >= 10 && stats.ore[3] >= 10)
+                if (YG2.saves.countOre[0] >= 10 && YG2.saves.countOre[1] >= 10 && YG2.saves.countOre[2] >= 10 && YG2.saves.countOre[3] >= 10)
                 {
-                    stats.ore[0] -= 10;
-                    stats.ore[1] -= 10;
-                    stats.ore[2] -= 10;
-                    stats.ore[3] -= 10;
+                    YG2.saves.countOre[0] -= 10;
+                    YG2.saves.countOre[1] -= 10;
+                    YG2.saves.countOre[2] -= 10;
+                    YG2.saves.countOre[3] -= 10;
                     break;
                 }
                 else
@@ -117,13 +134,13 @@ public class MenegerUI : MonoBehaviour
                     return;
                 }
             case 4:
-                if (stats.ore[0] >= 10 && stats.ore[1] >= 10 && stats.ore[2] >= 10 && stats.ore[3] >= 10 && stats.ore[4] >= 10)
+                if (YG2.saves.countOre[0] >= 10 && YG2.saves.countOre[1] >= 10 && YG2.saves.countOre[2] >= 10 && YG2.saves.countOre[3] >= 10 && YG2.saves.countOre[4] >= 10)
                 {
-                    stats.ore[0] -= 10;
-                    stats.ore[1] -= 10;
-                    stats.ore[2] -= 10;
-                    stats.ore[3] -= 10;
-                    stats.ore[4] -= 10;
+                    YG2.saves.countOre[0] -= 10;
+                    YG2.saves.countOre[1] -= 10;
+                    YG2.saves.countOre[2] -= 10;
+                    YG2.saves.countOre[3] -= 10;
+                    YG2.saves.countOre[4] -= 10;
                     break;
                 }
                 else
@@ -132,14 +149,14 @@ public class MenegerUI : MonoBehaviour
                     return;
                 }
             case 5:
-                if (stats.ore[0] >= 10 && stats.ore[1] >= 10 && stats.ore[2] >= 10 && stats.ore[3] >= 10 && stats.ore[4] >= 10 && stats.ore[5] >= 10)
+                if (YG2.saves.countOre[0] >= 10 && YG2.saves.countOre[1] >= 10 && YG2.saves.countOre[2] >= 10 && YG2.saves.countOre[3] >= 10 && YG2.saves.countOre[4] >= 10 && YG2.saves.countOre[5] >= 10)
                 {
-                    stats.ore[0] -= 10;
-                    stats.ore[1] -= 10;
-                    stats.ore[2] -= 10;
-                    stats.ore[3] -= 10;
-                    stats.ore[4] -= 10;
-                    stats.ore[5] -= 10;
+                    YG2.saves.countOre[0] -= 10;
+                    YG2.saves.countOre[1] -= 10;
+                    YG2.saves.countOre[2] -= 10;
+                    YG2.saves.countOre[3] -= 10;
+                    YG2.saves.countOre[4] -= 10;
+                    YG2.saves.countOre[5] -= 10;
                     break;
                 }
                 else
@@ -148,14 +165,14 @@ public class MenegerUI : MonoBehaviour
                     return;
                 }
             case 6:
-                if (stats.ore[0] >= 10 && stats.ore[1] >= 10 && stats.ore[2] >= 10 && stats.ore[3] >= 10 && stats.ore[4] >= 10 && stats.ore[5] >= 10)
+                if (YG2.saves.countOre[6] >= 10 && YG2.saves.countOre[1] >= 10 && YG2.saves.countOre[2] >= 10 && YG2.saves.countOre[3] >= 10 && YG2.saves.countOre[4] >= 10 && YG2.saves.countOre[5] >= 10)
                 {
-                    stats.ore[0] -= 10;
-                    stats.ore[1] -= 10;
-                    stats.ore[2] -= 10;
-                    stats.ore[3] -= 10;
-                    stats.ore[4] -= 10;
-                    stats.ore[5] -= 10;
+                    YG2.saves.countOre[6] -= 10;
+                    YG2.saves.countOre[1] -= 10;
+                    YG2.saves.countOre[2] -= 10;
+                    YG2.saves.countOre[3] -= 10;
+                    YG2.saves.countOre[4] -= 10;
+                    YG2.saves.countOre[5] -= 10;
                     break;
                 }
                 else
@@ -173,15 +190,42 @@ public class MenegerUI : MonoBehaviour
         content.GetChild(id).GetChild(5).gameObject.SetActive(true);
         contentPlanets.GetChild(id + 2).GetChild(0).gameObject.SetActive(true);
 
+        OpenPanel(id + 1);
+
         planets[id].GetComponent<Planet>().isActive = true;
         panelPlenets[id].SetActive(true);
-        stats.countBuyPlanet++;
-        stats.RePrintBuyPlanet();
-        if(id < 6)
+        YG2.saves.countBuyPlanet++;
+
+        for (int i = 0; i < orePanels.Count; i++)
         {
-            content.GetChild(id + 1).GetChild(1).gameObject.SetActive(true);
-            content.GetChild(id + 1).GetChild(4).gameObject.SetActive(true);
+            OreTextPanel(i);
         }
+        
+    }
+
+    public void OpenPanel(int id)
+    {
+        contentBuff.GetChild(id).GetChild(2).gameObject.SetActive(true);
+        contentBuff.GetChild(id).GetChild(3).gameObject.SetActive(true);
+        contentBuff.GetChild(id).GetChild(4).gameObject.SetActive(true);
+
+        do
+        {
+            contentBuff.GetChild(id - 1).GetChild(2).GetChild(3).gameObject.SetActive(true);
+            contentBuff.GetChild(id - 1).GetChild(2).GetChild(4).gameObject.SetActive(true);
+            contentBuff.GetChild(id - 1).GetChild(2).GetChild(6).gameObject.SetActive(false);
+
+            contentBuff.GetChild(id - 1).GetChild(3).GetChild(3).gameObject.SetActive(true);
+            contentBuff.GetChild(id - 1).GetChild(3).GetChild(4).gameObject.SetActive(true);
+            contentBuff.GetChild(id - 1).GetChild(3).GetChild(6).gameObject.SetActive(false);
+
+            contentBuff.GetChild(id - 1).GetChild(4).GetChild(3).gameObject.SetActive(true);
+            contentBuff.GetChild(id - 1).GetChild(4).GetChild(4).gameObject.SetActive(true);
+            contentBuff.GetChild(id - 1).GetChild(4).GetChild(6).gameObject.SetActive(false);
+            id--;
+        } while (id > 0);
+
+        
     }
 
     public void OffOn(GameObject button)
@@ -197,8 +241,8 @@ public class MenegerUI : MonoBehaviour
             {
                 obj.SetActive(false);
             }
-            panels[0].SetActive(true); 
-        }   
+            panels[0].SetActive(true);
+        }
         currentPanel = panels[0];
 
     }
@@ -224,6 +268,13 @@ public class MenegerUI : MonoBehaviour
 
             panels[id].SetActive(true);
             currentPanel = panels[id];
+        }
+        for (int i = 1; i < 8; i++)
+        {
+            for (int q = 1; q < 4; q++)
+            {
+                stats.ResetPrice(i * 10 + q);
+            }
         }
     }
 }

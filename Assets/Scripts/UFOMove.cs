@@ -1,4 +1,5 @@
 using UnityEngine;
+using YG;
 
 public class UFOMove : MonoBehaviour
 {
@@ -25,8 +26,19 @@ public class UFOMove : MonoBehaviour
 
     void OnMouseDown()
     {
-        // Здесь вызывай рекламу и выдачу бонуса
+        ShowAdvReward();
         Destroy(gameObject);
+    }
+
+    public void ShowAdvReward()
+    {
+        string id = "coin"; // Передача id требуется для внутренней работы плагина
+        YG2.RewardedAdvShow(id, Reward);
+    }
+
+    public void Reward()
+    {
+        print(1);
     }
 }
 

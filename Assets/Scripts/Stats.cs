@@ -246,7 +246,7 @@ public class Stats : MonoBehaviour
             ResetPrice(id);
             CheckBuff15(idShip, idBuff);
             // Сохраняем изменения
-            //YG2.saves.SaveYG();
+            YG2.SaveProgress();
         }
         else
         {

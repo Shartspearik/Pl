@@ -225,7 +225,7 @@ public class MenegerUI : MonoBehaviour
             id--;
         } while (id > 0);
 
-        
+        YG2.SaveProgress();
     }
 
     public void OffOn(GameObject button)

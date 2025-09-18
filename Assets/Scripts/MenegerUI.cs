@@ -30,6 +30,9 @@ public class MenegerUI : MonoBehaviour
     public Stats stats;
     public GameObject earth;
 
+    public bool isPanel;
+    public PanelBuff panelBuff;
+
     private void Start()
     {
         for (int i = 0; i < orePanels.Count; i++)
@@ -45,17 +48,24 @@ public class MenegerUI : MonoBehaviour
 
     public void ClickPlanet(int id)
     {
-        panelPlanet.SetActive(true);
-        if (id == 10)
+        if (isPanel)
         {
-            currentPlanet = earth;
+            panelBuff.SetPanel(id);
         }
         else
         {
-            currentPlanet = planets[id];
+            panelPlanet.SetActive(true);
+            if (id == 10)
+            {
+                currentPlanet = earth;
+            }
+            else
+            {
+                currentPlanet = planets[id];
+            }
+            planet = currentPlanet.GetComponent<Planet>();
+            cameraController.ClickPlanet(currentPlanet.transform);
         }
-        planet = currentPlanet.GetComponent<Planet>();
-        cameraController.ClickPlanet(currentPlanet.transform);
     }
 
     public void OffPanelPlanet()

@@ -7,6 +7,7 @@ public class PanelBot : MonoBehaviour
     public Sprite iconNoPick;
     public Color defaultColor = new Color32(0x1E, 0x24, 0x40, 255);
     public Color selectedColor = new Color32(0x44, 0x52, 0xD5, 255);
+    public MenegerUI menegerUI;
 
     public GameObject[] panels;
 
@@ -22,7 +23,7 @@ public class PanelBot : MonoBehaviour
             img.sprite = (i == id) ? iconPick : iconNoPick;
             img.color = (i == id) ? selectedColor : defaultColor;
         }
-
+        menegerUI.isPanel = (id == 2 || id == 1) ? true : false;
         // Управление видимостью панелей
         for (int i = 0; i < panels.Length; i++)
         {
@@ -39,7 +40,7 @@ public class PanelBot : MonoBehaviour
         }
         else if (id == 2)
         {
-            // Все панели уже выключены
+            
         }
         else if (id == 3)
         {

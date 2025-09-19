@@ -1,15 +1,16 @@
 {
-    "intExample": 44,
-    "strExample": "уцк",
+    "intExample": 5,
+    "strExample": "Hello!",
     "boolExample": [
-        true,
         false,
-        true,
-        true
+        false,
+        false,
+        false
     ],
-    "idSave": 56,
+    "idSave": 79,
     "nowShip": 0,
     "countBuyPlanet": 1,
+    "countReadyPlanet": 0,
     "shipCloudMax": [
         20,
         20,
@@ -49,55 +50,15 @@
         1,
         1
     ],
-    "costShipCloudMax": [
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1
-    ],
-    "costShipCount": [
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1
-    ],
-    "costShipBankMax": [
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1
-    ],
-    "costShipSpeed": [
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1
-    ],
-    "ore": [
-        460.0,
-        100.0,
-        100.0,
-        100.0,
-        100.0,
-        100.0,
-        100.0,
-        100.0
+    "countOre": [
+        1275.0,
+        10000000.0,
+        10000000.0,
+        10000000.0,
+        10000000.0,
+        10000000.0,
+        10000000.0,
+        10000000.0
     ],
     "indexUp": 1.0,
     "indexPrice": 1.2000000476837159

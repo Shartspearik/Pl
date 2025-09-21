@@ -61,6 +61,7 @@ public class PanelBuff : MonoBehaviour
 
     public void Buff(int id)
     {
+        if (YG2.saves.is15[id - 1]) return;
         if (currentPlanet == 0) return;
         stats.Buffing(currentPlanet * 10 + id);
     }

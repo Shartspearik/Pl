@@ -22,6 +22,141 @@ namespace YG
         public List<int> shipBankMax = new List<int>() { 20, 20, 20, 20, 20, 20, 20 };
         public List<int> shipSpeed = new List<int>() { 1, 1, 1, 1, 1, 1, 1, 1 };
 
+        public List<UpgradeNode> nodes1 = new List<UpgradeNode>
+{
+    new UpgradeNode { id = 1, requirements = new List<int>(), unlocked = true, upgraded = false },
+    new UpgradeNode { id = 2, requirements = new List<int>{1}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 3, requirements = new List<int>{1}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 4, requirements = new List<int>{2}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 5, requirements = new List<int>{2,3}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 6, requirements = new List<int>{3}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 7, requirements = new List<int>{4,5,6}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 8, requirements = new List<int>{7}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 9, requirements = new List<int>{7}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 10, requirements = new List<int>{7}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 11, requirements = new List<int>{8,9}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 12, requirements = new List<int>{9,10}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 13, requirements = new List<int>{11,12}, unlocked = false, upgraded = false }
+};
+
+        public List<UpgradeNode> nodes2 = new List<UpgradeNode>
+{
+    new UpgradeNode { id = 1, requirements = new List<int>(), unlocked = true, upgraded = false },
+    new UpgradeNode { id = 2, requirements = new List<int>{1}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 3, requirements = new List<int>{1}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 4, requirements = new List<int>{2}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 5, requirements = new List<int>{2,3}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 6, requirements = new List<int>{3}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 7, requirements = new List<int>{4,5,6}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 8, requirements = new List<int>{7}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 9, requirements = new List<int>{7}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 10, requirements = new List<int>{7}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 11, requirements = new List<int>{8,9}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 12, requirements = new List<int>{9,10}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 13, requirements = new List<int>{11,12}, unlocked = false, upgraded = false }
+};
+
+        public List<UpgradeNode> nodes3 = new List<UpgradeNode>
+{
+    new UpgradeNode { id = 1, requirements = new List<int>(), unlocked = true, upgraded = false },
+    new UpgradeNode { id = 2, requirements = new List<int>{1}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 3, requirements = new List<int>{1}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 4, requirements = new List<int>{2}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 5, requirements = new List<int>{2,3}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 6, requirements = new List<int>{3}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 7, requirements = new List<int>{4,5,6}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 8, requirements = new List<int>{7}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 9, requirements = new List<int>{7}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 10, requirements = new List<int>{7}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 11, requirements = new List<int>{8,9}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 12, requirements = new List<int>{9,10}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 13, requirements = new List<int>{11,12}, unlocked = false, upgraded = false }
+};
+
+        public List<UpgradeNode> nodes4 = new List<UpgradeNode>
+{
+    new UpgradeNode { id = 1, requirements = new List<int>(), unlocked = true, upgraded = false },
+    new UpgradeNode { id = 2, requirements = new List<int>{1}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 3, requirements = new List<int>{1}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 4, requirements = new List<int>{2}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 5, requirements = new List<int>{2,3}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 6, requirements = new List<int>{3}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 7, requirements = new List<int>{4,5,6}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 8, requirements = new List<int>{7}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 9, requirements = new List<int>{7}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 10, requirements = new List<int>{7}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 11, requirements = new List<int>{8,9}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 12, requirements = new List<int>{9,10}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 13, requirements = new List<int>{11,12}, unlocked = false, upgraded = false }
+};
+
+        public List<UpgradeNode> nodes5 = new List<UpgradeNode>
+{
+    new UpgradeNode { id = 1, requirements = new List<int>(), unlocked = true, upgraded = false },
+    new UpgradeNode { id = 2, requirements = new List<int>{1}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 3, requirements = new List<int>{1}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 4, requirements = new List<int>{2}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 5, requirements = new List<int>{2,3}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 6, requirements = new List<int>{3}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 7, requirements = new List<int>{4,5,6}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 8, requirements = new List<int>{7}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 9, requirements = new List<int>{7}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 10, requirements = new List<int>{7}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 11, requirements = new List<int>{8,9}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 12, requirements = new List<int>{9,10}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 13, requirements = new List<int>{11,12}, unlocked = false, upgraded = false }
+};
+
+        public List<UpgradeNode> nodes6 = new List<UpgradeNode>
+{
+    new UpgradeNode { id = 1, requirements = new List<int>(), unlocked = true, upgraded = false },
+    new UpgradeNode { id = 2, requirements = new List<int>{1}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 3, requirements = new List<int>{1}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 4, requirements = new List<int>{2}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 5, requirements = new List<int>{2,3}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 6, requirements = new List<int>{3}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 7, requirements = new List<int>{4,5,6}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 8, requirements = new List<int>{7}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 9, requirements = new List<int>{7}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 10, requirements = new List<int>{7}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 11, requirements = new List<int>{8,9}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 12, requirements = new List<int>{9,10}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 13, requirements = new List<int>{11,12}, unlocked = false, upgraded = false }
+};
+
+        public List<UpgradeNode> nodes7 = new List<UpgradeNode>
+{
+    new UpgradeNode { id = 1, requirements = new List<int>(), unlocked = true, upgraded = false },
+    new UpgradeNode { id = 2, requirements = new List<int>{1}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 3, requirements = new List<int>{1}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 4, requirements = new List<int>{2}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 5, requirements = new List<int>{2,3}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 6, requirements = new List<int>{3}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 7, requirements = new List<int>{4,5,6}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 8, requirements = new List<int>{7}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 9, requirements = new List<int>{7}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 10, requirements = new List<int>{7}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 11, requirements = new List<int>{8,9}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 12, requirements = new List<int>{9,10}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 13, requirements = new List<int>{11,12}, unlocked = false, upgraded = false }
+};
+
+        public List<UpgradeNode> nodes8 = new List<UpgradeNode>
+{
+    new UpgradeNode { id = 1, requirements = new List<int>(), unlocked = true, upgraded = false },
+    new UpgradeNode { id = 2, requirements = new List<int>{1}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 3, requirements = new List<int>{1}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 4, requirements = new List<int>{2}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 5, requirements = new List<int>{2,3}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 6, requirements = new List<int>{3}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 7, requirements = new List<int>{4,5,6}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 8, requirements = new List<int>{7}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 9, requirements = new List<int>{7}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 10, requirements = new List<int>{7}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 11, requirements = new List<int>{8,9}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 12, requirements = new List<int>{9,10}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 13, requirements = new List<int>{11,12}, unlocked = false, upgraded = false }
+};
 
 
         [Header("Колличество покупок")]
@@ -29,9 +164,9 @@ namespace YG
 
         public int[][] countBuffing = new int[][]
         {
-        new int[] { 9, 11, 13, 12, 14, 13, 1, 12 },
-        new int[] { 13, 12, 11, 14, 2, 12, 1, 13 },
-        new int[] { 3, 2, 3, 4, 5, 6, 7, 8 }
+        new int[] { 1, 1, 1, 1, 1, 1, 1, 1 },
+        new int[] { 1, 1, 1, 1, 1, 1, 1, 1 },
+        new int[] { 1, 1, 1, 1, 1, 1, 1, 1 }
         };
 
         public int[][] savePrice = new int[][]
@@ -40,15 +175,23 @@ namespace YG
         new int[] { 1, 1, 1, 1, 1, 1, 1, 1 },
         new int[] { 1, 1, 1, 1, 1, 1, 1, 1 }
         };
-
+        public bool[] is15 = new bool[] {false, false, false};
 
         [Header("Колличество ")]
-        public List<double> countOre = new List<double>() { 100, 10000000, 10000000, 10000000, 10000000, 10000000, 10000000, 10000000 };
+        public List<double> countOre = new List<double>() { 100000, 10000000, 10000000, 10000000, 10000000, 10000000, 10000000, 10000000 };
 
 
         public float indexUp = 1;
         public float indexPrice = 1.2f;
     }
+}
+[System.Serializable]
+public class UpgradeNode
+{
+    public int id;
+    public List<int> requirements; // id нужных узлов
+    public bool unlocked; // открыт для прокачки
+    public bool upgraded; // уже прокачан
 }
 
 public class Stats : MonoBehaviour
@@ -94,14 +237,12 @@ public class Stats : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.S))
         {
-            panelBuff.sliders[0].value = 20;
-            //YG2.SaveProgress();
+            YG2.SaveProgress();
         }
     }
 
     private void Start()
     {
-        YGInsides.LoadProgress();
         for (int q = 1; q < 4; q++)
         {
                 ResetPrice(1 * 10 + q);
@@ -138,6 +279,7 @@ public class Stats : MonoBehaviour
 
     public void PrintBuyPlanet(int id)
     {
+        YG2.saves.is15[id] = true;
         panelBuff.price[id].SetActive(false);
         panelBuff.panelLevelUp[id].gameObject.SetActive(true);
         panelBuff.panelLevelUp[id].transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "Откройте " + (YG2.saves.countBuyPlanet + 1) + " планету";
@@ -153,23 +295,23 @@ public class Stats : MonoBehaviour
                     "Емкость кораблей = " + string.Join(", ", YG2.saves.countBuffing[2]));
 
 
-        int index = idShip - 1;
+        int index = idShip;
         bool countOk = YG2.saves.countBuffing[0][index] % 15 == 0;
         bool speedOk = YG2.saves.countBuffing[1][index] % 15 == 0;
         bool cloudMaxOk = YG2.saves.countBuffing[2][index] % 15 == 0;
 
         if (countOk && idBuff == 1)
         {
-            PrintBuyPlanet(idBuff);
+            PrintBuyPlanet(idBuff - 1);
 
         }
         if (speedOk && idBuff == 2)
         {
-            PrintBuyPlanet(idBuff);
+            PrintBuyPlanet(idBuff - 1);
         }
         if (cloudMaxOk && idBuff == 3)
         {
-            PrintBuyPlanet(idBuff);
+            PrintBuyPlanet(idBuff - 1);
         }
 
         var pattern = patterns[YG2.saves.countReadyPlanet];
@@ -178,8 +320,8 @@ public class Stats : MonoBehaviour
             YG2.saves.countBuffing[2].SequenceEqual(pattern))
         {
             YG2.saves.countReadyPlanet++;
-            content.GetChild(YG2.saves.countBuyPlanet - 1).GetChild(1).gameObject.SetActive(true);
-            content.GetChild(YG2.saves.countBuyPlanet - 1).GetChild(4).gameObject.SetActive(true);
+            content.GetChild(YG2.saves.countBuyPlanet).GetChild(1).gameObject.SetActive(true);
+            content.GetChild(YG2.saves.countBuyPlanet).GetChild(4).gameObject.SetActive(true);
         }
     }
 
@@ -216,7 +358,7 @@ public class Stats : MonoBehaviour
         {
             ores = originalOres;  // Восстанавливаем исходное значение
 
-            YG2.saves.countBuffing[idBuff - 1][idShip - 1]++;
+            YG2.saves.countBuffing[idBuff - 1][idShip]++;
 
             while (ores != 0)
             {
@@ -316,8 +458,8 @@ public class Stats : MonoBehaviour
         }
         YG2.saves.savePrice[id % 10 - 1][idShip] = saveOre;
 
-        panelBuff.sliders[0].value = YG2.saves.countBuffing[id % 10 - 1][idShip - 1];
-        panelBuff.textPowerBuff[0].text = (YG2.saves.countBuffing[id % 10 - 1][idShip - 1] * 13).ToString();
+        panelBuff.sliders[id % 10 - 1].value = YG2.saves.countBuffing[id % 10 - 1][idShip];
+        panelBuff.textPowerBuff[id % 10 - 1].text = (YG2.saves.countBuffing[id % 10 - 1][idShip] * 13).ToString();
     }
 
 

@@ -7,13 +7,16 @@ using YG;
 public class MenegerUI : MonoBehaviour
 {
     public List<GameObject> planets = new List<GameObject>();
-    public List<GameObject> panels = new List<GameObject>();
+    
     public List<TextMeshProUGUI> orePanels = new List<TextMeshProUGUI>();
 
     // нопки покупки планет
     public List<GameObject> panelBuyPlanet = new List<GameObject>();
     public GameObject[] spins;
     public Sprite[] iconPlanet;
+
+    // нопки выбора планет
+    public List<GameObject> buttonPlanets = new List<GameObject>();
 
     public CameraController cameraController;
     public GameObject currentPlanet;
@@ -45,6 +48,31 @@ public class MenegerUI : MonoBehaviour
         {
             OreTextPanel(i);
         }
+        RePrint();
+    }
+
+    public void RePrint()
+    {
+        for (int i = 0; i < YG2.saves.countBuyPlanet - 1; i++)
+        {
+            if (i != 6)
+            {
+                panelBuyPlanet[i].GetComponent<Button>().interactable = false;
+                spins[i].SetActive(false);
+                panelBuyPlanet[i].GetComponent<Image>().sprite = iconPlanet[i];
+                spins[i + 1].SetActive(true);
+                panelBuyPlanet[i + 1].GetComponent<Button>().interactable = true;
+            }
+            else
+            {
+                panelBuyPlanet[i].GetComponent<Button>().interactable = false;
+                spins[i].SetActive(false);
+                panelBuyPlanet[i].GetComponent<Image>().sprite = iconPlanet[i];
+            }
+            planets[i].transform.GetChild(0).gameObject.SetActive(true);
+            planets[i].GetComponent<Planet>().isActive = true;
+            buttonPlanets[i].SetActive(true);
+        }   
     }
 
     public void OreTextPanel(int id)
@@ -60,7 +88,7 @@ public class MenegerUI : MonoBehaviour
         }
         else
         {
-            panelPlanet.SetActive(true);
+            //panelPlanet.SetActive(true);
             if (id == 10)
             {
                 currentPlanet = earth;
@@ -77,21 +105,21 @@ public class MenegerUI : MonoBehaviour
     public void OffPanelPlanet()
     {
         planet = null;
-        panelPlanet.SetActive(false);
+        //panelPlanet.SetActive(false);
     }
 
     private void Update()
     {
-        if (planet != null)
-        {
-            textSpeedMine.text = planet.speedMine + "";
-            textName.text = planet.namePlanet + "";
-            textSpeedCloud.text = planet.speedCloud + "";
-            textBank.text = planet.bankNow + "/" + planet.bankMax;
-            textCloudShipNow.text = planet.cloudShipNow + "";
-            textCloudShipNeed.text = planet.cloudShipNeed + "";
-            textCountShip.text = planet.countShip + "";
-        }
+        //if (planet != null)
+        //{
+        //    textSpeedMine.text = planet.speedMine + "";
+        //    textName.text = planet.namePlanet + "";
+        //    textSpeedCloud.text = planet.speedCloud + "";
+        //    textBank.text = planet.bankNow + "/" + planet.bankMax;
+        //    textCloudShipNow.text = planet.cloudShipNow + "";
+        //    textCloudShipNeed.text = planet.cloudShipNeed + "";
+        //    textCountShip.text = planet.countShip + "";
+        //}
 
     }
 
@@ -205,6 +233,7 @@ public class MenegerUI : MonoBehaviour
             spins[id].SetActive(true);
             panelBuyPlanet[id].GetComponent<Button>().interactable = true;
         }
+        panelBuyPlanet[id - 1].GetComponent<Button>().interactable = false;
         spins[id - 1].SetActive(false);
         panelBuyPlanet[id - 1].GetComponent<Image>().sprite = iconPlanet[id - 1];
 
@@ -213,7 +242,7 @@ public class MenegerUI : MonoBehaviour
         planets[id - 1].GetComponent<Planet>().isActive = true;
 
         //ќбработка кнопок планет
-
+        buttonPlanets[id - 1].SetActive(true);
 
         YG2.SaveProgress();
     }

@@ -53,13 +53,13 @@ public class PanelBot : MonoBehaviour
         {
             panels[2].SetActive(true);
             panelPlanetRight.SetActive(false);
-            panelOre.SetActive(false);
+            panelOre.SetActive(true);
         }
         else if (id == 4)
         {
             panels[3].SetActive(true);
             panelPlanetRight.SetActive(false);
-            panelOre.SetActive(false);
+            panelOre.SetActive(true);
         }
     }
 }

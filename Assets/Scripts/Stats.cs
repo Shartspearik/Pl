@@ -166,11 +166,15 @@ namespace YG
         {
         new int[] { 1, 1, 1, 1, 1, 1, 1, 1 },
         new int[] { 1, 1, 1, 1, 1, 1, 1, 1 },
+        new int[] { 1, 1, 1, 1, 1, 1, 1, 1 },
+        new int[] { 1, 1, 1, 1, 1, 1, 1, 1 },
         new int[] { 1, 1, 1, 1, 1, 1, 1, 1 }
         };
 
         public int[][] savePrice = new int[][]
         {
+        new int[] { 1, 1, 1, 1, 1, 1, 1, 1 },
+        new int[] { 1, 1, 1, 1, 1, 1, 1, 1 },
         new int[] { 1, 1, 1, 1, 1, 1, 1, 1 },
         new int[] { 1, 1, 1, 1, 1, 1, 1, 1 },
         new int[] { 1, 1, 1, 1, 1, 1, 1, 1 }
@@ -243,7 +247,7 @@ public class Stats : MonoBehaviour
 
     private void Start()
     {
-        for (int q = 1; q < 4; q++)
+        for (int q = 1; q < 6; q++)
         {
                 ResetPrice(1 * 10 + q);
         }

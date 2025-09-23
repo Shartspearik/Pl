@@ -14,13 +14,19 @@ public class PanelBuff : MonoBehaviour
     public Slider[] sliders;
     public GameObject[] panelLevelUp;
 
+
+    public TextMeshProUGUI[] textPowerBuffEarth;
+    public GameObject[] priceEarth;
+    public Slider[] slidersEarth;
+    public GameObject[] panelLevelUpEarth;
+
     public int currentPlanet;
 
     public void SetPanel(int id)
     {
         for (int i = 0; i < 3; i++)
         {
-            for (int q = 0; q < 3; q++)
+            for (int q = 0; q < 5; q++)
             {
                 price[q].transform.GetChild(i).gameObject.SetActive(false);
             }
@@ -28,12 +34,12 @@ public class PanelBuff : MonoBehaviour
         currentPlanet = (id == 10) ? 0 : id + 1;
         if (id == 10)
         {
-            image.sprite = iconePlanet[7];
+            //image.sprite = iconePlanet[7];
         }
         else
         {   
-            image.sprite = iconePlanet[id];
-            for (int i = 1; i < 4; i++)
+            //image.sprite = iconePlanet[id];
+            for (int i = 1; i < 6; i++)
             {
                 stats.ResetPrice((id+1) * 10 + i);
                 PrintButton(id, i - 1);
@@ -52,7 +58,7 @@ public class PanelBuff : MonoBehaviour
             if(id / 10 != 0)
             {
                 price[idBuff].transform.GetChild(i).gameObject.SetActive(true);
-                price[idBuff].transform.GetChild(i).GetComponent<Image>().sprite = stats.icone[id];
+                //price[idBuff].transform.GetChild(i).GetComponent<Image>().sprite = stats.icone[id];
                 int buff = YG2.saves.countBuffing[idBuff - 1][idShip - 1] + (idShip - 1) * 15;
                 price[idBuff].transform.GetChild(i).GetChild(0).GetComponent<TextMeshProUGUI>().text = stats.PriseOre(buff, id).ToString();
             }

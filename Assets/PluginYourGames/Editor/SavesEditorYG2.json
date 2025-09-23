@@ -7,9 +7,9 @@
         false,
         false
     ],
-    "idSave": 3,
+    "idSave": 7,
     "nowShip": 0,
-    "countBuyPlanet": 1,
+    "countBuyPlanet": 8,
     "countReadyPlanet": 0,
     "shipCloudMax": [
         20,
@@ -63,7 +63,7 @@
                 1
             ],
             "unlocked": true,
-            "upgraded": false
+            "upgraded": true
         },
         {
             "id": 3,
@@ -71,15 +71,15 @@
                 1
             ],
             "unlocked": true,
-            "upgraded": false
+            "upgraded": true
         },
         {
             "id": 4,
             "requirements": [
                 2
             ],
-            "unlocked": false,
-            "upgraded": false
+            "unlocked": true,
+            "upgraded": true
         },
         {
             "id": 5,
@@ -87,16 +87,16 @@
                 2,
                 3
             ],
-            "unlocked": false,
-            "upgraded": false
+            "unlocked": true,
+            "upgraded": true
         },
         {
             "id": 6,
             "requirements": [
                 3
             ],
-            "unlocked": false,
-            "upgraded": false
+            "unlocked": true,
+            "upgraded": true
         },
         {
             "id": 7,
@@ -105,32 +105,32 @@
                 5,
                 6
             ],
-            "unlocked": false,
-            "upgraded": false
+            "unlocked": true,
+            "upgraded": true
         },
         {
             "id": 8,
             "requirements": [
                 7
             ],
-            "unlocked": false,
-            "upgraded": false
+            "unlocked": true,
+            "upgraded": true
         },
         {
             "id": 9,
             "requirements": [
                 7
             ],
-            "unlocked": false,
-            "upgraded": false
+            "unlocked": true,
+            "upgraded": true
         },
         {
             "id": 10,
             "requirements": [
                 7
             ],
-            "unlocked": false,
-            "upgraded": false
+            "unlocked": true,
+            "upgraded": true
         },
         {
             "id": 11,
@@ -138,8 +138,8 @@
                 8,
                 9
             ],
-            "unlocked": false,
-            "upgraded": false
+            "unlocked": true,
+            "upgraded": true
         },
         {
             "id": 12,
@@ -147,8 +147,8 @@
                 9,
                 10
             ],
-            "unlocked": false,
-            "upgraded": false
+            "unlocked": true,
+            "upgraded": true
         },
         {
             "id": 13,
@@ -156,7 +156,7 @@
                 11,
                 12
             ],
-            "unlocked": false,
+            "unlocked": true,
             "upgraded": false
         }
     ],
@@ -165,14 +165,14 @@
             "id": 1,
             "requirements": [],
             "unlocked": true,
-            "upgraded": true
+            "upgraded": false
         },
         {
             "id": 2,
             "requirements": [
                 1
             ],
-            "unlocked": true,
+            "unlocked": false,
             "upgraded": false
         },
         {
@@ -180,8 +180,8 @@
             "requirements": [
                 1
             ],
-            "unlocked": true,
-            "upgraded": true
+            "unlocked": false,
+            "upgraded": false
         },
         {
             "id": 4,
@@ -205,7 +205,7 @@
             "requirements": [
                 3
             ],
-            "unlocked": true,
+            "unlocked": false,
             "upgraded": false
         },
         {
@@ -715,31 +715,31 @@
             "id": 1,
             "requirements": [],
             "unlocked": true,
-            "upgraded": false
+            "upgraded": true
         },
         {
             "id": 2,
             "requirements": [
                 1
             ],
-            "unlocked": false,
-            "upgraded": false
+            "unlocked": true,
+            "upgraded": true
         },
         {
             "id": 3,
             "requirements": [
                 1
             ],
-            "unlocked": false,
-            "upgraded": false
+            "unlocked": true,
+            "upgraded": true
         },
         {
             "id": 4,
             "requirements": [
                 2
             ],
-            "unlocked": false,
-            "upgraded": false
+            "unlocked": true,
+            "upgraded": true
         },
         {
             "id": 5,
@@ -747,16 +747,16 @@
                 2,
                 3
             ],
-            "unlocked": false,
-            "upgraded": false
+            "unlocked": true,
+            "upgraded": true
         },
         {
             "id": 6,
             "requirements": [
                 3
             ],
-            "unlocked": false,
-            "upgraded": false
+            "unlocked": true,
+            "upgraded": true
         },
         {
             "id": 7,
@@ -765,32 +765,32 @@
                 5,
                 6
             ],
-            "unlocked": false,
-            "upgraded": false
+            "unlocked": true,
+            "upgraded": true
         },
         {
             "id": 8,
             "requirements": [
                 7
             ],
-            "unlocked": false,
-            "upgraded": false
+            "unlocked": true,
+            "upgraded": true
         },
         {
             "id": 9,
             "requirements": [
                 7
             ],
-            "unlocked": false,
-            "upgraded": false
+            "unlocked": true,
+            "upgraded": true
         },
         {
             "id": 10,
             "requirements": [
                 7
             ],
-            "unlocked": false,
-            "upgraded": false
+            "unlocked": true,
+            "upgraded": true
         },
         {
             "id": 11,
@@ -798,8 +798,8 @@
                 8,
                 9
             ],
-            "unlocked": false,
-            "upgraded": false
+            "unlocked": true,
+            "upgraded": true
         },
         {
             "id": 12,
@@ -807,8 +807,8 @@
                 9,
                 10
             ],
-            "unlocked": false,
-            "upgraded": false
+            "unlocked": true,
+            "upgraded": true
         },
         {
             "id": 13,
@@ -816,7 +816,7 @@
                 11,
                 12
             ],
-            "unlocked": false,
+            "unlocked": true,
             "upgraded": false
         }
     ],
@@ -936,13 +936,13 @@
         false
     ],
     "countOre": [
-        100360.0,
-        10000000.0,
-        10000000.0,
-        10000000.0,
-        10000000.0,
-        10000000.0,
-        10000000.0,
+        100900.0,
+        9999940.0,
+        9999950.0,
+        9999960.0,
+        9999970.0,
+        9999980.0,
+        9999990.0,
         10000000.0
     ],
     "indexUp": 1.0,

@@ -1,7 +1,7 @@
 namespace YG.EditorScr
 {
-    using UnityEditor;
     using UnityEngine;
+    using UnityEditor;
     using YG.EditorScr.BuildModify;
 
     [InitializeOnLoad]

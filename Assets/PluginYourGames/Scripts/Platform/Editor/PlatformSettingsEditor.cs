@@ -1,10 +1,10 @@
 ﻿using System;
 using System.IO;
-using System.Linq;
 using System.Reflection;
-using UnityEditor;
 using UnityEngine;
+using UnityEditor;
 using YG.Insides;
+using System.Linq;
 
 namespace YG.EditorScr
 {
@@ -37,7 +37,7 @@ namespace YG.EditorScr
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
 
-            string iconPath = GetIconCurrentPlatformPach(modulName);
+            string iconPath = GetIconCurrentPlatformPath(modulName);
 
             if (File.Exists(iconPath))
             {
@@ -47,7 +47,7 @@ namespace YG.EditorScr
             }
         }
 
-        public static string GetIconCurrentPlatformPach(string modulName)
+        public static string GetIconCurrentPlatformPath(string modulName)
         {
             string iconPath = Path.Combine(InfoYG.PATCH_PC_WEBGLTEMPLATES, modulName, "thumbnail.png");
             if (File.Exists(iconPath))

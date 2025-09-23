@@ -1,10 +1,10 @@
 #if UNITY_EDITOR
 namespace YG.EditorScr
 {
-    using System;
-    using System.Collections.Generic;
-    using System.IO;
     using UnityEngine;
+    using System;
+    using System.IO;
+    using System.Collections.Generic;
 
     [Serializable]
     public class StringPair { public string key; public string value; }

@@ -1,6 +1,6 @@
 #if UNITY_EDITOR
-using System.Collections;
 using UnityEngine;
+using System.Collections;
 
 namespace YG.Insides
 {

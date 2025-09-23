@@ -1,5 +1,6 @@
 ExampleYG2
 Authorization
 InterstitialAdv
+Payments
 RewardedAdv
 Storage

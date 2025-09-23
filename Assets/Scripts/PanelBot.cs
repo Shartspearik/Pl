@@ -10,6 +10,8 @@ public class PanelBot : MonoBehaviour
     public MenegerUI menegerUI;
 
     public GameObject[] panels;
+    public GameObject panelPlanetRight;
+    public GameObject panelOre;
 
     public void Pick(int id)
     {
@@ -33,22 +35,31 @@ public class PanelBot : MonoBehaviour
         if (id == 0)
         {
             panels[0].SetActive(true);
+            panelPlanetRight.SetActive(false);
+            panelOre.SetActive(false);
         }
         else if (id == 1)
         {
             panels[1].SetActive(true);
+            panelPlanetRight.SetActive(true);
+            panelOre.SetActive(true);
         }
         else if (id == 2)
         {
-            
+            panelPlanetRight.SetActive(true);
+            panelOre.SetActive(true);
         }
         else if (id == 3)
         {
             panels[2].SetActive(true);
+            panelPlanetRight.SetActive(false);
+            panelOre.SetActive(false);
         }
         else if (id == 4)
         {
             panels[3].SetActive(true);
+            panelPlanetRight.SetActive(false);
+            panelOre.SetActive(false);
         }
     }
 }

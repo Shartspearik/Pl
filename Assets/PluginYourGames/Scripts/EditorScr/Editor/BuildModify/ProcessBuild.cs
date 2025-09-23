@@ -1,8 +1,8 @@
 ﻿namespace YG.EditorScr.BuildModify
 {
-    using System.IO;
-    using UnityEditor.Build;
     using UnityEditor.Build.Reporting;
+    using UnityEditor.Build;
+    using System.IO;
 
     public class ProcessBuild : IPreprocessBuildWithReport, IPostprocessBuildWithReport
     {
@@ -32,7 +32,10 @@
             string pathToBuiltProject = report.summary.outputPath;
 
             ModifyBuild.ModifyIndex(pathToBuiltProject);
-            ArchivingBuild.Archiving(pathToBuiltProject);
+
+            if (YG2.infoYG.Basic.archivingBuild)
+                ArchivingBuild.Archiving(pathToBuiltProject);
+                
             BuildLog.WritingLog(pathToBuiltProject);
         }
     }

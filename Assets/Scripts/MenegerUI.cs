@@ -1,14 +1,20 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using YG;
 
 public class MenegerUI : MonoBehaviour
 {
     public List<GameObject> planets = new List<GameObject>();
-    public List<GameObject> panelPlenets = new List<GameObject>();
     public List<GameObject> panels = new List<GameObject>();
     public List<TextMeshProUGUI> orePanels = new List<TextMeshProUGUI>();
+
+    //Кнопки покупки планет
+    public List<GameObject> panelBuyPlanet = new List<GameObject>();
+    public GameObject[] spins;
+    public Sprite[] iconPlanet;
+
     public CameraController cameraController;
     public GameObject currentPlanet;
     public GameObject panelPlanet;
@@ -93,7 +99,7 @@ public class MenegerUI : MonoBehaviour
     {
         switch (id)
         {
-            case 0:
+            case 1:
                 if (YG2.saves.countOre[0] >= 10)
                 {
                     YG2.saves.countOre[0] -= 10;
@@ -104,7 +110,7 @@ public class MenegerUI : MonoBehaviour
                     print("не хватает");
                     return;
                 }
-            case 1:
+            case 2:
                 if (YG2.saves.countOre[0] >= 10 && YG2.saves.countOre[1] >= 10)
                 {
                     YG2.saves.countOre[0] -= 10;
@@ -116,7 +122,7 @@ public class MenegerUI : MonoBehaviour
                     print("не хватает");
                     return;
                 }
-            case 2:
+            case 3:
                 if (YG2.saves.countOre[0] >= 10 && YG2.saves.countOre[1] >= 10 && YG2.saves.countOre[2] >= 10)
                 {
                     YG2.saves.countOre[0] -= 10;
@@ -129,7 +135,7 @@ public class MenegerUI : MonoBehaviour
                     print("не хватает");
                     return;
                 }
-            case 3:
+            case 4:
                 if (YG2.saves.countOre[0] >= 10 && YG2.saves.countOre[1] >= 10 && YG2.saves.countOre[2] >= 10 && YG2.saves.countOre[3] >= 10)
                 {
                     YG2.saves.countOre[0] -= 10;
@@ -143,7 +149,7 @@ public class MenegerUI : MonoBehaviour
                     print("не хватает");
                     return;
                 }
-            case 4:
+            case 5:
                 if (YG2.saves.countOre[0] >= 10 && YG2.saves.countOre[1] >= 10 && YG2.saves.countOre[2] >= 10 && YG2.saves.countOre[3] >= 10 && YG2.saves.countOre[4] >= 10)
                 {
                     YG2.saves.countOre[0] -= 10;
@@ -158,7 +164,7 @@ public class MenegerUI : MonoBehaviour
                     print("не хватает");
                     return;
                 }
-            case 5:
+            case 6:
                 if (YG2.saves.countOre[0] >= 10 && YG2.saves.countOre[1] >= 10 && YG2.saves.countOre[2] >= 10 && YG2.saves.countOre[3] >= 10 && YG2.saves.countOre[4] >= 10 && YG2.saves.countOre[5] >= 10)
                 {
                     YG2.saves.countOre[0] -= 10;
@@ -174,7 +180,7 @@ public class MenegerUI : MonoBehaviour
                     print("не хватает");
                     return;
                 }
-            case 6:
+            case 7:
                 if (YG2.saves.countOre[6] >= 10 && YG2.saves.countOre[1] >= 10 && YG2.saves.countOre[2] >= 10 && YG2.saves.countOre[3] >= 10 && YG2.saves.countOre[4] >= 10 && YG2.saves.countOre[5] >= 10)
                 {
                     YG2.saves.countOre[6] -= 10;
@@ -191,100 +197,75 @@ public class MenegerUI : MonoBehaviour
                     return;
                 }
         }
-
-        OffPanelPlanet();
-        content.GetChild(id).GetChild(1).gameObject.SetActive(false);
-        content.GetChild(id).GetChild(2).gameObject.SetActive(true);
-        content.GetChild(id).GetChild(3).gameObject.SetActive(false);
-        content.GetChild(id).GetChild(4).gameObject.SetActive(false);
-        content.GetChild(id).GetChild(5).gameObject.SetActive(true);
-        contentPlanets.GetChild(id + 2).GetChild(0).gameObject.SetActive(true);
-
-        OpenPanel(id + 1);
-
-        planets[id].GetComponent<Planet>().isActive = true;
-        panelPlenets[id].SetActive(true);
         YG2.saves.countBuyPlanet++;
 
-        for (int i = 0; i < orePanels.Count; i++)
+        //Обработка кнопок покупок планет
+        if (id != 7)
         {
-            OreTextPanel(i);
+            spins[id].SetActive(true);
+            panelBuyPlanet[id].GetComponent<Button>().interactable = true;
         }
-        
-    }
+        spins[id - 1].SetActive(false);
+        panelBuyPlanet[id - 1].GetComponent<Image>().sprite = iconPlanet[id - 1];
 
-    public void OpenPanel(int id)
-    {
-        contentBuff.GetChild(id).GetChild(2).gameObject.SetActive(true);
-        contentBuff.GetChild(id).GetChild(3).gameObject.SetActive(true);
-        contentBuff.GetChild(id).GetChild(4).gameObject.SetActive(true);
+        //Обработка планет на орбите
+        planets[id - 1].transform.GetChild(0).gameObject.SetActive(true);
+        planets[id - 1].GetComponent<Planet>().isActive = true;
 
-        do
-        {
-            contentBuff.GetChild(id - 1).GetChild(2).GetChild(3).gameObject.SetActive(true);
-            contentBuff.GetChild(id - 1).GetChild(2).GetChild(4).gameObject.SetActive(true);
-            contentBuff.GetChild(id - 1).GetChild(2).GetChild(6).gameObject.SetActive(false);
+        //Обработка кнопок планет
 
-            contentBuff.GetChild(id - 1).GetChild(3).GetChild(3).gameObject.SetActive(true);
-            contentBuff.GetChild(id - 1).GetChild(3).GetChild(4).gameObject.SetActive(true);
-            contentBuff.GetChild(id - 1).GetChild(3).GetChild(6).gameObject.SetActive(false);
-
-            contentBuff.GetChild(id - 1).GetChild(4).GetChild(3).gameObject.SetActive(true);
-            contentBuff.GetChild(id - 1).GetChild(4).GetChild(4).gameObject.SetActive(true);
-            contentBuff.GetChild(id - 1).GetChild(4).GetChild(6).gameObject.SetActive(false);
-            id--;
-        } while (id > 0);
 
         YG2.SaveProgress();
     }
 
-    public void OffOn(GameObject button)
-    {
-        if (button.activeSelf)
-        {
-            button.SetActive(false);
-        }
-        else
-        {
-            button.SetActive(true);
-            foreach (GameObject obj in panels)
-            {
-                obj.SetActive(false);
-            }
-            panels[0].SetActive(true);
-        }
-        currentPanel = panels[0];
 
-    }
+    //public void OffOn(GameObject button)
+    //{
+    //    if (button.activeSelf)
+    //    {
+    //        button.SetActive(false);
+    //    }
+    //    else
+    //    {
+    //        button.SetActive(true);
+    //        foreach (GameObject obj in panels)
+    //        {
+    //            obj.SetActive(false);
+    //        }
+    //        panels[0].SetActive(true);
+    //    }
+    //    currentPanel = panels[0];
 
-    public void SetPanel(bool up)
-    {
-        if (up)
-        {
-            currentPanel.SetActive(false);
-            int id = panels.IndexOf(currentPanel) + 1;
+    //}
 
-            if (panels.Count == id) id = 0;
+    //public void SetPanel(bool up)
+    //{ 
+    //    if (up)
+    //    {
+    //        currentPanel.SetActive(false);
+    //        int id = panels.IndexOf(currentPanel) + 1;
 
-            panels[id].SetActive(true);
-            currentPanel = panels[id];
-        }
-        else
-        {
-            currentPanel.SetActive(false);
-            int id = panels.IndexOf(currentPanel) - 1;
+    //        if (panels.Count == id) id = 0;
 
-            if (0 > id) id = panels.Count - 1;
+    //        panels[id].SetActive(true);
+    //        currentPanel = panels[id];
+    //    }
+    //    else
+    //    {
+    //        currentPanel.SetActive(false);
+    //        int id = panels.IndexOf(currentPanel) - 1;
 
-            panels[id].SetActive(true);
-            currentPanel = panels[id];
-        }
-        for (int i = 1; i < 8; i++)
-        {
-            for (int q = 1; q < 4; q++)
-            {
-                stats.ResetPrice(i * 10 + q);
-            }
-        }
-    }
+    //        if (0 > id) id = panels.Count - 1;
+
+    //        panels[id].SetActive(true);
+    //        currentPanel = panels[id];
+    //    }
+    //    for (int i = 1; i < 8; i++)
+    //    {
+    //        for (int q = 1; q < 4; q++)
+    //        {
+    //            stats.ResetPrice(i * 10 + q);
+    //        }
+    //    }
+    //}
 }

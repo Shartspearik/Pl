@@ -30,7 +30,6 @@ public class MenegerUI : MonoBehaviour
     public TextMeshProUGUI textCloudShipNeed;
     public TextMeshProUGUI textCountShip;
 
-
     public Transform content;
     public Transform contentBuff;
     public Transform contentPlanets;
@@ -244,57 +243,19 @@ public class MenegerUI : MonoBehaviour
         //Обработка кнопок планет
         buttonPlanets[id - 1].SetActive(true);
 
+        //ResetButtonBuff();
+
         YG2.SaveProgress();
     }
 
+    public void ResetButtonBuff()
+    {
+        //for (int i = 0; i < YG2.saves.countBuyPlanet; i++)
+        //{
 
-    //public void OffOn(GameObject button)
-    //{
-    //    if (button.activeSelf)
-    //    {
-    //        button.SetActive(false);
-    //    }
-    //    else
-    //    {
-    //        button.SetActive(true);
-    //        foreach (GameObject obj in panels)
-    //        {
-    //            obj.SetActive(false);
-    //        }
-    //        panels[0].SetActive(true);
-    //    }
-    //    currentPanel = panels[0];
+        //}
+    }
 
-    //}
 
-    //public void SetPanel(bool up)
-    //{ 
-    //    if (up)
-    //    {
-    //        currentPanel.SetActive(false);
-    //        int id = panels.IndexOf(currentPanel) + 1;
-
-    //        if (panels.Count == id) id = 0;
-
-    //        panels[id].SetActive(true);
-    //        currentPanel = panels[id];
-    //    }
-    //    else
-    //    {
-    //        currentPanel.SetActive(false);
-    //        int id = panels.IndexOf(currentPanel) - 1;
-
-    //        if (0 > id) id = panels.Count - 1;
-
-    //        panels[id].SetActive(true);
-    //        currentPanel = panels[id];
-    //    }
-    //    for (int i = 1; i < 8; i++)
-    //    {
-    //        for (int q = 1; q < 4; q++)
-    //        {
-    //            stats.ResetPrice(i * 10 + q);
-    //        }
-    //    }
-    //}
+    
 }

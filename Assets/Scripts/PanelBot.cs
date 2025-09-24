@@ -25,7 +25,7 @@ public class PanelBot : MonoBehaviour
             img.sprite = (i == id) ? iconPick : iconNoPick;
             img.color = (i == id) ? selectedColor : defaultColor;
         }
-        menegerUI.isPanel = (id == 2 || id == 1) ? true : false;
+        menegerUI.isPanel = id == 1;
         // ”правление видимостью панелей
         for (int i = 0; i < panels.Length; i++)
         {

@@ -40,6 +40,7 @@ public class MenegerUI : MonoBehaviour
 
     public bool isPanel;
     public PanelBuff panelBuff;
+    public bool isOn = false;
 
     private void Start()
     {
@@ -124,6 +125,8 @@ public class MenegerUI : MonoBehaviour
 
     public void Colonizetion(int id)
     {
+        if (!isOn) return;
+
         switch (id)
         {
             case 1:
@@ -243,18 +246,27 @@ public class MenegerUI : MonoBehaviour
         //Обработка кнопок планет
         buttonPlanets[id - 1].SetActive(true);
 
-        //ResetButtonBuff();
-
+        panelBuff.currentPlanet = 1;
+        for (int q = 1; q < 6; q++)
+        {
+            panelBuff.buttonNoEarth.transform.GetChild(q - 1).GetComponent<Button>().interactable = true;
+            panelBuff.price[q - 1].SetActive(true);
+            panelBuff.panelLevelUp[q - 1].gameObject.SetActive(false);
+            stats.CheckBuff15(q);
+        }
+        panelBuff.currentPlanet = 0;
+        for (int q = 3; q < 5; q++)
+        {
+            panelBuff.buttonEarth.transform.GetChild(q - 3).GetComponent<Button>().interactable = true;
+            panelBuff.priceEarth[q - 3].SetActive(true);
+            panelBuff.panelLevelUpEarth[q - 3].gameObject.SetActive(false);
+            stats.CheckBuff15(q);
+        }
+        isOn = false;
         YG2.SaveProgress();
     }
 
-    public void ResetButtonBuff()
-    {
-        //for (int i = 0; i < YG2.saves.countBuyPlanet; i++)
-        //{
 
-        //}
-    }
 
 
     

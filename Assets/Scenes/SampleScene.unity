@@ -30813,6 +30813,7 @@ MonoBehaviour:
   earth: {fileID: 796258074}
   isPanel: 0
   panelBuff: {fileID: 135658580}
+  isOn: 0
 --- !u!1 &1324059592
 GameObject:
   m_ObjectHideFlags: 0

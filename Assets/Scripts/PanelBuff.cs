@@ -47,7 +47,7 @@ public class PanelBuff : MonoBehaviour
             id = 7;
             for (int i = 3; i < 5; i++)
             {
-                stats.ResetPrice(id * 10 + i);
+                stats.CheckBuff15(i);
                 PrintButton(id, i);
             }
             //image.sprite = iconePlanet[7];
@@ -58,7 +58,7 @@ public class PanelBuff : MonoBehaviour
             //image.sprite = iconePlanet[id];
             for (int i = 1; i < 6; i++)
             {
-                stats.ResetPrice((id+1) * 10 + i);
+                stats.CheckBuff15(i);
                 PrintButton(id, i - 1);
             }
         }
@@ -182,7 +182,6 @@ public class PanelBuff : MonoBehaviour
 
     public void Buff(int id)
     {
-        if (YG2.saves.is15[id - 1]) return;
         stats.Buffing(id);
     }
 }

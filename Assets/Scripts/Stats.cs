@@ -163,17 +163,17 @@ namespace YG
         //public List<int> costShipBankMax = new List<int>() { 13, 2, 4, 5, 6, 12, 4, 12 };
 
 
-        public int[] countBuffs1 = new int[] { 1, 1, 1, 1, 1, 1, 1 }; // count
-        public int[] countBuffs2 = new int[] { 1, 1, 1, 1, 1, 1, 1 }; // speed
+        public int[] countBuffs1 = new int[] { 1, 1, 1, 1, 1, 1, 1, 1 }; // count
+        public int[] countBuffs2 = new int[] { 1, 1, 1, 1, 1, 1, 1, 1 }; // speed
         public int[] countBuffs3 = new int[] { 1, 1, 1, 1, 1, 1, 1, 1 }; // cloud mine
         public int[] countBuffs4 = new int[] { 1, 1, 1, 1, 1, 1, 1, 1 }; // speed mine
-        public int[] countBuffs5 = new int[] { 1, 1, 1, 1, 1, 1, 1 }; // cloud
+        public int[] countBuffs5 = new int[] { 1, 1, 1, 1, 1, 1, 1, 1 }; // cloud
 
-        public int[] priseBuff1 = new int[] { 1, 1, 1, 1, 1, 1, 1 };
-        public int[] priseBuff2 = new int[] { 1, 1, 1, 1, 1, 1, 1 };
-        public int[] priseBuff3 = new int[] { 1, 1, 1, 1, 1, 1, 1, 1};
+        public int[] priseBuff1 = new int[] { 1, 1, 1, 1, 1, 1, 1, 1 };
+        public int[] priseBuff2 = new int[] { 1, 1, 1, 1, 1, 1, 1, 1 };
+        public int[] priseBuff3 = new int[] { 1, 1, 1, 1, 1, 1, 1, 1 };
         public int[] priseBuff4 = new int[] { 1, 1, 1, 1, 1, 1, 1, 1 };
-        public int[] priseBuff5 = new int[] { 1, 1, 1, 1, 1, 1, 1 };
+        public int[] priseBuff5 = new int[] { 1, 1, 1, 1, 1, 1, 1, 1 };
 
         public bool[] is15 = new bool[] {false, false, false, false, false};
 
@@ -216,13 +216,13 @@ public class Stats : MonoBehaviour
 
     int[][] patterns = new int[][]
         {
-        new int[] { 15, 1, 1, 1, 1, 1, 1, 1 },
-        new int[] { 30, 15, 1, 1, 1, 1, 1, 1 },
-        new int[] { 45, 30, 15, 1, 1, 1, 1, 1 },
-        new int[] { 60, 45, 30, 15, 1, 1, 1, 1 },
-        new int[] { 60, 60, 45, 30, 15, 1, 1, 1 },
-        new int[] { 60, 60, 60, 45, 30, 15, 1, 1 },
-        new int[] { 60, 60, 60, 60, 45, 30, 15, 1 }
+        new int[] { 1, 1, 1, 1, 1, 1, 1, 15 },
+        new int[] { 15, 1, 1, 1, 1, 1, 1, 30 },
+        new int[] { 30, 15, 1, 1, 1, 1, 1, 45 },
+        new int[] { 45, 30, 15, 1, 1, 1, 1, 60 },
+        new int[] { 60, 45, 30, 15, 1, 1, 1, 60 },
+        new int[] { 60, 60, 45, 30, 15, 1, 1, 60 },
+        new int[] { 60, 60, 60, 45, 30, 15, 1, 60 },
         };
     public PanelBuff panelBuff;
     public int idShip;
@@ -250,7 +250,7 @@ public class Stats : MonoBehaviour
         panelBuff.currentPlanet = 0;
         for (int q = 3; q < 5; q++)
         {
-            ResetPrice(7 * 10 + q);
+            ResetPrice(8 * 10 + q);
         }
 
     }
@@ -280,22 +280,39 @@ public class Stats : MonoBehaviour
     }
     #endregion
 
-
-
     public void PrintBuyPlanet(int id)
     {
-        YG2.saves.is15[id] = true;
         if(panelBuff.currentPlanet == 0)
         {
-            panelBuff.priceEarth[id -2].SetActive(false);
+            panelBuff.priceEarth[id - 2].SetActive(false);
+            panelBuff.buttonEarth.transform.GetChild(id - 2).GetComponent<Button>().interactable = false;
             panelBuff.panelLevelUpEarth[id - 2].gameObject.SetActive(true);
             panelBuff.panelLevelUpEarth[id - 2].transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "Откройте " + (YG2.saves.countBuyPlanet + 1) + " планету";
         }
         else
         {
             panelBuff.price[id].SetActive(false);
+            panelBuff.buttonNoEarth.transform.GetChild(id).GetComponent<Button>().interactable = false;
             panelBuff.panelLevelUp[id].gameObject.SetActive(true);
             panelBuff.panelLevelUp[id].transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "Откройте " + (YG2.saves.countBuyPlanet + 1) + " планету";
+        }
+    }
+
+    public void PrintBuyPlanet60(int id)
+    {
+        if (panelBuff.currentPlanet == 0)
+        {
+            panelBuff.priceEarth[id - 2].SetActive(false);
+            panelBuff.buttonEarth.transform.GetChild(id - 2).GetComponent<Button>().interactable = false;
+            panelBuff.panelLevelUpEarth[id - 2].gameObject.SetActive(true);
+            panelBuff.panelLevelUpEarth[id - 2].transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "Максимум";
+        }
+        else
+        {
+            panelBuff.price[id].SetActive(false);
+            panelBuff.buttonNoEarth.transform.GetChild(id).GetComponent<Button>().interactable = false;
+            panelBuff.panelLevelUp[id].gameObject.SetActive(true);
+            panelBuff.panelLevelUp[id].transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "Максимум";
         }
     }
     #region Конопки бафов
@@ -317,51 +334,148 @@ public class Stats : MonoBehaviour
         bool speedOk = false;
         bool cloudMaxOk = false;
         int index = idShip;
-        if(idShip == 7)
+
+        int targetValue = YG2.saves.countBuyPlanet * 15;
+
+        if (idShip == 7)
         {
-            countMineOk = YG2.saves.countBuffs3[idShip] % 15 == 0;
-            speedMineOk = YG2.saves.countBuffs4[idShip] % 15 == 0;
+            countMineOk = YG2.saves.countBuffs3[idShip] == targetValue;
+            speedMineOk = YG2.saves.countBuffs4[idShip] == targetValue;
         }
         else
         {
-            countOk = YG2.saves.countBuffs1[idShip] % 15 == 0;
-            speedOk = YG2.saves.countBuffs2[idShip] % 15 == 0;
-            countMineOk = YG2.saves.countBuffs3[idShip] % 15 == 0;
-            speedMineOk = YG2.saves.countBuffs4[idShip] % 15 == 0;
-            cloudMaxOk = YG2.saves.countBuffs5[idShip] % 15 == 0;
+            countOk = YG2.saves.countBuffs1[idShip] == targetValue;
+            speedOk = YG2.saves.countBuffs2[idShip] == targetValue;
+            countMineOk = YG2.saves.countBuffs3[idShip] == targetValue;
+            speedMineOk = YG2.saves.countBuffs4[idShip] == targetValue;
+            cloudMaxOk = YG2.saves.countBuffs5[idShip] == targetValue;
         }
 
 
         if (countOk && idBuff == 1)
         {
-            PrintBuyPlanet(idBuff - 1);
+            if (YG2.saves.countBuffs1[idShip] >= 60)
+            {
+                PrintBuyPlanet60(idBuff - 1);
+            } 
+            else 
+            {
+                PrintBuyPlanet(idBuff - 1);
+            }
 
         }
         if (speedOk && idBuff == 2)
         {
-            PrintBuyPlanet(idBuff - 1);
+            if (YG2.saves.countBuffs2[idShip] >= 60)
+            {
+                PrintBuyPlanet60(idBuff - 1);
+            }
+            else
+            {
+                PrintBuyPlanet(idBuff - 1);
+            }
         }
         if (countMineOk && idBuff == 3)
         {
-            PrintBuyPlanet(idBuff - 1);
+            if (YG2.saves.countBuffs3[idShip] >= 60)
+            {
+                PrintBuyPlanet60(idBuff - 1);
+            }
+            else
+            {
+                PrintBuyPlanet(idBuff - 1);
+            }
         }
         if (speedMineOk && idBuff == 4)
         {
-            PrintBuyPlanet(idBuff - 1);
+            if (YG2.saves.countBuffs4[idShip] >= 60)
+            {
+                PrintBuyPlanet60(idBuff - 1);
+            }
+            else
+            {
+                PrintBuyPlanet(idBuff - 1);
+            }
         }
         if (cloudMaxOk && idBuff == 5)
         {
-            PrintBuyPlanet(idBuff - 1);
+            if (YG2.saves.countBuffs5[idShip] >= 60)
+            {
+                PrintBuyPlanet60(idBuff - 1);
+            }
+            else
+            {
+                PrintBuyPlanet(idBuff - 1);
+            }
         }
 
-        var pattern = patterns[YG2.saves.countReadyPlanet];
-        if (YG2.saves.countBuffs1.SequenceEqual(pattern) &&
-            YG2.saves.countBuffs2.SequenceEqual(pattern) &&
-            YG2.saves.countBuffs3.SequenceEqual(pattern) &&
-            YG2.saves.countBuffs4.SequenceEqual(pattern) &&
-            YG2.saves.countBuffs5.SequenceEqual(pattern))
+        bool isON = false;
+        switch (YG2.saves.countBuyPlanet)
+        {
+            case 1:
+                isON =
+                    YG2.saves.countBuffs1.SequenceEqual(new int[] { 1, 1, 1, 1, 1, 1, 1, 1 }) &&
+                    YG2.saves.countBuffs2.SequenceEqual(new int[] { 1, 1, 1, 1, 1, 1, 1, 1 }) &&
+                    YG2.saves.countBuffs3.SequenceEqual(new int[] { 1, 1, 1, 1, 1, 1, 1, 15 }) &&
+                    YG2.saves.countBuffs4.SequenceEqual(new int[] { 1, 1, 1, 1, 1, 1, 1, 15 }) &&
+                    YG2.saves.countBuffs5.SequenceEqual(new int[] { 1, 1, 1, 1, 1, 1, 1, 1 });
+                break;
+            case 2:
+                isON =
+                    YG2.saves.countBuffs1.SequenceEqual(new int[] { 15, 1, 1, 1, 1, 1, 1, 1 }) &&
+                    YG2.saves.countBuffs2.SequenceEqual(new int[] { 15, 1, 1, 1, 1, 1, 1, 1 }) &&
+                    YG2.saves.countBuffs3.SequenceEqual(new int[] { 15, 1, 1, 1, 1, 1, 1, 30 }) &&
+                    YG2.saves.countBuffs4.SequenceEqual(new int[] { 15, 1, 1, 1, 1, 1, 1, 30 }) &&
+                    YG2.saves.countBuffs5.SequenceEqual(new int[] { 15, 1, 1, 1, 1, 1, 1, 1 });
+                break;
+            case 3:
+                isON =
+                    YG2.saves.countBuffs1.SequenceEqual(new int[] { 30, 15, 1, 1, 1, 1, 1, 1 }) &&
+                    YG2.saves.countBuffs2.SequenceEqual(new int[] { 30, 15, 1, 1, 1, 1, 1, 1 }) &&
+                    YG2.saves.countBuffs3.SequenceEqual(new int[] { 30, 15, 1, 1, 1, 1, 1, 45 }) &&
+                    YG2.saves.countBuffs4.SequenceEqual(new int[] { 30, 15, 1, 1, 1, 1, 1, 45 }) &&
+                    YG2.saves.countBuffs5.SequenceEqual(new int[] { 30, 15, 1, 1, 1, 1, 1, 1 });
+                break;
+            case 4:
+                isON =
+                    YG2.saves.countBuffs1.SequenceEqual(new int[] { 45, 30, 15, 1, 1, 1, 1, 1 }) &&
+                    YG2.saves.countBuffs2.SequenceEqual(new int[] { 45, 30, 15, 1, 1, 1, 1, 1 }) &&
+                    YG2.saves.countBuffs3.SequenceEqual(new int[] { 45, 30, 15, 1, 1, 1, 1, 60 }) &&
+                    YG2.saves.countBuffs4.SequenceEqual(new int[] { 45, 30, 15, 1, 1, 1, 1, 60 }) &&
+                    YG2.saves.countBuffs5.SequenceEqual(new int[] { 45, 30, 15, 1, 1, 1, 1, 1 });
+                break;
+            case 5:
+                isON =
+                    YG2.saves.countBuffs1.SequenceEqual(new int[] { 60, 45, 30, 15, 1, 1, 1, 1 }) &&
+                    YG2.saves.countBuffs2.SequenceEqual(new int[] { 60, 45, 30, 15, 1, 1, 1, 1 }) &&
+                    YG2.saves.countBuffs3.SequenceEqual(new int[] { 60, 45, 30, 15, 1, 1, 1, 15 }) &&
+                    YG2.saves.countBuffs4.SequenceEqual(new int[] { 60, 45, 30, 15, 1, 1, 1, 15 }) &&
+                    YG2.saves.countBuffs5.SequenceEqual(new int[] { 60, 45, 30, 15, 1, 1, 1, 1 });
+                break;
+            case 6:
+                isON =
+                    YG2.saves.countBuffs1.SequenceEqual(new int[] { 60, 60, 45, 30, 15, 1, 1, 1 }) &&
+                    YG2.saves.countBuffs2.SequenceEqual(new int[] { 60, 60, 45, 30, 15, 1, 1, 1 }) &&
+                    YG2.saves.countBuffs3.SequenceEqual(new int[] { 60, 60, 45, 30, 15, 1, 1, 15 }) &&
+                    YG2.saves.countBuffs4.SequenceEqual(new int[] { 60, 60, 45, 30, 15, 1, 1, 15 }) &&
+                    YG2.saves.countBuffs5.SequenceEqual(new int[] { 60, 60, 45, 30, 15, 1, 1, 1 });
+                break;
+            case 7:
+                isON =
+                    YG2.saves.countBuffs1.SequenceEqual(new int[] { 60, 60, 60, 45, 30, 15, 1, 1 }) &&
+                    YG2.saves.countBuffs2.SequenceEqual(new int[] { 60, 60, 60, 45, 30, 15, 1, 1 }) &&
+                    YG2.saves.countBuffs3.SequenceEqual(new int[] { 60, 60, 60, 45, 30, 15, 1, 15 }) &&
+                    YG2.saves.countBuffs4.SequenceEqual(new int[] { 60, 60, 60, 45, 30, 15, 1, 15 }) &&
+                    YG2.saves.countBuffs5.SequenceEqual(new int[] { 60, 60, 60, 45, 30, 15, 1, 1 });
+                break;
+
+        }
+
+
+        if (isON)
         {
             YG2.saves.countReadyPlanet++;
+            menegerUI.isOn = true;
             print("Апнул");
             //content.GetChild(YG2.saves.countBuyPlanet).GetChild(1).gameObject.SetActive(true);
             //content.GetChild(YG2.saves.countBuyPlanet).GetChild(4).gameObject.SetActive(true);
@@ -511,31 +625,6 @@ public class Stats : MonoBehaviour
         int idShip = id / 10;
         int idBuff = id % 10;
 
-        switch (idBuff)
-        {
-            case 1:
-                if ((YG2.saves.countBuyPlanet - 1) * 15 == YG2.saves.countBuffs1[idShip - 1])
-                    PrintBuyPlanet(idBuff);
-                    break;
-            case 2:
-                if ((YG2.saves.countBuyPlanet - 1) * 15 == YG2.saves.countBuffs2[idShip - 1])
-                    PrintBuyPlanet(idBuff);
-
-                break;
-            case 3:
-                if ((YG2.saves.countBuyPlanet - 1) * 15 == YG2.saves.countBuffs3[idShip - 1])
-                    PrintBuyPlanet(idBuff);
-                break;
-            case 4:
-                if ((YG2.saves.countBuyPlanet - 1) * 15 == YG2.saves.countBuffs4[idShip - 1])
-                    PrintBuyPlanet(idBuff);
-                break;
-            case 5:
-                if ((YG2.saves.countBuyPlanet - 1) * 15 == YG2.saves.countBuffs5[idShip - 1])
-                    PrintBuyPlanet(idBuff);
-                break;
-        }
-
         // Активируем нужную панель ресурсов
         int countOre = RandomCountOre();
         Transform panel = null;
@@ -682,8 +771,10 @@ public class Stats : MonoBehaviour
                 }
                 break;
         }
+        CheckBuff15(idBuff);
 
-        
+
+
     }
 
 

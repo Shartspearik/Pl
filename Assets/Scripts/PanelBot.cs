@@ -12,6 +12,10 @@ public class PanelBot : MonoBehaviour
     public GameObject[] panels;
     public GameObject panelPlanetRight;
     public GameObject panelOre;
+    public GameObject panelPlanet;
+    public GameObject panelPlanetEarth;
+    public GameObject earth;
+    public GameObject autoClick;
 
     public void Pick(int id)
     {
@@ -31,12 +35,14 @@ public class PanelBot : MonoBehaviour
         {
             panels[i].SetActive(false);
         }
-
+        panelPlanet.SetActive(false);
+        panelPlanetEarth.SetActive(false);
+        autoClick.SetActive(false);
         if (id == 0)
         {
             panels[0].SetActive(true);
             panelPlanetRight.SetActive(false);
-            panelOre.SetActive(false);
+            panelOre.SetActive(true);
         }
         else if (id == 1)
         {
@@ -46,6 +52,18 @@ public class PanelBot : MonoBehaviour
         }
         else if (id == 2)
         {
+            if (menegerUI.planet != null)
+            {
+                if (menegerUI.planet.gameObject == earth)
+                {
+                    panelPlanetEarth.SetActive(true);
+                }
+                else
+                {
+                    panelPlanet.SetActive(true);
+                }
+            }
+            autoClick.SetActive(true);
             panelPlanetRight.SetActive(true);
             panelOre.SetActive(true);
         }

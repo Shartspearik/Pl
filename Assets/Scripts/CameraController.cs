@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
+using YG;
 
 public class CameraController : MonoBehaviour
 {
@@ -23,6 +25,9 @@ public class CameraController : MonoBehaviour
     private Vector3 dragStartMouseWorldPos; // точка в мире при начале перетаскивания
     private Vector3 dragStartCameraPos;     // позиция камеры при начале
     private bool isReturning;
+    public bool isOn;
+    public ClickPlanet clickPlanet;
+    public Stats stats;
 
     public MenegerUI menegerUI;
 
@@ -34,6 +39,11 @@ public class CameraController : MonoBehaviour
 
     void Update()
     {
+        if (!isOn) return;
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
+            return; // Не обрабатываем, если клик по UI
+        }
         HandleMouseDrag();
 
         HandleZoom();
@@ -58,18 +68,20 @@ public class CameraController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             ReturnToInitial();
+            clickPlanet.MovePanel(true);
+
         }
     }
 
     void HandleMouseDrag()
     {
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1))
         {
             isDragging = true;
             dragStartMouseWorldPos = GetMouseWorldPosition();
             dragStartCameraPos = transform.position;
         }
-        else if (Input.GetMouseButtonUp(1))
+        else if (Input.GetMouseButtonUp(0) || Input.GetMouseButtonUp(1))
         {
             isDragging = false;
         }
@@ -136,6 +148,18 @@ public class CameraController : MonoBehaviour
         {
             followingPlanet = true;
             targetPosition = null;
+            if (targetPlanet.GetComponent<Planet>().idPlanet + 2 <= YG2.saves.countBuyPlanet || targetPlanet.GetComponent<Planet>().idPlanet == 7)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    menegerUI.buttons[2].SetActive(targetPlanet.GetComponent<Planet>().idPlanet != 7);
+                    menegerUI.buttons[3].SetActive(targetPlanet.GetComponent<Planet>().idPlanet != 7);
+                    menegerUI.buttons[4].SetActive(targetPlanet.GetComponent<Planet>().idPlanet != 7);
+                    stats.PrintPrice(i + 1);
+                }
+
+                clickPlanet.MovePanel(false);
+            }
         }
     }
 
@@ -195,8 +219,15 @@ public class CameraController : MonoBehaviour
             followingPlanet = false;
 
             var planetComponent = targetPlanet.GetComponent<Planet>();
-            if (planetComponent != null)
-                planetComponent.IsCurrent();
+            if (planetComponent != null) 
+            {
+                foreach (Planet item in menegerUI.planets)
+                {
+                    item.isCurrent = false;
+                }
+                targetPlanet.GetComponent<Planet>().isCurrent = true;
+            }
+
         }
     }
 
@@ -229,5 +260,9 @@ public class CameraController : MonoBehaviour
         pos.y = Mathf.Clamp(pos.y, minPosition.y, maxPosition.y);
 
         transform.position = pos;
+    }
+    public void ResetOn()
+    {
+        isOn = !isOn;
     }
 }

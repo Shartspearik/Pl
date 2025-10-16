@@ -1,4 +1,5 @@
 using UnityEngine;
+using YG;
 
 public class SpaceShipController : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class SpaceShipController : MonoBehaviour
     private Transform currentOrbitPlanet;
     public float rangPlanet;
     public Stats stats;
+    public MenegerUI menegerUI;
     public GameObject earth;
 
     public int attack;
@@ -66,10 +68,17 @@ public class SpaceShipController : MonoBehaviour
             if (targetPlanet != null && Vector2.Distance(transform.position, targetPlanet.position) < detectionDistance)
             {
                 targetPlanet.GetComponent<Planet>().FinishShip();
+
+                
                 if (targetPlanet.gameObject == earth)
                 {
-                    stats.SetCloud(id + 1);
+                    menegerUI.PrintOre(id);
                 }
+                else
+                {
+                    YG2.saves.countShip[id - 1]++;
+                }
+                YG2.saves.shipFly[id - 1]--;
                 Destroy(gameObject);
             }
         }
@@ -162,7 +171,7 @@ public class SpaceShipController : MonoBehaviour
         Vector3 tangentDirection = new Vector3(-Mathf.Sin(radian), Mathf.Cos(radian), 0);
 
         if (tangentDirection != Vector3.zero)
-            targetRotation = Quaternion.LookRotation(Vector3.forward, tangentDirection);
+            targetRotation = Quaternion.LookRotation(Vector3.forward, tangentDirection * orbitDirection);
 
         transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
     }

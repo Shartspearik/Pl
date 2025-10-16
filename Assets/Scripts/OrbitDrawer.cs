@@ -23,7 +23,17 @@ public class OrbitDrawer : MonoBehaviour
                 float y = Mathf.Sin(angle) * radius;
 
                 Vector3 position = transform.position + new Vector3(x, y, 0);
-                GameObject point = Instantiate(pointPrefab, position, Quaternion.identity, cashOrbit);
+
+                // Ќаправление к центру
+                Vector2 directionToCenter = (transform.position - position).normalized;
+
+                // ”гол в градусах между направлением к центру и осью X
+                float angleDegrees = Mathf.Atan2(directionToCenter.y, directionToCenter.x) * Mathf.Rad2Deg;
+
+                // ѕоворот точки так, чтобы "смотреть" на центр, вращение вокруг оси Z
+                Quaternion rotation = Quaternion.Euler(0, 0, angleDegrees + 90);
+
+                GameObject point = Instantiate(pointPrefab, position, rotation, cashOrbit);
                 point.transform.localScale = Vector3.one * pointSize;
             }
         }

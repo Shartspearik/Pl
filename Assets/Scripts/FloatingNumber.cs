@@ -3,25 +3,36 @@ using UnityEngine;
 
 public class FloatingNumber : MonoBehaviour
 {
-    public float floatSpeed = 1f; // скорость подъема
-    public float duration = 1f;   // время жизни цифры
-    private float timer = 0f;
+    public float speed = 100f;       // скорость движения вправо (единиц в секунду)
+    public float fadeDuration = 2f;  // время исчезновения (секунд)
 
-    public void Initialize(int number)
+    private TextMeshProUGUI tmp;
+    private Color originalColor;
+    private RectTransform rectTransform;
+    private float elapsed = 0f;
+
+    void Start()
     {
-
-        GetComponent<TextMeshPro>().text = number.ToString();
-
+        tmp = GetComponent<TextMeshProUGUI>();
+        originalColor = tmp.color;
+        rectTransform = GetComponent<RectTransform>();
     }
 
     void Update()
     {
-        // Поднимаемся вверх
-        transform.position += Vector3.up * floatSpeed * Time.deltaTime;
+        elapsed += Time.deltaTime;
+        float t = Mathf.Clamp01(elapsed / fadeDuration);
 
-        // Уменьшаем время жизни
-        timer += Time.deltaTime;
-        if (timer >= duration)
+        // Движение вправо
+        rectTransform.anchoredPosition += Vector2.down * speed * Time.deltaTime;
+
+        // Затемнение текста
+        Color c = originalColor;
+        c.a = Mathf.Lerp(1f, 0f, t);
+        tmp.color = c;
+
+        // Удаление когда полностью прозрачен
+        if (tmp.color.a <= 0.01f)
         {
             Destroy(gameObject);
         }

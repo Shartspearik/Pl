@@ -7,49 +7,10 @@
         false,
         false
     ],
-    "idSave": 81,
+    "idSave": 63,
     "nowShip": 0,
-    "countBuyPlanet": 2,
-    "countReadyPlanet": 4,
-    "shipCloudMax": [
-        20,
-        20,
-        20,
-        20,
-        20,
-        20,
-        20,
-        20
-    ],
-    "shipCount": [
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1
-    ],
-    "shipBankMax": [
-        20,
-        20,
-        20,
-        20,
-        20,
-        20,
-        20
-    ],
-    "shipSpeed": [
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1
-    ],
+    "countBuyPlanet": 1,
+    "countReadyPlanet": 0,
     "nodes1": [
         {
             "id": 1,
@@ -931,7 +892,7 @@
         }
     ],
     "countBuffs1": [
-        7,
+        1,
         1,
         1,
         1,
@@ -941,7 +902,7 @@
         1
     ],
     "countBuffs2": [
-        8,
+        1,
         1,
         1,
         1,
@@ -951,27 +912,7 @@
         1
     ],
     "countBuffs3": [
-        4,
         1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        30
-    ],
-    "countBuffs4": [
-        4,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        30
-    ],
-    "countBuffs5": [
-        4,
         1,
         1,
         1,
@@ -980,55 +921,184 @@
         1,
         1
     ],
+    "countBuffs4": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+    ],
+    "countBuffs5": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+    ],
+    "countBuffsClick": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+    ],
+    "buffTreeSpeedShip": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+    ],
+    "buffTreeCloudShip": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+    ],
+    "buffTreeCloudMine": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+    ],
+    "buffTreeSpeedMine": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+    ],
+    "buffTreeECO": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+    ],
+    "buffTreePrice": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+    ],
+    "buffTreeAFKfarm": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+    ],
     "priseBuff1": [
+        12,
         13,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
+        13,
+        35,
+        632,
+        472,
+        438,
         1
     ],
     "priseBuff2": [
-        13,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
+        21,
+        123,
+        42,
+        12,
+        5,
+        746,
+        216,
         1
     ],
     "priseBuff3": [
-        2,
         1,
-        1,
-        1,
-        1,
-        1,
-        13,
-        13
+        21,
+        132,
+        5,
+        621,
+        143,
+        853,
+        1
     ],
     "priseBuff4": [
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        13,
-        13
+        2,
+        32,
+        24,
+        42,
+        524,
+        123,
+        34,
+        1
     ],
     "priseBuff5": [
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
+        2,
+        3,
+        14,
+        351,
+        34,
+        53,
+        18,
         1
+    ],
+    "countShip": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+    ],
+    "shipFly": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+    ],
+    "bankNow": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
     ],
     "is15": [
         false,
@@ -1038,15 +1108,40 @@
         false
     ],
     "countOre": [
-        82444.0,
-        9999868.0,
-        9999939.0,
-        10000000.0,
-        10000000.0,
-        10000000.0,
-        10000000.0,
-        10000000.0
+        2180.0000715255755,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
     ],
+    "shopBuy": [
+        0,
+        0
+    ],
+    "shopBuyGem": [
+        0,
+        0,
+        0,
+        0,
+        0
+    ],
+    "shopTimer": 1760611944295,
+    "shopOre": [
+        0,
+        0,
+        0,
+        0,
+        0
+    ],
+    "shopFree": 0,
+    "autoClick": 0.0,
+    "x2ores": 0.0,
+    "speedBoost": 0.0,
+    "gems": 0,
     "indexUp": 1.0,
-    "indexPrice": 1.2000000476837159
+    "indexPrice": 1.2999999523162842,
+    "liderBoard": 43.600001430511507
 }

@@ -1,10 +1,12 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 using YG;
 
 public class UFOMove : MonoBehaviour
 {
     public Vector2 targetPos;
     public float speed = 5f;
+    public MenegerUI menegerUI;
 
     void Update()
     {
@@ -26,19 +28,17 @@ public class UFOMove : MonoBehaviour
 
     void OnMouseDown()
     {
-        ShowAdvReward();
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
+            return; // Ќе обрабатываем, если клик по UI
+        }
+        menegerUI.sound.PlaySound(1);
+        menegerUI.RewardShip();
         Destroy(gameObject);
     }
 
-    public void ShowAdvReward()
-    {
-        string id = "coin"; // ѕередача id требуетс€ дл€ внутренней работы плагина
-        YG2.RewardedAdvShow(id, Reward);
-    }
+ 
 
-    public void Reward()
-    {
-        print(1);
-    }
+
 }
 

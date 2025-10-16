@@ -5,6 +5,7 @@ public class UFOSpawner : MonoBehaviour
     public GameObject ufoPrefab;
     public Rect mapBounds = new Rect(-10, -10, 20, 20); // Задай размеры карты
     public float spawnInterval = 2f;
+    public MenegerUI menegerUI;
 
     void Start()
     {
@@ -17,7 +18,7 @@ public class UFOSpawner : MonoBehaviour
         Vector2 to = GetOppositePerimeterPoint(from);  // Цель для полёта
 
         GameObject ufo = Instantiate(ufoPrefab, from, Quaternion.identity);
-
+        ufo.GetComponent<UFOMove>().menegerUI = menegerUI;
         UFOMove mover = ufo.GetComponent<UFOMove>();
         mover.targetPos = to;
         mover.speed = Random.Range(3f, 6f);

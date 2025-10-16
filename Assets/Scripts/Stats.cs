@@ -219,34 +219,36 @@ public static class Parametrs
     public static int[] upgradeCosts = { 100, 5000, 5000, 15000, 30000, 15000, 50000, 100000, 150000, 100000, 500000, 400000, 1000000 };
     public static double SpeedMine(int id)
     {
-        double speed = 10 * Mathf.Pow(0.95f, YG2.saves.countBuffs1[id] - 1);
-        speed = YG2.saves.buffTreeSpeedMine[id] ?speed * 0.7f : speed;
+        int exponent = Mathf.Max(YG2.saves.countBuffs1[id] - 1, 0);
+        double speed = 10 * System.Math.Pow(0.95, exponent);
+        speed = YG2.saves.buffTreeSpeedMine[id] ? speed * 0.7 : speed;
         return speed;
     }
 
     public static double CloudMine(int id)
     {
-        //if (id == 0) id = 7;
-        //else id -= 1;
-        double cloud = 50 * Mathf.Pow(1.05f, YG2.saves.countBuffs2[id]);
-        cloud = YG2.saves.buffTreeCloudMine[id] ? cloud * 1.5f : cloud; 
+        int exponent = Mathf.Max(YG2.saves.countBuffs2[id], 0);
+        double cloud = 50 * System.Math.Pow(1.05, exponent);
+        cloud = YG2.saves.buffTreeCloudMine[id] ? cloud * 1.5 : cloud;
         return cloud;
     }
 
     public static float SpeedShip(int id)
     {
-        float speed = 0.5f * Mathf.Pow(1.05f, YG2.saves.countBuffs3[id]);
-        speed += YG2.saves.buffTreeSpeedShip[id] ? speed * 1.5f: speed;
-        return speed;
+        int exponent = Mathf.Max(YG2.saves.countBuffs3[id], 0);
+        float baseSpeed = 0.5f * (float)System.Math.Pow(1.05, exponent);
+        baseSpeed += YG2.saves.buffTreeSpeedShip[id] ? baseSpeed * 1.5f : 0f;
+        return baseSpeed;
     }
 
     public static double CloudShip(int id)
     {
-        double cloud = 50 * Mathf.Pow(1.05f, YG2.saves.countBuffs4[id] - 1);
-        switch(YG2.saves.buffTreeCloudShip[id])
+        int exponent = Mathf.Max(YG2.saves.countBuffs4[id] - 1, 0);
+        double cloud = 50 * System.Math.Pow(1.05, exponent);
+        switch (YG2.saves.buffTreeCloudShip[id])
         {
             case 1:
-                cloud *= 1.5; 
+                cloud *= 1.5;
                 break;
             case 2:
                 cloud *= 2;
@@ -261,16 +263,18 @@ public static class Parametrs
         ore = YG2.saves.x2ores > 0 ? ore * 2 : ore;
         return ore;
     }
+
     public static double Ore(int id)
     {
-        double ore = id == 0 ? CloudMine(7) : CloudShip(id - 1); // Проверка какая планета
+        double ore = (id == 0) ? CloudMine(7) : CloudShip(id - 1);
         ore = YG2.saves.x2ores > 0 ? ore * 2 : ore;
         return ore;
     }
 
-   
+
+
 }
-    
+
 
 
 
@@ -697,17 +701,22 @@ public class Stats : MonoBehaviour
     public string FormatGold(double value)
     {
         string[] suffixes = { "", "a", "b", "c", "d", "e", "f", "g", "h", "i",
-                          "j", "k", "l", "m", "n", "o", "p", "q", "r", "s",
-                          "t", "u", "v", "w", "x", "y", "z" };
-
+                      "j", "k", "l", "m", "n", "o", "p", "q", "r", "s",
+                      "t", "u", "v", "w", "x", "y", "z" };
         int suffixIndex = 0;
         while (value >= 1000 && suffixIndex < suffixes.Length - 1)
         {
             value /= 1000;
             suffixIndex++;
         }
-        return value.ToString("0.#") + suffixes[suffixIndex];
+
+        // Округляем значение так, чтобы было максимум 2 значащих цифры
+        int digits = (int)Math.Floor(Math.Log10(value)) + 1;
+        int decimals = digits > 2 ? 0 : 1;
+
+        return value.ToString("F" + decimals) + suffixes[suffixIndex];
     }
+
 
     public static double ReFormatGold(string input)
     {
@@ -972,14 +981,45 @@ public class Stats : MonoBehaviour
 
     public int PriseOre(int buff, int idOre, int idShip)
     {
-        if (idOre == 1) return (int)((10 * Mathf.Pow(YG2.saves.indexPrice, buff + idShip * 15)) * (YG2.saves.buffTreePrice[idShip] ? 0.8f : 1));
-        if (idOre == 2) return (int)((10 * Mathf.Pow(YG2.saves.indexPrice, buff + idShip * 15 - 15) * 1.3f) * (YG2.saves.buffTreePrice[idShip] ? 0.8f : 1));
-        if (idOre == 3) return (int)((10 * Mathf.Pow(YG2.saves.indexPrice, buff + idShip * 15 - 30) * 1.6f) * (YG2.saves.buffTreePrice[idShip] ? 0.8f : 1));
-        if (idOre == 4) return (int)((10 * Mathf.Pow(YG2.saves.indexPrice, buff + idShip * 15 - 45) * 1.9f) * (YG2.saves.buffTreePrice[idShip] ? 0.8f : 1));
-        if (idOre == 5) return (int)((10 * Mathf.Pow(YG2.saves.indexPrice, buff + idShip * 15 - 60) * 2.1f) * (YG2.saves.buffTreePrice[idShip] ? 0.8f : 1));
-        if (idOre == 6) return (int)((10 * Mathf.Pow(YG2.saves.indexPrice, buff + idShip * 15 - 75) * 2.4f) * (YG2.saves.buffTreePrice[idShip] ? 0.8f : 1));
-        if (idOre == 7) return (int)((10 * Mathf.Pow(YG2.saves.indexPrice, buff + idShip * 15 - 90) * 2.7f) * (YG2.saves.buffTreePrice[idShip] ? 0.8f : 1));
-        return 0;
+        double baseValue = 10;
+        double exponentBase = YG2.saves.indexPrice;
+        int exponentOffset = buff + idShip * 15;
+
+        double price = 0;
+
+        switch (idOre)
+        {
+            case 1:
+                price = baseValue * System.Math.Pow(exponentBase, exponentOffset);
+                break;
+            case 2:
+                price = baseValue * System.Math.Pow(exponentBase, exponentOffset - 15) * 1.3;
+                break;
+            case 3:
+                price = baseValue * System.Math.Pow(exponentBase, exponentOffset - 30) * 1.6;
+                break;
+            case 4:
+                price = baseValue * System.Math.Pow(exponentBase, exponentOffset - 45) * 1.9;
+                break;
+            case 5:
+                price = baseValue * System.Math.Pow(exponentBase, exponentOffset - 60) * 2.1;
+                break;
+            case 6:
+                price = baseValue * System.Math.Pow(exponentBase, exponentOffset - 75) * 2.4;
+                break;
+            case 7:
+                price = baseValue * System.Math.Pow(exponentBase, exponentOffset - 90) * 2.7;
+                break;
+            default:
+                return 0;
+        }
+
+        if (YG2.saves.buffTreePrice[idShip])
+        {
+            price *= 0.8;
+        }
+
+        return (int)price;
     }
     #endregion
 

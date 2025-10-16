@@ -60,6 +60,7 @@ public class MenegerUI : MonoBehaviour
     public float y;
     public float z;
 
+    private Coroutine currentAnimation = null;
     public bool isPanel;
     public PanelBuff panelBuff;
     public bool isOn = false;
@@ -488,8 +489,9 @@ public class MenegerUI : MonoBehaviour
     public void PrintOre(int id)
     {
 
-        GameObject number = Instantiate(prefNumber, new Vector2(212.8f + id * 216.6f, 1042.4f), Quaternion.identity, panelNumbers);
-        number.GetComponent<TextMeshProUGUI>().text = "+" + stats.FormatGold(Parametrs.Ore(id));
+        //GameObject number = Instantiate(prefNumber, new Vector2(212.8f + id * 216.6f, 1042.4f), Quaternion.identity, panelNumbers);
+        //number.GetComponent<TextMeshProUGUI>().text = "+" + stats.FormatGold(Parametrs.Ore(id));
+        AnimateMoneyGain(orePanels[rewardId]);
         YG2.saves.countOre[id] += Parametrs.Ore(id);
         YG2.saves.liderBoard += Parametrs.Ore(id) * Mathf.Pow(1.3f, id) / 50;
     }
@@ -497,8 +499,9 @@ public class MenegerUI : MonoBehaviour
     public void PrintOreClick(int id)
     {
 
-        GameObject number = Instantiate(prefNumber, new Vector2(212.8f + id * 216.6f, 1042.4f), Quaternion.identity, panelNumbers);
-        number.GetComponent<TextMeshProUGUI>().text = "+" + Parametrs.Click(id);
+        //GameObject number = Instantiate(prefNumber, new Vector2(212.8f + id * 216.6f, 1042.4f), Quaternion.identity, panelNumbers);
+        //number.GetComponent<TextMeshProUGUI>().text = "+" + Parametrs.Click(id);
+        AnimateMoneyGain(orePanels[rewardId]);
         YG2.saves.countOre[id] += Parametrs.Click(id);
         YG2.saves.liderBoard += Parametrs.Click(id) * Mathf.Pow(1.3f, id) / 50;
     }
@@ -507,7 +510,11 @@ public class MenegerUI : MonoBehaviour
     {
         panelRewardShip.SetActive(true);
         rewardId = Random.Range(0, YG2.saves.countBuyPlanet);
-        textCountRewardShip.text = stats.FormatGold(Mathf.Pow(0.4f, rewardId + 1) * 10000 * 0.1f * YG2.saves.countBuyPlanet * 2 * Mathf.Pow(1.1f, YG2.saves.countBuffs4[rewardId == 0 ? 7 : rewardId - 1]));
+        double basePower = System.Math.Pow(0.4, rewardId + 1);
+        double buffPower = System.Math.Pow(1.1, YG2.saves.countBuffs4[rewardId == 0 ? 7 : rewardId - 1]);
+        double oreValue = basePower * 10000.0 * 0.1 * YG2.saves.countBuyPlanet * 2.0 * buffPower;
+        textCountRewardShip.text = stats.FormatGold(oreValue);
+
         iconeRewardShip.sprite = iconOre[rewardId];
         reward = 0;
     }
@@ -558,9 +565,13 @@ public class MenegerUI : MonoBehaviour
 
     public void Reward0()
     {
-        GameObject number = Instantiate(prefNumber, new Vector2(280, 1045 - rewardId * 50), Quaternion.identity, panelNumbers);
-        double ore = Mathf.Pow(0.4f, rewardId + 1) * 10000 * 0.1f * YG2.saves.countBuyPlanet * 2 * Mathf.Pow(1.1f, YG2.saves.countBuffs4[rewardId == 0 ? 7 : rewardId - 1]);
-        number.GetComponent<TextMeshProUGUI>().text = "+" + stats.FormatGold(ore);
+        //GameObject number = Instantiate(prefNumber, new Vector2(280, 1045 - rewardId * 50), Quaternion.identity, panelNumbers);
+        AnimateMoneyGain(orePanels[rewardId]);
+        double basePower = System.Math.Pow(0.4, rewardId + 1);
+        double buffPower = System.Math.Pow(1.1, YG2.saves.countBuffs4[rewardId == 0 ? 7 : rewardId - 1]);
+        double ore = basePower * 10000 * 0.1 * YG2.saves.countBuyPlanet * 2 * buffPower;
+
+        //number.GetComponent<TextMeshProUGUI>().text = "+" + stats.FormatGold(ore);
         YG2.saves.countOre[rewardId] += ore;
         YG2.saves.liderBoard += ore * Mathf.Pow(1.3f, rewardId) / 50;
     }
@@ -583,5 +594,62 @@ public class MenegerUI : MonoBehaviour
         sliderSpeedBoost.maxValue = YG2.saves.speedBoost;
         YG2.SaveProgress();
     }
+
+
+    public void AnimateMoneyGain(TextMeshProUGUI tmpText)
+    {
+        // Если анимация уже идёт, остановить её и вернуть текст в исходное состояние
+        if (currentAnimation != null)
+        {
+            StopCoroutine(currentAnimation);
+            ResetText(tmpText);
+        }
+        currentAnimation = StartCoroutine(AnimateText(tmpText));
+    }
+
+    private void ResetText(TextMeshProUGUI tmpText)
+    {
+        tmpText.color = Color.white; // или другой оригинальный цвет
+        tmpText.transform.localScale = Vector3.one; // или исходный масштаб
+    }
+
+    private IEnumerator AnimateText(TextMeshProUGUI tmpText)
+    {
+        Color originalColor = tmpText.color;
+        Vector3 originalScale = tmpText.transform.localScale;
+
+        Color targetColor = Color.green;
+        Vector3 targetScale = originalScale * 1.2f;
+
+        float duration = 0.3f;
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            float t = Mathf.Clamp01(elapsed / duration);
+            tmpText.color = Color.Lerp(originalColor, targetColor, t);
+            tmpText.transform.localScale = Vector3.Lerp(originalScale, targetScale, t);
+            yield return null;
+        }
+
+        yield return new WaitForSeconds(0.2f);
+
+        elapsed = 0f;
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            float t = Mathf.Clamp01(elapsed / duration);
+            tmpText.color = Color.Lerp(targetColor, originalColor, t);
+            tmpText.transform.localScale = Vector3.Lerp(targetScale, originalScale, t);
+            yield return null;
+        }
+
+        tmpText.color = originalColor;
+        tmpText.transform.localScale = originalScale;
+
+        currentAnimation = null;
+    }
 }
+
  

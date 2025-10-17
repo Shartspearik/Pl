@@ -293,14 +293,8 @@ public class UpgradeNode
 
 public class Stats : MonoBehaviour
 {
-    //[Header("Текст цен")]
-    //public List<Transform> textShip1 = new List<Transform>();
-    //public List<Transform> textShip2 = new List<Transform>();
-    //public List<Transform> textShip3 = new List<Transform>();
-    //public List<Transform> textShip4 = new List<Transform>();
-    //public List<Transform> textShip5 = new List<Transform>();
-    //public List<Transform> textShip6 = new List<Transform>();
-    //public List<Transform> textShip7 = new List<Transform>();
+    public Slider sliderPlanet;
+    public TextMeshProUGUI textPlanet;
     public List<Sprite> icone = new List<Sprite>();
 
     private float[] chance2 = { 60, 40 };
@@ -593,7 +587,6 @@ public class Stats : MonoBehaviour
         {
             YG2.saves.countReadyPlanet++;
             menegerUI.isOn = true;
-            print("Апнул");
             //content.GetChild(YG2.saves.countBuyPlanet).GetChild(1).gameObject.SetActive(true);
             //content.GetChild(YG2.saves.countBuyPlanet).GetChild(4).gameObject.SetActive(true);
         }
@@ -860,6 +853,13 @@ public class Stats : MonoBehaviour
             panel.GetChild(2).GetChild(0).GetComponent<TextMeshProUGUI>().text = FormatGold(price);
         }
 
+        sliderPlanet.gameObject.SetActive(false);
+        textPlanet.gameObject.SetActive(false);
+        if (idShip != 8 && YG2.saves.countBuyPlanet > idShip && menegerUI.planet)
+        {
+            sliderPlanet.gameObject.SetActive(true);
+            textPlanet.gameObject.SetActive(true);
+        }
 
         int buffCount = 0;
 
@@ -931,29 +931,30 @@ public class Stats : MonoBehaviour
     {
         switch (idOre)
         {
-            case 6:
-                return "Нептун";
 
             case 0:
-                return "Венера";
+                return Lange.Text(22);
 
             case 1:
-                return "Меркурий";
+                return Lange.Text(23);
 
             case 2:
-                return "Марс";
+                return Lange.Text(24);
 
             case 3:
-                return "Юпитер";
+                return Lange.Text(25);
 
             case 4:
-                return "Сатурн";
+                return Lange.Text(26);
 
             case 5:
-                return "Уран";
+                return Lange.Text(27);
+
+            case 6:
+                return Lange.Text(28);
 
             case 7:
-                return "Земля";
+                return Lange.Text(29);
 
             default: return "не нашел";
 

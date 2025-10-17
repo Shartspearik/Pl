@@ -81,8 +81,7 @@ public class Planet : MonoBehaviour
                 {
                     timerMine += Time.deltaTime;
 
-                    if (timerMine >= 0.2f)
-                    //if (timerMine >= Parametrs.SpeedMine(idPlanet))
+                    if (timerMine >= Parametrs.SpeedMine(idPlanet))
                     {
                         timerMine = 0f;
                         YG2.saves.bankNow[idPlanet] += Parametrs.CloudMine(idPlanet);
@@ -134,9 +133,9 @@ public class Planet : MonoBehaviour
             }
             else
             {
-                if (YG2.saves.countShip[idPlanet] != 0 && YG2.saves.bankNow[idPlanet] >= YG2.saves.countBuffs5[idPlanet])
+                if (YG2.saves.countShip[idPlanet] != 0 && YG2.saves.bankNow[idPlanet] >= Parametrs.CloudShip(idPlanet))
                 {
-                    YG2.saves.bankNow[idPlanet] -= YG2.saves.countBuffs5[idPlanet];
+                    YG2.saves.bankNow[idPlanet] -= Parametrs.CloudShip(idPlanet);
                     YG2.saves.shipFly[idPlanet]++;
                     YG2.saves.countShip[idPlanet]--;
                     spawnerSpaceShip.SpawnShip(7, idPlanet);

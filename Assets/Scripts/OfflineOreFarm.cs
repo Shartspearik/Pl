@@ -77,7 +77,7 @@ public class OfflineOreFarm : MonoBehaviour
     public void SetOre(long sec)
     {
         panelAFK.SetActive(true);
-        panelAFK.transform.GetChild(1).GetChild(1).GetComponent<TextMeshProUGUI>().text = $"Вы были АФК {SecondsToReadableString(sec)}";
+        panelAFK.transform.GetChild(1).GetChild(1).GetComponent<TextMeshProUGUI>().text = Lange.Text(65) + SecondsToReadableString(sec);
         for (int i = 0; i < 8; i++)
         {
             if (YG2.saves.buffTreeAFKfarm[i])
@@ -99,10 +99,10 @@ public class OfflineOreFarm : MonoBehaviour
         long seconds = totalSeconds % 60;
 
         List<string> parts = new List<string>();
-        if (days > 0) parts.Add($"{days} д");
-        if (hours > 0) parts.Add($"{hours} ч");
-        if (minutes > 0) parts.Add($"{minutes} мин");
-        if (seconds > 0 || parts.Count == 0) parts.Add($"{seconds} сек");
+        if (days > 0) parts.Add($"{days} d");
+        if (hours > 0) parts.Add($"{hours} h");
+        if (minutes > 0) parts.Add($"{minutes} min");
+        if (seconds > 0 || parts.Count == 0) parts.Add($"{seconds} sek");
 
         return string.Join(" ", parts);
     }

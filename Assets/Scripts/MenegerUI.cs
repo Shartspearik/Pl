@@ -10,7 +10,11 @@ using YG;
 public class MenegerUI : MonoBehaviour
 {
     public List<Planet> planets = new List<Planet>();
-    
+
+
+    public Slider sliderPlanet;
+    public TextMeshProUGUI textPlanet;
+    public TextMeshProUGUI textBankNow;
     public List<TextMeshProUGUI> orePanels = new List<TextMeshProUGUI>();
     public List<TextMeshProUGUI> orePanelsEnter = new List<TextMeshProUGUI>();
 
@@ -134,35 +138,13 @@ public class MenegerUI : MonoBehaviour
     {
         textGems.text = YG2.saves.gems.ToString();
 
-        if (planet != null)
+        
+        if (planet != null && planet != earth && planet.isActive)
         {
-            //if (idPlanet != 7)
-            //{
-            //    textName.text = stats.CheckOre(idPlanet);
-
-            //    textSpeedMine.text = stats.FormatGold(Parametrs.SpeedMine(idPlanet));
-            //    textSpeedShip.text = stats.FormatGold(Parametrs.SpeedShip(idPlanet));
-
-            //    textCloudMine.text = stats.FormatGold(Parametrs.CloudMine(idPlanet));
-            //    textCloudShip.text = stats.FormatGold(Parametrs.CloudShip(idPlanet));
-
-            //    textBankNow.text = stats.FormatGold((int)YG2.saves.bankNow[idPlanet]) + "";
-            //    sliderBank.maxValue = (int)(YG2.saves.countBuffs1[idPlanet] * Parametrs.CloudShip(idPlanet));
-            //    sliderBank.value = (int)YG2.saves.bankNow[idPlanet];
-
-            //    textCountShip.text = YG2.saves.countShip[idPlanet] + " / " + YG2.saves.countBuffs1[idPlanet];
-            //    sliderCountShip.maxValue = YG2.saves.countBuffs1[idPlanet];
-            //    sliderCountShip.value = YG2.saves.countShip[idPlanet];
-            //}
-            //else
-            //{
-            //    textCloudMineEarth.text = stats.FormatGold(Parametrs.CloudMine(idPlanet));
-            //    textSpeedMineEarth.text = stats.FormatGold(Parametrs.SpeedMine(idPlanet));
-
-            //    textBankNowEarth.text = (Parametrs.SpeedMine(idPlanet) - earth.timerMine).ToString("F1") + " сек";
-            //    sliderBankEarth.maxValue = (float)Parametrs.SpeedMine(idPlanet);
-            //    sliderBankEarth.value = earth.timerMine;
-            //}
+            textBankNow.text = stats.FormatGold((int)YG2.saves.bankNow[idPlanet]) + "";
+            sliderPlanet.maxValue = (int)(YG2.saves.countBuffs5[idPlanet] * Parametrs.CloudShip(idPlanet));
+            sliderPlanet.value = (int)YG2.saves.bankNow[idPlanet];
+            textPlanet.text = YG2.saves.countShip[idPlanet] + " / " + YG2.saves.countBuffs5[idPlanet];
         }
 
         for (int i = 0; i < 8; i++)
@@ -491,7 +473,7 @@ public class MenegerUI : MonoBehaviour
 
         //GameObject number = Instantiate(prefNumber, new Vector2(212.8f + id * 216.6f, 1042.4f), Quaternion.identity, panelNumbers);
         //number.GetComponent<TextMeshProUGUI>().text = "+" + stats.FormatGold(Parametrs.Ore(id));
-        AnimateMoneyGain(orePanels[rewardId]);
+        AnimateMoneyGain(orePanels[id]);
         YG2.saves.countOre[id] += Parametrs.Ore(id);
         YG2.saves.liderBoard += Parametrs.Ore(id) * Mathf.Pow(1.3f, id) / 50;
     }
@@ -501,7 +483,7 @@ public class MenegerUI : MonoBehaviour
 
         //GameObject number = Instantiate(prefNumber, new Vector2(212.8f + id * 216.6f, 1042.4f), Quaternion.identity, panelNumbers);
         //number.GetComponent<TextMeshProUGUI>().text = "+" + Parametrs.Click(id);
-        AnimateMoneyGain(orePanels[rewardId]);
+        AnimateMoneyGain(orePanels[id]);
         YG2.saves.countOre[id] += Parametrs.Click(id);
         YG2.saves.liderBoard += Parametrs.Click(id) * Mathf.Pow(1.3f, id) / 50;
     }
@@ -523,7 +505,7 @@ public class MenegerUI : MonoBehaviour
     {
         autoCliker.SetActive(false);
         panelRewardShip.SetActive(true);
-        textCountRewardShip.text = "120 сек";
+        textCountRewardShip.text = "120 " + Lange.Text(68);
         iconeRewardShip.sprite = iconeAutoClick;
         reward = 1;
     }
@@ -531,7 +513,7 @@ public class MenegerUI : MonoBehaviour
     {
         x2ores.SetActive(false);
         panelRewardShip.SetActive(true);
-        textCountRewardShip.text = "120 сек";
+        textCountRewardShip.text = "120 " + Lange.Text(68);
         iconeRewardShip.sprite = iconex2ores;
         reward = 2;
     }
@@ -539,7 +521,7 @@ public class MenegerUI : MonoBehaviour
     {
         speedBoost.SetActive(false);
         panelRewardShip.SetActive(true);
-        textCountRewardShip.text = "120 сек";
+        textCountRewardShip.text = "120 " + Lange.Text(68);
         iconeRewardShip.sprite = iconeSpeedBoost;
         reward = 3;
     }

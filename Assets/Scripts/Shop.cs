@@ -242,7 +242,7 @@ public class Shop : MonoBehaviour
                 menegerUI.sliderAutoCliker.maxValue = YG2.saves.autoClick;
                 panel.SetActive(true);
                 imageGem.sprite = iconeBoost[0];
-                textPrice.text = "5мин";
+                textPrice.text = "5 " + Lange.Text(9);
                 break;
             case "auto60":
                 if (YG2.saves.gems < 60)
@@ -258,7 +258,7 @@ public class Shop : MonoBehaviour
                 menegerUI.sliderAutoCliker.maxValue = YG2.saves.autoClick;
                 panel.SetActive(true);
                 imageGem.sprite = iconeBoost[0];
-                textPrice.text = "1час";
+                textPrice.text = "1 " + Lange.Text(21);
                 break;
             case "gold15":
                 if (YG2.saves.gems < 15)
@@ -274,7 +274,7 @@ public class Shop : MonoBehaviour
                 menegerUI.sliderX2ores.maxValue = YG2.saves.x2ores;
                 panel.SetActive(true);
                 imageGem.sprite = iconeBoost[1];
-                textPrice.text = "5мин";
+                textPrice.text = "5 " + Lange.Text(9);
                 break;
             case "gold60":
                 if (YG2.saves.gems < 60)
@@ -290,7 +290,7 @@ public class Shop : MonoBehaviour
                 menegerUI.sliderX2ores.maxValue = YG2.saves.x2ores;
                 panel.SetActive(true);
                 imageGem.sprite = iconeBoost[1];
-                textPrice.text = "1час";
+                textPrice.text = "1 " + Lange.Text(21);
                 break;
             case "speed15":
                 if (YG2.saves.gems < 15)
@@ -306,7 +306,7 @@ public class Shop : MonoBehaviour
                 menegerUI.sliderSpeedBoost.maxValue = YG2.saves.speedBoost;
                 panel.SetActive(true);
                 imageGem.sprite = iconeBoost[2];
-                textPrice.text = "5мин";
+                textPrice.text = "5 " + Lange.Text(9);
                 break;
             case "speed60":
                 if (YG2.saves.gems < 60)
@@ -323,7 +323,7 @@ public class Shop : MonoBehaviour
                 menegerUI.sliderSpeedBoost.maxValue = YG2.saves.speedBoost;
                 panel.SetActive(true);
                 imageGem.sprite = iconeBoost[2];
-                textPrice.text = "1час";
+                textPrice.text = "1 " + Lange.Text(21);
                 break;
             default:
                 print(id);

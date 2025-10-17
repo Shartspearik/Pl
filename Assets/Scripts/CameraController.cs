@@ -40,10 +40,7 @@ public class CameraController : MonoBehaviour
     void Update()
     {
         if (!isOn) return;
-        if (EventSystem.current.IsPointerOverGameObject())
-        {
-            return; // Не обрабатываем, если клик по UI
-        }
+
         HandleMouseDrag();
 
         HandleZoom();
@@ -75,6 +72,10 @@ public class CameraController : MonoBehaviour
 
     void HandleMouseDrag()
     {
+        if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
+        {
+            return; // Не обрабатываем, если клик по UI
+        }
         if (Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1))
         {
             isDragging = true;
@@ -110,6 +111,10 @@ public class CameraController : MonoBehaviour
 
     void HandleZoom()
     {
+        if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
+        {
+            return; // Не обрабатываем, если клик по UI
+        }
         float scrollInput = Input.GetAxis("Mouse ScrollWheel");
         if (scrollInput != 0f && cam != null && cam.orthographic)
         {
@@ -236,6 +241,12 @@ public class CameraController : MonoBehaviour
         followingPlanet = false;
         targetPlanet = null;
         menegerUI.OffPanelPlanet();
+        if (!menegerUI.planet)
+        {
+            menegerUI.sliderPlanet.gameObject.SetActive(false);
+            menegerUI.textPlanet.gameObject.SetActive(false);
+        }
+        
         // Плавно интерполируем позицию и зум обратно к начальному состоянию
 
         //transform.position = Vector3.Lerp(transform.position, new Vector3(0,0,-10), Time.deltaTime * moveSpeed);

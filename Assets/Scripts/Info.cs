@@ -69,81 +69,81 @@ public class Info : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         switch (id)
         {
             case 0:
-                textName.text = "Рука 2 уровня";
+                textName.text = Lange.Text(30);
                 textPrice.text = stats.FormatGold(Parametrs.upgradeCosts[0]);
-                textInfo.text = "Добыча за клик + 1";
+                textInfo.text = Lange.Text(31);
                 icone.sprite = iconeOre[idShip];
                 break;
             case 1:
-                textName.text = "Рука 3 уровня";
+                textName.text = Lange.Text(32);
                 textPrice.text = stats.FormatGold(Parametrs.upgradeCosts[1]);
-                textInfo.text = "Добыча за клик + 2";
+                textInfo.text = Lange.Text(33);
                 icone.sprite = iconeOre[idShip];
                 break;
             case 2:
-                textName.text = "Новая формула топлива";
+                textName.text = Lange.Text(34);
                 textPrice.text = stats.FormatGold(Parametrs.upgradeCosts[2]);
-                textInfo.text = "Увеличеная скорость кораблей";
+                textInfo.text = Lange.Text(35);
                 icone.sprite = iconeOre[idShip];
                 break;
             case 3:
-                textName.text = "Дополнительный левый отсек";
+                textName.text = Lange.Text(36);
                 textPrice.text = stats.FormatGold(Parametrs.upgradeCosts[3]);
-                textInfo.text = "Большая вместимость кораблей";
+                textInfo.text = Lange.Text(37);
                 icone.sprite = iconeOre[idShip];
                 break;
             case 4:
-                textName.text = "Рука 3 уровня";
+                textName.text = Lange.Text(38);
                 textPrice.text = stats.FormatGold(Parametrs.upgradeCosts[4]);
-                textInfo.text = "Добыча за клик + 5";
+                textInfo.text = Lange.Text(39);
                 icone.sprite = iconeOre[idShip];
                 break;
             case 5:
-                textName.text = "Дополнительный правый отсек";
+                textName.text = Lange.Text(40);
                 textPrice.text = stats.FormatGold(Parametrs.upgradeCosts[5]);
-                textInfo.text = "Большая вместимость кораблей";
+                textInfo.text = Lange.Text(41);
                 icone.sprite = iconeOre[idShip];
                 break;
             case 6:
-                textName.text = "Авто-Добыча";
+                textName.text = Lange.Text(42);
                 textPrice.text = stats.FormatGold(Parametrs.upgradeCosts[6]);
-                textInfo.text = "Добыча руды вне игры";
+                textInfo.text = Lange.Text(43);
                 icone.sprite = iconeOre[idShip];
                 break;
             case 7:
-                textName.text = "Большая добыча";
+                textName.text = Lange.Text(44);
                 textPrice.text = stats.FormatGold(Parametrs.upgradeCosts[7]);
-                textInfo.text = "Увеличить добычу руды";
+                textInfo.text = Lange.Text(45);
                 icone.sprite = iconeOre[idShip];
                 break;
             case 8:
-                textName.text = "Рука 4 уровня";
+                textName.text = Lange.Text(46);
                 textPrice.text = stats.FormatGold(Parametrs.upgradeCosts[8]);
-                textInfo.text = "Увеличить добычу за клик на 10";
+                textInfo.text = Lange.Text(47);
                 icone.sprite = iconeOre[idShip];
                 break;
             case 9:
-                textName.text = "Скидка";
+                textName.text = Lange.Text(48);
                 textPrice.text = stats.FormatGold(Parametrs.upgradeCosts[9]);
-                textInfo.text = "Уменьшить цены на улучшения";
+                textInfo.text = Lange.Text(49);
                 icone.sprite = iconeOre[idShip];
                 break;
             case 10:
-                textName.text = "Рука 5 уровня";
+                textName.text = Lange.Text(50);
                 textPrice.text = stats.FormatGold(Parametrs.upgradeCosts[10]);
-                textInfo.text = "Увеличить добычу за клик на 100";
+                textInfo.text = Lange.Text(51);
                 icone.sprite = iconeOre[idShip];
                 break;
             case 11:
-                textName.text = "Быстрая добыча";
+                textName.text = Lange.Text(52);
                 textPrice.text = stats.FormatGold(Parametrs.upgradeCosts[11]);
-                textInfo.text = "Увеличить скорость добычи руды";
+                textInfo.text = Lange.Text(53);
                 icone.sprite = iconeOre[idShip];
                 break;
             case 12:
-                textName.text = "Вложения";
+                textName.text = Lange.Text(54);
                 textPrice.text = stats.FormatGold(Parametrs.upgradeCosts[12]);
-                textInfo.text = "Разблокировать возможность ложить руду под процент";
+                textInfo.text = Lange.Text(55);
                 icone.sprite = iconeOre[idShip];
                 break;
             case 13:
@@ -152,7 +152,7 @@ public class Info : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                 if(YG2.saves.countBuyPlanet == 1)
                 {
                     panel.transform.GetChild(3).gameObject.SetActive(true);
-                    textInfo.text = "Необходимо : Изучить все доступные улучшения";
+                    textInfo.text = Lange.Text(56);
                     panel.transform.GetChild(3).GetChild(1).gameObject.SetActive(false);
                     panel.transform.GetChild(3).GetChild(2).gameObject.SetActive(false);
                     panel.transform.GetChild(3).GetChild(3).gameObject.SetActive(false);
@@ -170,7 +170,7 @@ public class Info : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                 }
                 else
                 {
-                    textInfo.text = "Cамая быстрая планета, Флеш в солнечной системе";
+                    textInfo.text = Lange.Text(57);
                     panel.transform.GetChild(3).gameObject.SetActive(false);
                 }
 
@@ -181,7 +181,7 @@ public class Info : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                 if (YG2.saves.countBuyPlanet == 2)
                 {
                     panel.transform.GetChild(3).gameObject.SetActive(true);
-                    textInfo.text = "Необходимо : Изучить все доступные улучшения";
+                    textInfo.text = Lange.Text(56);
 
                     panel.transform.GetChild(3).GetChild(1).gameObject.SetActive(false);
                 panel.transform.GetChild(3).GetChild(2).gameObject.SetActive(false);
@@ -205,8 +205,8 @@ public class Info : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                 }
                 else
         {
-            textInfo.text = "Горячая планета с атмосферой, будто парилка в сауне, и вечным дымом облаков серной кислоты";
-            panel.transform.GetChild(3).gameObject.SetActive(false);
+            textInfo.text = Lange.Text(58);
+                    panel.transform.GetChild(3).gameObject.SetActive(false);
         }
         break;
 
@@ -215,7 +215,7 @@ public class Info : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                 if (YG2.saves.countBuyPlanet == 3)
                 {
                     panel.transform.GetChild(3).gameObject.SetActive(true);
-                    textInfo.text = "Необходимо : Изучить все доступные улучшения";
+                    textInfo.text = Lange.Text(56);
 
                     panel.transform.GetChild(3).GetChild(1).gameObject.SetActive(false);
                 panel.transform.GetChild(3).GetChild(2).gameObject.SetActive(false);
@@ -243,8 +243,8 @@ public class Info : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                 }
                 else
         {
-            textInfo.text = "Красный сосед с амбициями стать второй землей, где люди мечтают строить первые колонии";
-            panel.transform.GetChild(3).gameObject.SetActive(false);
+            textInfo.text = Lange.Text(59);
+                    panel.transform.GetChild(3).gameObject.SetActive(false);
         }
         break;
 
@@ -253,7 +253,7 @@ public class Info : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                 if (YG2.saves.countBuyPlanet == 4)
                 {
                     panel.transform.GetChild(3).gameObject.SetActive(true);
-                    textInfo.text = "Необходимо : Изучить все доступные улучшения";
+                    textInfo.text = Lange.Text(56);
 
                     panel.transform.GetChild(3).GetChild(1).gameObject.SetActive(false);
                 panel.transform.GetChild(3).GetChild(2).gameObject.SetActive(false);
@@ -285,8 +285,8 @@ public class Info : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                 }
                 else
         {
-            textInfo.text = "Огромный гигант, владыка ветров и штормов, чья мощь сдерживает хаос в системе";
-            panel.transform.GetChild(3).gameObject.SetActive(false);
+            textInfo.text = Lange.Text(60);
+                    panel.transform.GetChild(3).gameObject.SetActive(false);
         }
         break;
 
@@ -295,7 +295,7 @@ public class Info : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                 if (YG2.saves.countBuyPlanet == 5)
                 {
                     panel.transform.GetChild(3).gameObject.SetActive(true);
-                    textInfo.text = "Необходимо : Изучить все доступные улучшения";
+                    textInfo.text = Lange.Text(56);
 
                     panel.transform.GetChild(3).GetChild(1).gameObject.SetActive(false);
                 panel.transform.GetChild(3).GetChild(2).gameObject.SetActive(false);
@@ -331,8 +331,8 @@ public class Info : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                 }
                 else
         {
-            textInfo.text = "Планета с короной из ледяных колец, символ красоты и величия среди соседей";
-            panel.transform.GetChild(3).gameObject.SetActive(false);
+            textInfo.text = Lange.Text(61);
+                    panel.transform.GetChild(3).gameObject.SetActive(false);
         }
         break;
 
@@ -341,7 +341,7 @@ public class Info : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                 if (YG2.saves.countBuyPlanet == 6)
                 {
                     panel.transform.GetChild(3).gameObject.SetActive(true);
-                    textInfo.text = "Необходимо : Изучить все доступные улучшения";
+                    textInfo.text = Lange.Text(56);
 
                     panel.transform.GetChild(3).GetChild(1).gameObject.SetActive(false);
                 panel.transform.GetChild(3).GetChild(2).gameObject.SetActive(false);
@@ -377,8 +377,8 @@ public class Info : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                 }
                 else
         {
-            textInfo.text = "Уникальный странник, который вращается на боку, как будто игнорирует общие правила";
-            panel.transform.GetChild(3).gameObject.SetActive(false);
+            textInfo.text = Lange.Text(62);
+                    panel.transform.GetChild(3).gameObject.SetActive(false);
         }
         break;
 
@@ -387,9 +387,9 @@ public class Info : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                 if (YG2.saves.countBuyPlanet == 7)
                 {
                 panel.transform.GetChild(3).gameObject.SetActive(true);
-                textInfo.text = "Необходимо : Изучить все доступные улучшения";
+                textInfo.text = Lange.Text(56);
 
-                panel.transform.GetChild(3).GetChild(1).gameObject.SetActive(false);
+                    panel.transform.GetChild(3).GetChild(1).gameObject.SetActive(false);
                 panel.transform.GetChild(3).GetChild(2).gameObject.SetActive(false);
                 panel.transform.GetChild(3).GetChild(3).gameObject.SetActive(false);
                 panel.transform.GetChild(3).GetChild(4).gameObject.SetActive(false);
@@ -423,7 +423,7 @@ public class Info : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                 }
                 else
                 {
-                    textInfo.text = "Ледяной и глубокий, где бушуют сильнейшие в Солнечной системе штормы и тайны";
+                    textInfo.text = Lange.Text(63);
                     panel.transform.GetChild(3).gameObject.SetActive(false);
                 }
         break;
@@ -433,7 +433,7 @@ public class Info : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
         case 21:
             textName.text = stats.CheckOre(7);
-                textInfo.text = "Космический шар с вечной вечеринкой на ее поверхности";
+                textInfo.text = Lange.Text(64);
                 panel.transform.GetChild(3).gameObject.SetActive(false);
 
                 break;

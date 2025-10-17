@@ -2,6 +2,7 @@ ExampleYG2
 Authorization
 InterstitialAdv
 Leaderboards
+Localization
 Payments
 RewardedAdv
 Storage

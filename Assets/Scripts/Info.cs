@@ -52,7 +52,7 @@ public class Info : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     private void OnHoverEnter()
     {
         // Пока метод пустой
-        Debug.Log("Курсор наведён на объект UI");
+        //Debug.Log("Курсор наведён на объект UI");
         if (panel != null)
         {
             panel.SetActive(true);

@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using YG;
 using YG.Insides;
+using static BankPanel;
 
 
 namespace YG
@@ -193,6 +194,7 @@ namespace YG
 
         [Header("Колличество ")]
         public List<double> countOre = new List<double>() { 0, 0, 0, 0, 0, 0, 0, 0 };
+        public List<double> countOreBank = new List<double>() { 0, 0, 0, 0, 0, 0, 0, 0 };
         public long[] shopBuy = new long[] {0,0};
         public long[] shopBuyGem = new long[] {0,0,0,0,0};
         public long shopTimer = 0;
@@ -207,6 +209,7 @@ namespace YG
         public float indexPrice = 1.3f;
 
         public double liderBoard;
+        public List<Deposit> deposits = new List<Deposit>();
     }
 }
 
@@ -741,7 +744,6 @@ public class Stats : MonoBehaviour
         int idShip = panelBuff.currentPlanet == 0 ? 8 : panelBuff.currentPlanet;
         int countOre = RandomCountOre();
 
-        int idOre1 = 0;
         int saveOre = 0;
 
         if (countOre == 1)
@@ -859,6 +861,10 @@ public class Stats : MonoBehaviour
         {
             sliderPlanet.gameObject.SetActive(true);
             textPlanet.gameObject.SetActive(true);
+        }
+        if (idShip == 8)
+        {
+            sliderPlanet.gameObject.SetActive(true);
         }
 
         int buffCount = 0;

@@ -9,6 +9,7 @@ public class UISoundPlayer : MonoBehaviour
 
     [Header("Background Music")]
     public AudioSource bgmAudioSource;
+    public AudioSource bgmAudioSource1;
     public AudioClip backgroundMusic;
 
     public Slider volumeSlider;
@@ -59,6 +60,7 @@ public class UISoundPlayer : MonoBehaviour
         if (bgmAudioSource != null)
         {
             bgmAudioSource.volume = volume;
+            bgmAudioSource1.volume = volume;
         }
     }
 

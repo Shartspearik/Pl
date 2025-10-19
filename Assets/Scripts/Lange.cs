@@ -27,7 +27,7 @@ public class Lange : MonoBehaviour
         "Планета с короной из ледяных колец, символ красоты и величия среди соседей",
         "Уникальный странник, который вращается на боку, как будто игнорирует общие правила",
         "Ледяной и глубокий, где бушуют сильнейшие в Солнечной системе штормы и тайны",
-        "Космический шар с вечной вечеринкой на ее поверхности", "Вы были АФК", "Таланты", "Магазин", "сек"
+        "Космический шар с вечной вечеринкой на ее поверхности", "Вы были АФК", "Таланты", "Магазин", "сек", "Скорость добычи руды на планете", "Количество добываемой руды", "Скорость полета кораблей", "Вместимость руды у ракеты", "Количество ракет"
     },
 
     // English
@@ -50,7 +50,7 @@ public class Lange : MonoBehaviour
         "Planet crowned with icy rings, a symbol of beauty and grandeur among its neighbors",
         "A unique wanderer, which rotates on its side, as if ignoring the rules",
         "Icy and deep, where the strongest storms and mysteries of the Solar System rage",
-        "A cosmic ball with an endless party on its surface", "You were AFK", "Talents", "Shop", "sec"
+        "A cosmic ball with an endless party on its surface", "You were AFK", "Talents", "Shop", "sec", "Ore mining speed on the planet﻿", "Amount of ore mined﻿", "Ship flight speed﻿", "Ore capacity of the rocket﻿", "Number of rockets﻿"
     },
 
     // Turkish
@@ -73,7 +73,7 @@ public class Lange : MonoBehaviour
         "Buz halkalarla taçlandırılmış gezegen, komşuları arasında güzellik ve ihtişam sembolü",
         "Benzersiz bir gezgin, sanki kuralları umursamadan yana döner",
         "Buzlu ve derin, Güneş Sistemi'nde en güçlü fırtınaların ve sırların olduğu yer",
-        "Yüzeyinde hiç bitmeyen bir parti olan kozmik küre", "AFK idiniz", "Yetenekler", "Mağaza",  "sn"
+        "Yüzeyinde hiç bitmeyen bir parti olan kozmik küre", "AFK idiniz", "Yetenekler", "Mağaza",  "sn", "Gezegendeki maden çıkarma hızı﻿", "Çıkarılan maden miktarı﻿", "Gemi uçuş hızı﻿", "Roketin maden kapasitesi﻿", "Roket sayısı﻿"
     },
 
     // Немецкий
@@ -96,7 +96,7 @@ public class Lange : MonoBehaviour
         "Planet mit eisigen Ringen als Krone, Symbol für Schönheit und Größe unter den Nachbarn",
         "Einzigartiger Wanderer, der sich seitlich dreht, als würde er die Regeln ignorieren",
         "Eisig und tief, wo die stärksten Stürme und Geheimnisse des Sonnensystems toben",
-        "Kosmische Kugel mit ewiger Party auf der Oberfläche", "Du warst AFK", "Talente", "Geschäft", "Sek"
+        "Kosmische Kugel mit ewiger Party auf der Oberfläche", "Du warst AFK", "Talente", "Geschäft", "Sek", "Erzabbaurate auf dem Planeten﻿", "Menge des abgebauten Erzes﻿", "Schiffsgeschwindigkeit﻿", "Erzkapazität der Rakete﻿", "Anzahl der Raketen"
     },
 
     // Испанский
@@ -119,7 +119,7 @@ public class Lange : MonoBehaviour
         "Planeta coronado por anillos de hielo, símbolo de belleza y grandeza entre sus vecinos",
         "Viajero único que gira de lado, como si ignorara las reglas generales",
         "Helado y profundo, donde rugen las tormentas y misterios más poderosos del Sistema Solar",
-        "Bola cósmica con una fiesta eterna en su superficie", "Has estado AFK", "Talentos", "Tienda", "seg"
+        "Bola cósmica con una fiesta eterna en su superficie", "Has estado AFK", "Talentos", "Tienda", "seg", "Velocidad de extracción de mineral en el planeta﻿", "Cantidad de mineral extraído﻿", "Velocidad de vuelo de la nave﻿", "Capacidad de mineral del cohete﻿", "Cantidad de cohetes﻿"
     }
 };
     public static string Text(int id)
@@ -183,5 +183,10 @@ public class Lange : MonoBehaviour
         text[31].text = Text(4);   // "Подсказка"
         text[32].text = Text(5);   // "При нажатии на солнце, открывается древо прокачки"
         text[33].text = Text(6);   // "Для открытия новых планет, необходимо прокачать все навыки уже открытых планет до максимума"
+        text[34].text = Text(69);   // "Для открытия новых планет, необходимо прокачать все навыки уже открытых планет до максимума"
+        text[35].text = Text(70);   // "Для открытия новых планет, необходимо прокачать все навыки уже открытых планет до максимума"
+        text[36].text = Text(71);   // "Для открытия новых планет, необходимо прокачать все навыки уже открытых планет до максимума"
+        text[37].text = Text(72);   // "Для открытия новых планет, необходимо прокачать все навыки уже открытых планет до максимума"
+        text[38].text = Text(73);   // "Для открытия новых планет, необходимо прокачать все навыки уже открытых планет до максимума"
     }
 }

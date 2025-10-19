@@ -8,7 +8,6 @@ public class SpawnerSpaceShip : MonoBehaviour
     public List<Planet> planats = new List<Planet>();
     public float spawnInterval = 1f; // интервал между созданием объектов в секундах
     public Stats stats;
-    private float timer = 0f;
     public int count;
     public GameObject earth;
 

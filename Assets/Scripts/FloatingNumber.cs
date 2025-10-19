@@ -1,21 +1,19 @@
-using TMPro; // если используете TextMeshPro
+using TMPro;
 using UnityEngine;
 
-public class FloatingNumber : MonoBehaviour
+public class FloatingNumber3D : MonoBehaviour
 {
-    public float speed = 100f;       // скорость движени€ вправо (единиц в секунду)
-    public float fadeDuration = 2f;  // врем€ исчезновени€ (секунд)
+    public float speed = 1f;       // скорость движени€ вниз (единиц в секунду)
+    public float fadeDuration = 2f; // врем€ исчезновени€ (секунд)
 
-    private TextMeshProUGUI tmp;
+    private TextMeshPro tmp;
     private Color originalColor;
-    private RectTransform rectTransform;
     private float elapsed = 0f;
 
     void Start()
     {
-        tmp = GetComponent<TextMeshProUGUI>();
+        tmp = GetComponent<TextMeshPro>();
         originalColor = tmp.color;
-        rectTransform = GetComponent<RectTransform>();
     }
 
     void Update()
@@ -23,15 +21,15 @@ public class FloatingNumber : MonoBehaviour
         elapsed += Time.deltaTime;
         float t = Mathf.Clamp01(elapsed / fadeDuration);
 
-        // ƒвижение вправо
-        rectTransform.anchoredPosition += Vector2.down * speed * Time.deltaTime;
+        // ƒвижение вниз по оси Y
+        transform.position += Vector3.down * speed * Time.deltaTime;
 
         // «атемнение текста
         Color c = originalColor;
         c.a = Mathf.Lerp(1f, 0f, t);
         tmp.color = c;
 
-        // ”даление когда полностью прозрачен
+        // ”даление объекта, когда прозрачность близка к 0
         if (tmp.color.a <= 0.01f)
         {
             Destroy(gameObject);

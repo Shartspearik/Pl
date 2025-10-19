@@ -10,7 +10,7 @@ using YG;
 public class MenegerUI : MonoBehaviour
 {
     public List<Planet> planets = new List<Planet>();
-
+    public GameObject panelECO;
 
     public Slider sliderPlanet;
     public TextMeshProUGUI textPlanet;
@@ -95,6 +95,7 @@ public class MenegerUI : MonoBehaviour
     private Color defaultColor;
     public GameObject[] buttons;
     public UISoundPlayer sound;
+    public BankPanel bankPanel;
 
 
     private void Start()
@@ -138,7 +139,23 @@ public class MenegerUI : MonoBehaviour
     {
         textGems.text = YG2.saves.gems.ToString();
 
-        
+        if (planet == null)
+        {
+            sliderPlanet.gameObject.SetActive(false);
+            panelECO.SetActive(false);
+        }
+
+        if (planet != null && YG2.saves.buffTreeECO[idPlanet == 7 ? 0 : idPlanet + 1]) 
+        {
+            panelECO.SetActive(true);
+            bankPanel.oreIndex = idPlanet == 7 ? 0 : idPlanet + 1;
+        }
+        else
+        {
+            bankPanel.oreIndex = 11;
+
+        }
+
         if (planet != null && planet != earth && planet.isActive)
         {
             textBankNow.text = stats.FormatGold((int)YG2.saves.bankNow[idPlanet]) + "";
@@ -471,8 +488,9 @@ public class MenegerUI : MonoBehaviour
     public void PrintOre(int id)
     {
 
-        //GameObject number = Instantiate(prefNumber, new Vector2(212.8f + id * 216.6f, 1042.4f), Quaternion.identity, panelNumbers);
-        //number.GetComponent<TextMeshProUGUI>().text = "+" + stats.FormatGold(Parametrs.Ore(id));
+        GameObject number = Instantiate(prefNumber, id == 0? earth.transform.position : planets[id - 1].transform.position, Quaternion.identity, panelNumbers);
+        number.GetComponent<TextMeshPro>().text = "+" + stats.FormatGold(Parametrs.Ore(id));
+        number.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = iconOre[id];
         AnimateMoneyGain(orePanels[id]);
         YG2.saves.countOre[id] += Parametrs.Ore(id);
         YG2.saves.liderBoard += Parametrs.Ore(id) * Mathf.Pow(1.3f, id) / 50;
@@ -481,8 +499,9 @@ public class MenegerUI : MonoBehaviour
     public void PrintOreClick(int id)
     {
 
-        //GameObject number = Instantiate(prefNumber, new Vector2(212.8f + id * 216.6f, 1042.4f), Quaternion.identity, panelNumbers);
-        //number.GetComponent<TextMeshProUGUI>().text = "+" + Parametrs.Click(id);
+        GameObject number = Instantiate(prefNumber, id == 0 ? earth.transform.position : planets[id - 1].transform.position, Quaternion.identity, panelNumbers);
+        number.GetComponent<TextMeshPro>().text = "+" + Parametrs.Click(id);
+        number.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = iconOre[id];
         AnimateMoneyGain(orePanels[id]);
         YG2.saves.countOre[id] += Parametrs.Click(id);
         YG2.saves.liderBoard += Parametrs.Click(id) * Mathf.Pow(1.3f, id) / 50;
@@ -547,13 +566,14 @@ public class MenegerUI : MonoBehaviour
 
     public void Reward0()
     {
-        //GameObject number = Instantiate(prefNumber, new Vector2(280, 1045 - rewardId * 50), Quaternion.identity, panelNumbers);
+        GameObject number = Instantiate(prefNumber, planets[rewardId].transform.position, Quaternion.identity, panelNumbers);
+        number.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = iconOre[rewardId];
         AnimateMoneyGain(orePanels[rewardId]);
         double basePower = System.Math.Pow(0.4, rewardId + 1);
         double buffPower = System.Math.Pow(1.1, YG2.saves.countBuffs4[rewardId == 0 ? 7 : rewardId - 1]);
         double ore = basePower * 10000 * 0.1 * YG2.saves.countBuyPlanet * 2 * buffPower;
 
-        //number.GetComponent<TextMeshProUGUI>().text = "+" + stats.FormatGold(ore);
+        number.GetComponent<TextMeshPro>().text = "+" + stats.FormatGold(ore);
         YG2.saves.countOre[rewardId] += ore;
         YG2.saves.liderBoard += ore * Mathf.Pow(1.3f, rewardId) / 50;
     }

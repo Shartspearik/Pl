@@ -224,7 +224,7 @@ public class Info : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                 panel.transform.GetChild(3).GetChild(5).gameObject.SetActive(false);
 
                 panel.transform.GetChild(3).GetChild(1).gameObject.SetActive(true);
-                panel.transform.GetChild(3).GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>().text = 112 + "";
+                panel.transform.GetChild(3).GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>().text = 112 + "878b";
                 panel.transform.GetChild(3).GetChild(1).GetChild(1).GetComponent<Image>().sprite = iconeOre[0];
 
                 panel.transform.GetChild(3).GetChild(2).gameObject.SetActive(true);
@@ -262,7 +262,7 @@ public class Info : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                 panel.transform.GetChild(3).GetChild(5).gameObject.SetActive(false);
 
                 panel.transform.GetChild(3).GetChild(1).gameObject.SetActive(true);
-                panel.transform.GetChild(3).GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>().text = 111 + "";
+                panel.transform.GetChild(3).GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>().text = 111 + "47,3ñ";
                 panel.transform.GetChild(3).GetChild(1).GetChild(1).GetComponent<Image>().sprite = iconeOre[0];
 
                 panel.transform.GetChild(3).GetChild(2).gameObject.SetActive(true);
@@ -304,7 +304,7 @@ public class Info : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                 panel.transform.GetChild(3).GetChild(5).gameObject.SetActive(false);
 
                 panel.transform.GetChild(3).GetChild(1).gameObject.SetActive(true);
-                panel.transform.GetChild(3).GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>().text = 113 + "";
+                panel.transform.GetChild(3).GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>().text = 113 + "47,3ñ";
                 panel.transform.GetChild(3).GetChild(1).GetChild(1).GetComponent<Image>().sprite = iconeOre[0];
 
                 panel.transform.GetChild(3).GetChild(2).gameObject.SetActive(true);

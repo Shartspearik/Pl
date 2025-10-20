@@ -101,21 +101,43 @@ public class UpgradeTree : MonoBehaviour
     public void Buffing(int idShip, int idBuff)
     {
         idShip--;
-        switch (idBuff - 1)
+
+        if (idShip == 0)
         {
-            case 0:   YG2.saves.countBuffsClick[idShip] += 1;   break;
-            case 1:   YG2.saves.countBuffsClick[idShip] += 1;   break;
-            case 2:   YG2.saves.buffTreeSpeedShip[idShip] = true; break;
-            case 3:   YG2.saves.buffTreeCloudShip[idShip] += 1; break;
-            case 4:   YG2.saves.countBuffsClick[idShip] += 1;   break;
-            case 5:   YG2.saves.buffTreeCloudShip[idShip] += 1; break;
-            case 6:   YG2.saves.buffTreeAFKfarm[idShip] = true; break;
-            case 7:   YG2.saves.buffTreeCloudMine[idShip] = true; break;
-            case 8:   YG2.saves.countBuffsClick[idShip] += 1;   break;
-            case 9:   YG2.saves.buffTreePrice[idShip] = true;     break;
-            case 10:  YG2.saves.countBuffsClick[idShip] += 1;  break;
-            case 11:  YG2.saves.buffTreeSpeedMine[idShip] = true; break;
-            case 12:  YG2.saves.buffTreeECO[idShip] = true;     break;
+            // Первая планета — 10 узлов
+            switch (idBuff)
+            {
+                case 1: YG2.saves.countBuffsClick[idShip] += 1; break;
+                case 2: YG2.saves.countBuffsClick[idShip] += 1; break;
+                case 3: YG2.saves.countBuffsClick[idShip] += 1; break;
+                case 4: YG2.saves.buffTreeAFKfarm[idShip] = true; break;
+                case 5: YG2.saves.buffTreeCloudMine[idShip] = true; break;
+                case 6: YG2.saves.countBuffsClick[idShip] += 1; break;
+                case 7: YG2.saves.buffTreePrice[idShip] = true; break;
+                case 8: YG2.saves.countBuffsClick[idShip] += 1; break;
+                case 9: YG2.saves.buffTreeSpeedMine[idShip] = true; break;
+                case 10: YG2.saves.buffTreeECO[idShip] = true; break; // Банк
+            }
+        }
+        else
+        {
+            // Планеты 2-8 — старая логика (13 узлов)
+            switch (idBuff - 1)
+            {
+                case 0: YG2.saves.countBuffsClick[idShip] += 1; break;
+                case 1: YG2.saves.countBuffsClick[idShip] += 1; break;
+                case 2: YG2.saves.buffTreeSpeedShip[idShip] = true; break;
+                case 3: YG2.saves.buffTreeCloudShip[idShip] += 1; break;
+                case 4: YG2.saves.countBuffsClick[idShip] += 1; break;
+                case 5: YG2.saves.buffTreeCloudShip[idShip] += 1; break;
+                case 6: YG2.saves.buffTreeAFKfarm[idShip] = true; break;
+                case 7: YG2.saves.buffTreeCloudMine[idShip] = true; break;
+                case 8: YG2.saves.countBuffsClick[idShip] += 1; break;
+                case 9: YG2.saves.buffTreePrice[idShip] = true; break;
+                case 10: YG2.saves.countBuffsClick[idShip] += 1; break;
+                case 11: YG2.saves.buffTreeSpeedMine[idShip] = true; break;
+                case 12: YG2.saves.buffTreeECO[idShip] = true; break;
+            }
         }
     }
 

@@ -80,6 +80,12 @@ public class Planet : MonoBehaviour
                 if (YG2.saves.bankNow[idPlanet] != YG2.saves.countBuffs3[idPlanet])      //майнинг
                 {
                     timerMine += Time.deltaTime;
+                    if (menegerUI.idPlanet == idPlanet)
+                    {
+                        menegerUI.sliderPlanet.maxValue = (float)Parametrs.SpeedMine(idPlanet);
+                        menegerUI.sliderPlanet.value = timerMine;
+
+                    }
 
                     if (timerMine >= Parametrs.SpeedMine(idPlanet))
                     {
@@ -95,9 +101,13 @@ public class Planet : MonoBehaviour
             else
             {
                 timerMine += Time.deltaTime;
-                menegerUI.sliderPlanet.maxValue = (float)Parametrs.SpeedMine(idPlanet);
-                menegerUI.sliderPlanet.value = timerMine;
-                menegerUI.textBankNow.text = (Parametrs.SpeedMine(idPlanet) - timerMine).ToString("F1") + " sec";
+                if (menegerUI.idPlanet == idPlanet)
+                {
+                    menegerUI.sliderPlanet.maxValue = (float)Parametrs.SpeedMine(idPlanet);
+                    menegerUI.sliderPlanet.value = timerMine;
+                    menegerUI.textBankNow.text = (Parametrs.SpeedMine(idPlanet) - timerMine).ToString("F1") + " sec";
+                }
+                
                 if (timerMine >= Parametrs.SpeedMine(idPlanet))
                 //if (timerMine >= 1)
                 {

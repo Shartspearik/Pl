@@ -28,17 +28,15 @@ namespace YG
 {
     new UpgradeNode { id = 1, requirements = new List<int>(), unlocked = true, upgraded = false },
     new UpgradeNode { id = 2, requirements = new List<int>{1}, unlocked = false, upgraded = false },
-    new UpgradeNode { id = 3, requirements = new List<int>{1}, unlocked = false, upgraded = false },
-    new UpgradeNode { id = 4, requirements = new List<int>{2}, unlocked = false, upgraded = false },
-    new UpgradeNode { id = 5, requirements = new List<int>{2,3}, unlocked = false, upgraded = false },
-    new UpgradeNode { id = 6, requirements = new List<int>{3}, unlocked = false, upgraded = false },
-    new UpgradeNode { id = 7, requirements = new List<int>{4,5,6}, unlocked = false, upgraded = false },
-    new UpgradeNode { id = 8, requirements = new List<int>{7}, unlocked = false, upgraded = false },
-    new UpgradeNode { id = 9, requirements = new List<int>{7}, unlocked = false, upgraded = false },
-    new UpgradeNode { id = 10, requirements = new List<int>{7}, unlocked = false, upgraded = false },
-    new UpgradeNode { id = 11, requirements = new List<int>{8,9}, unlocked = false, upgraded = false },
-    new UpgradeNode { id = 12, requirements = new List<int>{9,10}, unlocked = false, upgraded = false },
-    new UpgradeNode { id = 13, requirements = new List<int>{11,12}, unlocked = false, upgraded = false }
+    new UpgradeNode { id = 3, requirements = new List<int>{2}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 4, requirements = new List<int>{3}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 5, requirements = new List<int>{4}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 6, requirements = new List<int>{4}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 7, requirements = new List<int>{4}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 8, requirements = new List<int>{5, 6}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 9, requirements = new List<int>{6, 7}, unlocked = false, upgraded = false },
+    new UpgradeNode { id = 10, requirements = new List<int>{8, 9}, unlocked = false, upgraded = false }
+    // Óçëû 11, 12, 13 — ÎÒÑÓÒÑÒÂÓÞÒ
 };
 
         public List<UpgradeNode> nodes2 = new List<UpgradeNode>
@@ -231,7 +229,7 @@ public static class Parametrs
     public static double CloudMine(int id)
     {
         int exponent = Mathf.Max(YG2.saves.countBuffs2[id], 0);
-        double cloud = 50 * System.Math.Pow(1.05, exponent);
+        double cloud = 100 * System.Math.Pow(1.2, exponent);
         cloud = YG2.saves.buffTreeCloudMine[id] ? cloud * 1.5 : cloud;
         return cloud;
     }
@@ -239,7 +237,7 @@ public static class Parametrs
     public static float SpeedShip(int id)
     {
         int exponent = Mathf.Max(YG2.saves.countBuffs3[id], 0);
-        float baseSpeed = 0.5f * (float)System.Math.Pow(1.05, exponent);
+        float baseSpeed = 0.3f * (float)System.Math.Pow(1.05, exponent);
         baseSpeed += YG2.saves.buffTreeSpeedShip[id] ? baseSpeed * 1.5f : 0f;
         return baseSpeed;
     }
@@ -247,7 +245,7 @@ public static class Parametrs
     public static double CloudShip(int id)
     {
         int exponent = Mathf.Max(YG2.saves.countBuffs4[id] - 1, 0);
-        double cloud = 50 * System.Math.Pow(1.05, exponent);
+        double cloud = 50 * System.Math.Pow(1.2, exponent);
         switch (YG2.saves.buffTreeCloudShip[id])
         {
             case 1:
@@ -871,14 +869,12 @@ public class Stats : MonoBehaviour
 
         switch (idBuff)
         {
-            case 1: buffCount = YG2.saves.countBuffs1[idShip - 1]; break;
-            case 2: buffCount = YG2.saves.countBuffs2[idShip - 1]; break;
-            case 3: buffCount = YG2.saves.countBuffs3[idShip - 1]; break;
-            case 4: buffCount = YG2.saves.countBuffs4[idShip - 1]; break;
-            case 5: buffCount = YG2.saves.countBuffs5[idShip - 1]; break;
+            case 1: buffCount = YG2.saves.countBuffs1[idShip - 1]; panelBuff.textPowerBuff[idBuff - 1].text = FormatGold(Parametrs.SpeedMine(idShip - 1)) + " sec"; break;
+            case 2: buffCount = YG2.saves.countBuffs2[idShip - 1]; panelBuff.textPowerBuff[idBuff - 1].text = FormatGold(Parametrs.CloudMine(idShip - 1)); break;
+            case 3: buffCount = YG2.saves.countBuffs3[idShip - 1]; if(idShip != 8) panelBuff.textPowerBuff[idBuff - 1].text = FormatGold(Parametrs.SpeedShip(idShip - 1)) + " km/s"; break;
+            case 4: buffCount = YG2.saves.countBuffs4[idShip - 1]; if (idShip != 8) panelBuff.textPowerBuff[idBuff - 1].text = FormatGold(Parametrs.CloudShip(idShip - 1)); break;
+            case 5: buffCount = YG2.saves.countBuffs5[idShip - 1]; if (idShip != 8) panelBuff.textPowerBuff[idBuff - 1].text = YG2.saves.countBuffs5[idShip - 1].ToString(); break;
         }
-
-        panelBuff.textPowerBuff[idBuff - 1].text = (buffCount * 13).ToString();
 
     }
 

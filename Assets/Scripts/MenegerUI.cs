@@ -92,11 +92,20 @@ public class MenegerUI : MonoBehaviour
     public Image targetIm; 
     public float colorDuration = 0.2f; // длительность окрашивания одного цвета (быстро)
 
-    private Color defaultColor;
     public GameObject[] buttons;
     public UISoundPlayer sound;
     public BankPanel bankPanel;
 
+    [Header("Настройки анимации")]
+    public Color defaultColor = Color.white;
+    public Vector3 defaultScale = Vector3.one;
+    public Color targetColor = Color.green;
+    public float scaleMultiplier = 1.2f;
+    public float growDuration = 0.3f;
+    public float holdDuration = 0.2f;
+    public float shrinkDuration = 0.3f;
+
+    private Dictionary<TextMeshProUGUI, Coroutine> animations = new Dictionary<TextMeshProUGUI, Coroutine>();
 
     private void Start()
     {
@@ -142,12 +151,13 @@ public class MenegerUI : MonoBehaviour
         if (planet == null)
         {
             sliderPlanet.gameObject.SetActive(false);
-            panelECO.SetActive(false);
+            bankPanel.clouse.SetActive(false);
+            bankPanel.bankImageObj.SetActive(false);
         }
 
         if (planet != null && YG2.saves.buffTreeECO[idPlanet == 7 ? 0 : idPlanet + 1]) 
         {
-            panelECO.SetActive(true);
+            //panelECO.SetActive(true);
             bankPanel.oreIndex = idPlanet == 7 ? 0 : idPlanet + 1;
         }
         else
@@ -159,8 +169,8 @@ public class MenegerUI : MonoBehaviour
         if (planet != null && planet != earth && planet.isActive)
         {
             textBankNow.text = stats.FormatGold((int)YG2.saves.bankNow[idPlanet]) + "";
-            sliderPlanet.maxValue = (int)(YG2.saves.countBuffs5[idPlanet] * Parametrs.CloudShip(idPlanet));
-            sliderPlanet.value = (int)YG2.saves.bankNow[idPlanet];
+            //sliderPlanet.maxValue = (int)(YG2.saves.countBuffs5[idPlanet] * Parametrs.CloudShip(idPlanet));
+            //sliderPlanet.value = (int)YG2.saves.bankNow[idPlanet];
             textPlanet.text = YG2.saves.countShip[idPlanet] + " / " + YG2.saves.countBuffs5[idPlanet];
         }
 
@@ -346,9 +356,9 @@ public class MenegerUI : MonoBehaviour
         switch (id)
         {
             case 1:
-                if (YG2.saves.countOre[0] >= 10)
+                if (YG2.saves.countOre[0] >= 300000)
                 {
-                    YG2.saves.countOre[0] -= 10;
+                    YG2.saves.countOre[0] -= 300000;
                     break;
                 }
                 else
@@ -358,10 +368,10 @@ public class MenegerUI : MonoBehaviour
                     return;
                 }
             case 2:
-                if (YG2.saves.countOre[0] >= 10 && YG2.saves.countOre[1] >= 10)
+                if (YG2.saves.countOre[0] >= 10 && YG2.saves.countOre[1] >= 300000)
                 {
                     YG2.saves.countOre[0] -= 10;
-                    YG2.saves.countOre[1] -= 10;
+                    YG2.saves.countOre[1] -= 300000;
                     break;
                 }
                 else
@@ -600,57 +610,72 @@ public class MenegerUI : MonoBehaviour
 
     public void AnimateMoneyGain(TextMeshProUGUI tmpText)
     {
-        // Если анимация уже идёт, остановить её и вернуть текст в исходное состояние
-        if (currentAnimation != null)
+        // Сбросить состояние этого текста к дефолту
+        ResetToDefault(tmpText);
+
+        // Если для этого текста уже есть анимация — остановить её
+        if (animations.TryGetValue(tmpText, out Coroutine existing))
         {
-            StopCoroutine(currentAnimation);
-            ResetText(tmpText);
+            if (existing != null)
+                StopCoroutine(existing);
         }
-        currentAnimation = StartCoroutine(AnimateText(tmpText));
+
+        // Запустить новую анимацию для этого текста
+        Coroutine newAnim = StartCoroutine(AnimateTextRoutine(tmpText));
+        animations[tmpText] = newAnim;
     }
 
-    private void ResetText(TextMeshProUGUI tmpText)
+    private void ResetToDefault(TextMeshProUGUI tmpText)
     {
-        tmpText.color = Color.white; // или другой оригинальный цвет
-        tmpText.transform.localScale = Vector3.one; // или исходный масштаб
+        if (tmpText == null) return;
+        tmpText.color = defaultColor;
+        tmpText.transform.localScale = defaultScale;
     }
 
-    private IEnumerator AnimateText(TextMeshProUGUI tmpText)
+    private IEnumerator AnimateTextRoutine(TextMeshProUGUI tmpText)
     {
-        Color originalColor = tmpText.color;
-        Vector3 originalScale = tmpText.transform.localScale;
+        if (tmpText == null) yield break;
 
-        Color targetColor = Color.green;
-        Vector3 targetScale = originalScale * 1.2f;
+        Vector3 targetScale = defaultScale * scaleMultiplier;
 
-        float duration = 0.3f;
+        // Фаза 1: рост и окраска
         float elapsed = 0f;
-
-        while (elapsed < duration)
+        while (elapsed < growDuration)
         {
+            float t = elapsed / growDuration;
+            tmpText.color = Color.Lerp(defaultColor, targetColor, t);
+            tmpText.transform.localScale = Vector3.Lerp(defaultScale, targetScale, t);
             elapsed += Time.deltaTime;
-            float t = Mathf.Clamp01(elapsed / duration);
-            tmpText.color = Color.Lerp(originalColor, targetColor, t);
-            tmpText.transform.localScale = Vector3.Lerp(originalScale, targetScale, t);
+            if (tmpText == null) yield break;
             yield return null;
         }
 
-        yield return new WaitForSeconds(0.2f);
+        if (tmpText == null) yield break;
+        tmpText.color = targetColor;
+        tmpText.transform.localScale = targetScale;
 
+        // Фаза 2: задержка
+        yield return new WaitForSeconds(holdDuration);
+
+        if (tmpText == null) yield break;
+
+        // Фаза 3: возврат
         elapsed = 0f;
-        while (elapsed < duration)
+        while (elapsed < shrinkDuration)
         {
+            float t = elapsed / shrinkDuration;
+            tmpText.color = Color.Lerp(targetColor, defaultColor, t);
+            tmpText.transform.localScale = Vector3.Lerp(targetScale, defaultScale, t);
             elapsed += Time.deltaTime;
-            float t = Mathf.Clamp01(elapsed / duration);
-            tmpText.color = Color.Lerp(targetColor, originalColor, t);
-            tmpText.transform.localScale = Vector3.Lerp(targetScale, originalScale, t);
+            if (tmpText == null) yield break;
             yield return null;
         }
 
-        tmpText.color = originalColor;
-        tmpText.transform.localScale = originalScale;
+        // Финальный сброс (на случай неточностей)
+        ResetToDefault(tmpText);
 
-        currentAnimation = null;
+        // Удаляем из словаря
+        animations.Remove(tmpText);
     }
 }
 

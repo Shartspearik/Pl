@@ -194,7 +194,7 @@ public class Info : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                 panel.transform.GetChild(3).GetChild(1).GetChild(1).GetComponent<Image>().sprite = iconeOre[0];
 
                 panel.transform.GetChild(3).GetChild(2).gameObject.SetActive(true);
-                panel.transform.GetChild(3).GetChild(2).GetChild(0).GetComponent<TextMeshProUGUI>().text = "350a";
+                panel.transform.GetChild(3).GetChild(2).GetChild(0).GetComponent<TextMeshProUGUI>().text = "300a";
                 panel.transform.GetChild(3).GetChild(2).GetChild(1).GetComponent<Image>().sprite = iconeOre[1];
         }
                 else if (YG2.saves.countBuyPlanet < 2)
@@ -224,16 +224,16 @@ public class Info : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                 panel.transform.GetChild(3).GetChild(5).gameObject.SetActive(false);
 
                 panel.transform.GetChild(3).GetChild(1).gameObject.SetActive(true);
-                panel.transform.GetChild(3).GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>().text = 112 + "878b";
+                panel.transform.GetChild(3).GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>().text ="878b";
                 panel.transform.GetChild(3).GetChild(1).GetChild(1).GetComponent<Image>().sprite = iconeOre[0];
 
                 panel.transform.GetChild(3).GetChild(2).gameObject.SetActive(true);
-                panel.transform.GetChild(3).GetChild(2).GetChild(0).GetComponent<TextMeshProUGUI>().text = 112 + "1,30b";
+                panel.transform.GetChild(3).GetChild(2).GetChild(0).GetComponent<TextMeshProUGUI>().text ="1,25b";
                 panel.transform.GetChild(3).GetChild(2).GetChild(1).GetComponent<Image>().sprite = iconeOre[1];
 
                 panel.transform.GetChild(3).GetChild(3).gameObject.SetActive(true);
-                panel.transform.GetChild(3).GetChild(3).GetChild(0).GetComponent<TextMeshProUGUI>().text = 112 + "350a";
-                panel.transform.GetChild(3).GetChild(3).GetChild(1).GetComponent<Image>().sprite = iconeOre[3];
+                panel.transform.GetChild(3).GetChild(3).GetChild(0).GetComponent<TextMeshProUGUI>().text ="300a";
+                panel.transform.GetChild(3).GetChild(3).GetChild(1).GetComponent<Image>().sprite = iconeOre[2];
         }
                 else if (YG2.saves.countBuyPlanet < 3)
                 {
@@ -262,19 +262,19 @@ public class Info : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                 panel.transform.GetChild(3).GetChild(5).gameObject.SetActive(false);
 
                 panel.transform.GetChild(3).GetChild(1).gameObject.SetActive(true);
-                panel.transform.GetChild(3).GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>().text = 111 + "47,3ñ";
+                panel.transform.GetChild(3).GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>().text ="47,3ñ";
                 panel.transform.GetChild(3).GetChild(1).GetChild(1).GetComponent<Image>().sprite = iconeOre[0];
 
                 panel.transform.GetChild(3).GetChild(2).gameObject.SetActive(true);
-                panel.transform.GetChild(3).GetChild(2).GetChild(0).GetComponent<TextMeshProUGUI>().text = 111 + "";
+                panel.transform.GetChild(3).GetChild(2).GetChild(0).GetComponent<TextMeshProUGUI>().text ="878b";
                 panel.transform.GetChild(3).GetChild(2).GetChild(1).GetComponent<Image>().sprite = iconeOre[1];
 
                 panel.transform.GetChild(3).GetChild(3).gameObject.SetActive(true);
-                panel.transform.GetChild(3).GetChild(3).GetChild(0).GetComponent<TextMeshProUGUI>().text = 111 + "";
+                panel.transform.GetChild(3).GetChild(3).GetChild(0).GetComponent<TextMeshProUGUI>().text ="1,25b";
                 panel.transform.GetChild(3).GetChild(3).GetChild(1).GetComponent<Image>().sprite = iconeOre[2];
 
                 panel.transform.GetChild(3).GetChild(4).gameObject.SetActive(true);
-                panel.transform.GetChild(3).GetChild(4).GetChild(0).GetComponent<TextMeshProUGUI>().text = 111 + "";
+                panel.transform.GetChild(3).GetChild(4).GetChild(0).GetComponent<TextMeshProUGUI>().text ="300a";
                 panel.transform.GetChild(3).GetChild(4).GetChild(1).GetComponent<Image>().sprite = iconeOre[3];
         }
                 else if (YG2.saves.countBuyPlanet < 4)
@@ -304,23 +304,23 @@ public class Info : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                 panel.transform.GetChild(3).GetChild(5).gameObject.SetActive(false);
 
                 panel.transform.GetChild(3).GetChild(1).gameObject.SetActive(true);
-                panel.transform.GetChild(3).GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>().text = 113 + "47,3ñ";
+                panel.transform.GetChild(3).GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>().text = "47,3ñ";
                 panel.transform.GetChild(3).GetChild(1).GetChild(1).GetComponent<Image>().sprite = iconeOre[0];
 
                 panel.transform.GetChild(3).GetChild(2).gameObject.SetActive(true);
-                panel.transform.GetChild(3).GetChild(2).GetChild(0).GetComponent<TextMeshProUGUI>().text = 131 + "";
+                panel.transform.GetChild(3).GetChild(2).GetChild(0).GetComponent<TextMeshProUGUI>().text ="47,3ñ";
                 panel.transform.GetChild(3).GetChild(2).GetChild(1).GetComponent<Image>().sprite = iconeOre[1];
 
                 panel.transform.GetChild(3).GetChild(3).gameObject.SetActive(true);
-                panel.transform.GetChild(3).GetChild(3).GetChild(0).GetComponent<TextMeshProUGUI>().text = 113 + "";
+                panel.transform.GetChild(3).GetChild(3).GetChild(0).GetComponent<TextMeshProUGUI>().text ="878b";
                 panel.transform.GetChild(3).GetChild(3).GetChild(1).GetComponent<Image>().sprite = iconeOre[2];
 
                 panel.transform.GetChild(3).GetChild(4).gameObject.SetActive(true);
-                panel.transform.GetChild(3).GetChild(4).GetChild(0).GetComponent<TextMeshProUGUI>().text = 11 + "";
+                panel.transform.GetChild(3).GetChild(4).GetChild(0).GetComponent<TextMeshProUGUI>().text ="1,25b";
                 panel.transform.GetChild(3).GetChild(4).GetChild(1).GetComponent<Image>().sprite = iconeOre[3];
 
                 panel.transform.GetChild(3).GetChild(5).gameObject.SetActive(true);
-                panel.transform.GetChild(3).GetChild(5).GetChild(0).GetComponent<TextMeshProUGUI>().text = 131 + "";
+                panel.transform.GetChild(3).GetChild(5).GetChild(0).GetComponent<TextMeshProUGUI>().text ="300a";
                 panel.transform.GetChild(3).GetChild(5).GetChild(1).GetComponent<Image>().sprite = iconeOre[4];
         }
                 else if (YG2.saves.countBuyPlanet < 5)
@@ -350,25 +350,25 @@ public class Info : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                 panel.transform.GetChild(3).GetChild(5).gameObject.SetActive(false);
 
                 panel.transform.GetChild(3).GetChild(1).gameObject.SetActive(true);
-                panel.transform.GetChild(3).GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>().text = 1123 + "";
+                panel.transform.GetChild(3).GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>().text = "47,3ñ";
                 panel.transform.GetChild(3).GetChild(1).GetChild(1).GetComponent<Image>().sprite = iconeOre[1];
 
                 panel.transform.GetChild(3).GetChild(2).gameObject.SetActive(true);
-                panel.transform.GetChild(3).GetChild(2).GetChild(0).GetComponent<TextMeshProUGUI>().text = 1231 + "";
+                panel.transform.GetChild(3).GetChild(2).GetChild(0).GetComponent<TextMeshProUGUI>().text = "47,3ñ";
                 panel.transform.GetChild(3).GetChild(2).GetChild(1).GetComponent<Image>().sprite = iconeOre[2];
 
                 panel.transform.GetChild(3).GetChild(3).gameObject.SetActive(true);
-                panel.transform.GetChild(3).GetChild(3).GetChild(0).GetComponent<TextMeshProUGUI>().text = 2113 + "";
+                panel.transform.GetChild(3).GetChild(3).GetChild(0).GetComponent<TextMeshProUGUI>().text = "878b";
                 panel.transform.GetChild(3).GetChild(3).GetChild(1).GetComponent<Image>().sprite = iconeOre[3];
 
                 panel.transform.GetChild(3).GetChild(4).gameObject.SetActive(true);
-                panel.transform.GetChild(3).GetChild(4).GetChild(0).GetComponent<TextMeshProUGUI>().text = 121 + "";
+                panel.transform.GetChild(3).GetChild(4).GetChild(0).GetComponent<TextMeshProUGUI>().text = "1,25b";
                 panel.transform.GetChild(3).GetChild(4).GetChild(1).GetComponent<Image>().sprite = iconeOre[4];
 
                 panel.transform.GetChild(3).GetChild(5).gameObject.SetActive(true);
-                panel.transform.GetChild(3).GetChild(5).GetChild(0).GetComponent<TextMeshProUGUI>().text = 211 + "";
+                panel.transform.GetChild(3).GetChild(5).GetChild(0).GetComponent<TextMeshProUGUI>().text = "300a";
                 panel.transform.GetChild(3).GetChild(5).GetChild(1).GetComponent<Image>().sprite = iconeOre[5];
-        }
+                }
                 else if (YG2.saves.countBuyPlanet < 6)
                 {
                     textName.text = "???";
@@ -396,23 +396,23 @@ public class Info : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                 panel.transform.GetChild(3).GetChild(5).gameObject.SetActive(false);
 
                 panel.transform.GetChild(3).GetChild(1).gameObject.SetActive(true);
-                panel.transform.GetChild(3).GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>().text = 1123 + "";
+                panel.transform.GetChild(3).GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>().text = 1123 + "47,3ñ";
                 panel.transform.GetChild(3).GetChild(1).GetChild(1).GetComponent<Image>().sprite = iconeOre[2];
 
                 panel.transform.GetChild(3).GetChild(2).gameObject.SetActive(true);
-                panel.transform.GetChild(3).GetChild(2).GetChild(0).GetComponent<TextMeshProUGUI>().text = 1231 + "";
+                panel.transform.GetChild(3).GetChild(2).GetChild(0).GetComponent<TextMeshProUGUI>().text = 1231 + "47,3ñ";
                 panel.transform.GetChild(3).GetChild(2).GetChild(1).GetComponent<Image>().sprite = iconeOre[3];
 
                 panel.transform.GetChild(3).GetChild(3).gameObject.SetActive(true);
-                panel.transform.GetChild(3).GetChild(3).GetChild(0).GetComponent<TextMeshProUGUI>().text = 2113 + "";
+                panel.transform.GetChild(3).GetChild(3).GetChild(0).GetComponent<TextMeshProUGUI>().text = 2113 + "878b";
                 panel.transform.GetChild(3).GetChild(3).GetChild(1).GetComponent<Image>().sprite = iconeOre[4];
 
                 panel.transform.GetChild(3).GetChild(4).gameObject.SetActive(true);
-                panel.transform.GetChild(3).GetChild(4).GetChild(0).GetComponent<TextMeshProUGUI>().text = 121 + "";
+                panel.transform.GetChild(3).GetChild(4).GetChild(0).GetComponent<TextMeshProUGUI>().text = 121 + "1,25b";
                 panel.transform.GetChild(3).GetChild(4).GetChild(1).GetComponent<Image>().sprite = iconeOre[5];
 
                 panel.transform.GetChild(3).GetChild(5).gameObject.SetActive(true);
-                panel.transform.GetChild(3).GetChild(5).GetChild(0).GetComponent<TextMeshProUGUI>().text = 211 + "";
+                panel.transform.GetChild(3).GetChild(5).GetChild(0).GetComponent<TextMeshProUGUI>().text = 211 + "300a";
                 panel.transform.GetChild(3).GetChild(5).GetChild(1).GetComponent<Image>().sprite = iconeOre[6];
                 }
                 else if (YG2.saves.countBuyPlanet < 7)

@@ -126,10 +126,10 @@ public class UpgradeTree : MonoBehaviour
             {
                 case 0: YG2.saves.countBuffsClick[idShip] += 1; break;
                 case 1: YG2.saves.countBuffsClick[idShip] += 1; break;
-                case 2: YG2.saves.buffTreeSpeedShip[idShip] = true; break;
-                case 3: YG2.saves.buffTreeCloudShip[idShip] += 1; break;
+                case 2: YG2.saves.buffTreeSpeedShip[idShip - 1] = true; break;
+                case 3: YG2.saves.buffTreeCloudShip[idShip - 1] += 1; break;
                 case 4: YG2.saves.countBuffsClick[idShip] += 1; break;
-                case 5: YG2.saves.buffTreeCloudShip[idShip] += 1; break;
+                case 5: YG2.saves.buffTreeCloudShip[idShip - 1] += 1; break;
                 case 6: YG2.saves.buffTreeAFKfarm[idShip] = true; break;
                 case 7: YG2.saves.buffTreeCloudMine[idShip] = true; break;
                 case 8: YG2.saves.countBuffsClick[idShip] += 1; break;

@@ -7782,7 +7782,6 @@ MonoBehaviour:
   panelLeaderBoard: {fileID: 0}
   iconeOre:
   - {fileID: 21300000, guid: fb5407212040228499093a72ab3b1274, type: 3}
-  - {fileID: 21300000, guid: fb5407212040228499093a72ab3b1274, type: 3}
   - {fileID: 21300000, guid: 35b73cd616aa11b4ea28c3a9d54bac27, type: 3}
   - {fileID: 21300000, guid: 8e0e662e27345d441b0e323441683f84, type: 3}
   - {fileID: 21300000, guid: b726beed717d3ab4798c4871c18f139a, type: 3}
@@ -13359,7 +13358,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &312169406
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14724,7 +14723,6 @@ MonoBehaviour:
   panelLeaderBoard: {fileID: 0}
   iconeOre:
   - {fileID: 21300000, guid: fb5407212040228499093a72ab3b1274, type: 3}
-  - {fileID: 21300000, guid: fb5407212040228499093a72ab3b1274, type: 3}
   - {fileID: 21300000, guid: 35b73cd616aa11b4ea28c3a9d54bac27, type: 3}
   - {fileID: 21300000, guid: 8e0e662e27345d441b0e323441683f84, type: 3}
   - {fileID: 21300000, guid: b726beed717d3ab4798c4871c18f139a, type: 3}
@@ -15580,7 +15578,6 @@ MonoBehaviour:
   idShip: 0
   panelLeaderBoard: {fileID: 0}
   iconeOre:
-  - {fileID: 21300000, guid: fb5407212040228499093a72ab3b1274, type: 3}
   - {fileID: 21300000, guid: fb5407212040228499093a72ab3b1274, type: 3}
   - {fileID: 21300000, guid: 35b73cd616aa11b4ea28c3a9d54bac27, type: 3}
   - {fileID: 21300000, guid: 8e0e662e27345d441b0e323441683f84, type: 3}
@@ -17481,7 +17478,6 @@ MonoBehaviour:
   panelLeaderBoard: {fileID: 0}
   iconeOre:
   - {fileID: 21300000, guid: fb5407212040228499093a72ab3b1274, type: 3}
-  - {fileID: 21300000, guid: fb5407212040228499093a72ab3b1274, type: 3}
   - {fileID: 21300000, guid: 35b73cd616aa11b4ea28c3a9d54bac27, type: 3}
   - {fileID: 21300000, guid: 8e0e662e27345d441b0e323441683f84, type: 3}
   - {fileID: 21300000, guid: b726beed717d3ab4798c4871c18f139a, type: 3}
@@ -18749,7 +18745,6 @@ MonoBehaviour:
   panelLeaderBoard: {fileID: 0}
   iconeOre:
   - {fileID: 21300000, guid: fb5407212040228499093a72ab3b1274, type: 3}
-  - {fileID: 21300000, guid: fb5407212040228499093a72ab3b1274, type: 3}
   - {fileID: 21300000, guid: 35b73cd616aa11b4ea28c3a9d54bac27, type: 3}
   - {fileID: 21300000, guid: 8e0e662e27345d441b0e323441683f84, type: 3}
   - {fileID: 21300000, guid: b726beed717d3ab4798c4871c18f139a, type: 3}
@@ -19991,7 +19986,6 @@ MonoBehaviour:
   idShip: 0
   panelLeaderBoard: {fileID: 0}
   iconeOre:
-  - {fileID: 21300000, guid: fb5407212040228499093a72ab3b1274, type: 3}
   - {fileID: 21300000, guid: fb5407212040228499093a72ab3b1274, type: 3}
   - {fileID: 21300000, guid: 35b73cd616aa11b4ea28c3a9d54bac27, type: 3}
   - {fileID: 21300000, guid: 8e0e662e27345d441b0e323441683f84, type: 3}
@@ -24045,7 +24039,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0
+  m_Volume: 0.307
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -39854,7 +39848,6 @@ MonoBehaviour:
   panelLeaderBoard: {fileID: 0}
   iconeOre:
   - {fileID: 21300000, guid: fb5407212040228499093a72ab3b1274, type: 3}
-  - {fileID: 21300000, guid: fb5407212040228499093a72ab3b1274, type: 3}
   - {fileID: 21300000, guid: 35b73cd616aa11b4ea28c3a9d54bac27, type: 3}
   - {fileID: 21300000, guid: 8e0e662e27345d441b0e323441683f84, type: 3}
   - {fileID: 21300000, guid: b726beed717d3ab4798c4871c18f139a, type: 3}
@@ -47547,7 +47540,6 @@ MonoBehaviour:
   panelLeaderBoard: {fileID: 0}
   iconeOre:
   - {fileID: 21300000, guid: fb5407212040228499093a72ab3b1274, type: 3}
-  - {fileID: 21300000, guid: fb5407212040228499093a72ab3b1274, type: 3}
   - {fileID: 21300000, guid: 35b73cd616aa11b4ea28c3a9d54bac27, type: 3}
   - {fileID: 21300000, guid: 8e0e662e27345d441b0e323441683f84, type: 3}
   - {fileID: 21300000, guid: b726beed717d3ab4798c4871c18f139a, type: 3}
@@ -53371,7 +53363,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5061638427442196155, guid: 23daa449451104dfe9602a85590d6045, type: 3}
       propertyPath: m_Value
-      value: 0
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 5061638427442196156, guid: 23daa449451104dfe9602a85590d6045, type: 3}
       propertyPath: m_Pivot.x
@@ -59459,7 +59451,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0
+  m_Volume: 1
   m_Pitch: 1
   Loop: 1
   Mute: 0

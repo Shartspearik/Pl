@@ -368,24 +368,25 @@ public class MenegerUI : MonoBehaviour
                     return;
                 }
             case 2:
-                if (YG2.saves.countOre[0] >= 10 && YG2.saves.countOre[1] >= 300000)
+                if (YG2.saves.countOre[0] >= 1250000 && YG2.saves.countOre[1] >= 300000)
                 {
-                    YG2.saves.countOre[0] -= 10;
+                    YG2.saves.countOre[0] -= 1250000;
                     YG2.saves.countOre[1] -= 300000;
                     break;
                 }
                 else
+                //878000000 47300000000 1250000 300000
                 {
                     VisualizePurchase(false, 0);
                     sound.PlaySound(3);
                     return;
                 }
             case 3:
-                if (YG2.saves.countOre[0] >= 10 && YG2.saves.countOre[1] >= 10 && YG2.saves.countOre[2] >= 10)
+                if (YG2.saves.countOre[0] >= 47300000000 && YG2.saves.countOre[1] >= 1250000 && YG2.saves.countOre[2] >= 300000)
                 {
-                    YG2.saves.countOre[0] -= 10;
-                    YG2.saves.countOre[1] -= 10;
-                    YG2.saves.countOre[2] -= 10;
+                    YG2.saves.countOre[0] -= 47300000000;
+                    YG2.saves.countOre[1] -= 1250000;
+                    YG2.saves.countOre[2] -= 300000;
                     break;
                 }
                 else
@@ -395,12 +396,12 @@ public class MenegerUI : MonoBehaviour
                     return;
                 }
             case 4:
-                if (YG2.saves.countOre[0] >= 10 && YG2.saves.countOre[1] >= 10 && YG2.saves.countOre[2] >= 10 && YG2.saves.countOre[3] >= 10)
+                if (YG2.saves.countOre[0] >= 878000000 && YG2.saves.countOre[1] >= 47300000000 && YG2.saves.countOre[2] >= 1250000 && YG2.saves.countOre[3] >= 300000)
                 {
-                    YG2.saves.countOre[0] -= 10;
+                    YG2.saves.countOre[0] -= 878000000;
                     YG2.saves.countOre[1] -= 10;
-                    YG2.saves.countOre[2] -= 10;
-                    YG2.saves.countOre[3] -= 10;
+                    YG2.saves.countOre[2] -= 1250000;
+                    YG2.saves.countOre[3] -= 300000;
                     break;
                 }
                 else
@@ -410,13 +411,13 @@ public class MenegerUI : MonoBehaviour
                     return;
                 }
             case 5:
-                if (YG2.saves.countOre[0] >= 10 && YG2.saves.countOre[1] >= 10 && YG2.saves.countOre[2] >= 10 && YG2.saves.countOre[3] >= 10 && YG2.saves.countOre[4] >= 10)
+                if (YG2.saves.countOre[0] >= 878000000 && YG2.saves.countOre[1] >= 878000000 && YG2.saves.countOre[2] >= 47300000000 && YG2.saves.countOre[3] >= 1250000 && YG2.saves.countOre[4] >= 300000)
                 {
-                    YG2.saves.countOre[0] -= 10;
-                    YG2.saves.countOre[1] -= 10;
-                    YG2.saves.countOre[2] -= 10;
-                    YG2.saves.countOre[3] -= 10;
-                    YG2.saves.countOre[4] -= 10;
+                    YG2.saves.countOre[0] -= 878000000;
+                    YG2.saves.countOre[1] -= 878000000;
+                    YG2.saves.countOre[2] -= 47300000000;
+                    YG2.saves.countOre[3] -= 1250000;
+                    YG2.saves.countOre[4] -= 300000;
                     break;
                 }
                 else
@@ -426,14 +427,13 @@ public class MenegerUI : MonoBehaviour
                     return;
                 }
             case 6:
-                if (YG2.saves.countOre[0] >= 10 && YG2.saves.countOre[1] >= 10 && YG2.saves.countOre[2] >= 10 && YG2.saves.countOre[3] >= 10 && YG2.saves.countOre[4] >= 10 && YG2.saves.countOre[5] >= 10)
+                if (YG2.saves.countOre[1] >= 878000000 && YG2.saves.countOre[2] >= 878000000 && YG2.saves.countOre[3] >= 47300000000 && YG2.saves.countOre[4] >= 1250000 && YG2.saves.countOre[5] >= 300000)
                 {
-                    YG2.saves.countOre[0] -= 10;
-                    YG2.saves.countOre[1] -= 10;
-                    YG2.saves.countOre[2] -= 10;
-                    YG2.saves.countOre[3] -= 10;
-                    YG2.saves.countOre[4] -= 10;
-                    YG2.saves.countOre[5] -= 10;
+                    YG2.saves.countOre[1] -= 878000000;
+                    YG2.saves.countOre[2] -= 878000000;
+                    YG2.saves.countOre[3] -= 47300000000;
+                    YG2.saves.countOre[4] -= 1250000;
+                    YG2.saves.countOre[5] -= 300000;
                     break;
                 }
                 else
@@ -442,14 +442,13 @@ public class MenegerUI : MonoBehaviour
                     return;
                 }
             case 7:
-                if (YG2.saves.countOre[6] >= 10 && YG2.saves.countOre[1] >= 10 && YG2.saves.countOre[2] >= 10 && YG2.saves.countOre[3] >= 10 && YG2.saves.countOre[4] >= 10 && YG2.saves.countOre[5] >= 10)
+                if (YG2.saves.countOre[2] >= 878000000 && YG2.saves.countOre[3] >= 878000000 && YG2.saves.countOre[4] >= 47300000000 && YG2.saves.countOre[5] >= 1250000 && YG2.saves.countOre[6] >= 300000)
                 {
-                    YG2.saves.countOre[6] -= 10;
-                    YG2.saves.countOre[1] -= 10;
-                    YG2.saves.countOre[2] -= 10;
-                    YG2.saves.countOre[3] -= 10;
-                    YG2.saves.countOre[4] -= 10;
-                    YG2.saves.countOre[5] -= 10;
+                    YG2.saves.countOre[2] -= 878000000;
+                    YG2.saves.countOre[3] -= 878000000;
+                    YG2.saves.countOre[4] -= 47300000000;
+                    YG2.saves.countOre[5] -= 1250000; 
+                    YG2.saves.countOre[6] -= 300000;
                     break;
                 }
                 else
@@ -503,7 +502,7 @@ public class MenegerUI : MonoBehaviour
         number.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = iconOre[id];
         AnimateMoneyGain(orePanels[id]);
         YG2.saves.countOre[id] += Parametrs.Ore(id);
-        YG2.saves.liderBoard += Parametrs.Ore(id) * Mathf.Pow(1.3f, id) / 50;
+        YG2.saves.liderBoard += Parametrs.Ore(id) * Mathf.Pow(1.3f, id) / 500;
     }
 
     public void PrintOreClick(int id)
@@ -514,7 +513,7 @@ public class MenegerUI : MonoBehaviour
         number.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = iconOre[id];
         AnimateMoneyGain(orePanels[id]);
         YG2.saves.countOre[id] += Parametrs.Click(id);
-        YG2.saves.liderBoard += Parametrs.Click(id) * Mathf.Pow(1.3f, id) / 50;
+        YG2.saves.liderBoard += Parametrs.Click(id) * Mathf.Pow(1.3f, id) / 500;
     }
 
     public void RewardShip()

@@ -7,64 +7,64 @@
         false,
         false
     ],
-    "idSave": 42,
+    "idSave": 220,
     "nowShip": 0,
     "countBuyPlanet": 2,
-    "countReadyPlanet": 1,
+    "countReadyPlanet": 6,
     "nodes1": [
         {
             "id": 1,
             "requirements": [],
             "unlocked": true,
-            "upgraded": false
+            "upgraded": true
         },
         {
             "id": 2,
             "requirements": [
                 1
             ],
-            "unlocked": false,
-            "upgraded": false
+            "unlocked": true,
+            "upgraded": true
         },
         {
             "id": 3,
             "requirements": [
                 2
             ],
-            "unlocked": false,
-            "upgraded": false
+            "unlocked": true,
+            "upgraded": true
         },
         {
             "id": 4,
             "requirements": [
                 3
             ],
-            "unlocked": false,
-            "upgraded": false
+            "unlocked": true,
+            "upgraded": true
         },
         {
             "id": 5,
             "requirements": [
                 4
             ],
-            "unlocked": false,
-            "upgraded": false
+            "unlocked": true,
+            "upgraded": true
         },
         {
             "id": 6,
             "requirements": [
                 4
             ],
-            "unlocked": false,
-            "upgraded": false
+            "unlocked": true,
+            "upgraded": true
         },
         {
             "id": 7,
             "requirements": [
                 4
             ],
-            "unlocked": false,
-            "upgraded": false
+            "unlocked": true,
+            "upgraded": true
         },
         {
             "id": 8,
@@ -72,8 +72,8 @@
                 5,
                 6
             ],
-            "unlocked": false,
-            "upgraded": false
+            "unlocked": true,
+            "upgraded": true
         },
         {
             "id": 9,
@@ -81,8 +81,8 @@
                 6,
                 7
             ],
-            "unlocked": false,
-            "upgraded": false
+            "unlocked": true,
+            "upgraded": true
         },
         {
             "id": 10,
@@ -90,8 +90,8 @@
                 8,
                 9
             ],
-            "unlocked": false,
-            "upgraded": false
+            "unlocked": true,
+            "upgraded": true
         }
     ],
     "nodes2": [
@@ -99,31 +99,31 @@
             "id": 1,
             "requirements": [],
             "unlocked": true,
-            "upgraded": false
+            "upgraded": true
         },
         {
             "id": 2,
             "requirements": [
                 1
             ],
-            "unlocked": false,
-            "upgraded": false
+            "unlocked": true,
+            "upgraded": true
         },
         {
             "id": 3,
             "requirements": [
                 1
             ],
-            "unlocked": false,
-            "upgraded": false
+            "unlocked": true,
+            "upgraded": true
         },
         {
             "id": 4,
             "requirements": [
                 2
             ],
-            "unlocked": false,
-            "upgraded": false
+            "unlocked": true,
+            "upgraded": true
         },
         {
             "id": 5,
@@ -131,16 +131,16 @@
                 2,
                 3
             ],
-            "unlocked": false,
-            "upgraded": false
+            "unlocked": true,
+            "upgraded": true
         },
         {
             "id": 6,
             "requirements": [
                 3
             ],
-            "unlocked": false,
-            "upgraded": false
+            "unlocked": true,
+            "upgraded": true
         },
         {
             "id": 7,
@@ -149,15 +149,15 @@
                 5,
                 6
             ],
-            "unlocked": false,
-            "upgraded": false
+            "unlocked": true,
+            "upgraded": true
         },
         {
             "id": 8,
             "requirements": [
                 7
             ],
-            "unlocked": false,
+            "unlocked": true,
             "upgraded": false
         },
         {
@@ -165,16 +165,16 @@
             "requirements": [
                 7
             ],
-            "unlocked": false,
-            "upgraded": false
+            "unlocked": true,
+            "upgraded": true
         },
         {
             "id": 10,
             "requirements": [
                 7
             ],
-            "unlocked": false,
-            "upgraded": false
+            "unlocked": true,
+            "upgraded": true
         },
         {
             "id": 11,
@@ -191,7 +191,7 @@
                 9,
                 10
             ],
-            "unlocked": false,
+            "unlocked": true,
             "upgraded": false
         },
         {
@@ -915,8 +915,8 @@
         1
     ],
     "countBuffsClick": [
-        0,
-        0,
+        5,
+        4,
         0,
         0,
         0,
@@ -925,7 +925,7 @@
         0
     ],
     "buffTreeSpeedShip": [
-        false,
+        true,
         false,
         false,
         false,
@@ -934,7 +934,7 @@
         false
     ],
     "buffTreeCloudShip": [
-        0,
+        2,
         0,
         0,
         0,
@@ -944,7 +944,7 @@
         0
     ],
     "buffTreeCloudMine": [
-        false,
+        true,
         false,
         false,
         false,
@@ -954,7 +954,7 @@
         false
     ],
     "buffTreeSpeedMine": [
-        false,
+        true,
         false,
         false,
         false,
@@ -964,7 +964,7 @@
         false
     ],
     "buffTreeECO": [
-        false,
+        true,
         false,
         false,
         false,
@@ -974,8 +974,8 @@
         false
     ],
     "buffTreePrice": [
-        false,
-        false,
+        true,
+        true,
         false,
         false,
         false,
@@ -984,8 +984,8 @@
         false
     ],
     "buffTreeAFKfarm": [
-        false,
-        false,
+        true,
+        true,
         false,
         false,
         false,
@@ -1064,7 +1064,7 @@
         0
     ],
     "bankNow": [
-        50.0,
+        150.0,
         0.0,
         0.0,
         0.0,
@@ -1081,17 +1081,17 @@
         false
     ],
     "countOre": [
-        99999710678.31947,
-        100000000000.0,
-        100000000000.0,
-        100000000000.0,
-        100000000000.0,
-        100000000000.0,
-        100000000000.0,
-        100000000000.0
+        78575.81003039039,
+        9999999999647300.0,
+        10000000000000000.0,
+        10000000000000000.0,
+        10000000000000000.0,
+        10000000000000000.0,
+        10000000000000000.0,
+        10000000000000000.0
     ],
     "countOreBank": [
-        0.0,
+        9999999999296300.0,
         0.0,
         0.0,
         0.0,
@@ -1111,7 +1111,7 @@
         0,
         0
     ],
-    "shopTimer": 1760982167819,
+    "shopTimer": 1761044467018,
     "shopOre": [
         0,
         0,
@@ -1126,6 +1126,12 @@
     "gems": 0,
     "indexUp": 1.0,
     "indexPrice": 1.2999999523162842,
-    "liderBoard": 279.7263883425545,
-    "deposits": []
+    "liderBoard": 341.8920093726653,
+    "deposits": [
+        {
+            "amount": 9999999999296300,
+            "index": 0,
+            "timeUnix": 1761042938
+        }
+    ]
 }

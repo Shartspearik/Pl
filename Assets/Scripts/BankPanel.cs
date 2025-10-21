@@ -15,7 +15,7 @@ public class BankPanel : MonoBehaviour
 
     public Stats stats;
 
-    private double percentPerHour = 100.0;
+    private double percentPerHour = 3;
     private const int maxDeposits = 10;
     private bool bankActivated = false;
 

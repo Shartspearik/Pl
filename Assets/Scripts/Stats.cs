@@ -237,7 +237,7 @@ public static class Parametrs
     public static float SpeedShip(int id)
     {
         int exponent = Mathf.Max(YG2.saves.countBuffs3[id], 0);
-        float baseSpeed = 0.3f * (float)System.Math.Pow(1.05, exponent);
+        float baseSpeed = 0.3f * (float)System.Math.Pow(1.03, exponent);
         baseSpeed += YG2.saves.buffTreeSpeedShip[id] ? baseSpeed * 1.5f : 0f;
         return baseSpeed;
     }
@@ -245,7 +245,7 @@ public static class Parametrs
     public static double CloudShip(int id)
     {
         int exponent = Mathf.Max(YG2.saves.countBuffs4[id] - 1, 0);
-        double cloud = 50 * System.Math.Pow(1.2, exponent);
+        double cloud = 75 * System.Math.Pow(1.21, exponent);
         switch (YG2.saves.buffTreeCloudShip[id])
         {
             case 1:
@@ -260,9 +260,30 @@ public static class Parametrs
 
     public static double Click(int id)
     {
-        double ore = 1 + 100 * YG2.saves.countBuffsClick[id];
-        ore = YG2.saves.x2ores > 0 ? ore * 2 : ore;
-        return ore;
+        int count = 0;
+        switch (YG2.saves.countBuffsClick[id])
+        {
+            case 0:
+                count = 1;
+                break;
+            case 1:
+                count = 3;
+                break;
+            case 2:
+                count = 10;
+                break;
+            case 3:
+                count = 100;
+                break;
+            case 4:
+                count = 1000;
+                break;
+            case 5:
+                count = 15000;
+                break;
+        }
+        count = YG2.saves.x2ores > 0 ? count * 2 : count;
+        return count;
     }
 
     public static double Ore(int id)
@@ -353,7 +374,7 @@ public class Stats : MonoBehaviour
 
             for (int i = 0; i < YG2.saves.countOre.Count; i++)
             {
-                YG2.saves.countOre[i] = 100000000000;
+                YG2.saves.countOre[i] = 10000000000000000;
             }
         }
         if (Input.GetKeyDown(KeyCode.E))
@@ -434,7 +455,7 @@ public class Stats : MonoBehaviour
 
     public void CheckBuff15(int idBuff)
     {
-        idShip = panelBuff.currentPlanet == 0 ? 7 : panelBuff.currentPlanet;
+        idShip = panelBuff.currentPlanet == 0 ? 7 : panelBuff.currentPlanet - 1;
 
         panelBuff.price[idBuff - 1].SetActive(true);
         menegerUI.buttons[idBuff - 1].GetComponent<Button>().interactable = true;
@@ -447,7 +468,7 @@ public class Stats : MonoBehaviour
         bool cloudMaxOk = false;
         int index = idShip;
 
-        int targetValue = idShip == 7 ? YG2.saves.countBuyPlanet * 15 : (YG2.saves.countBuyPlanet - idShip) * 15;
+        int targetValue = idShip == 7 ? YG2.saves.countBuyPlanet * 15 : (YG2.saves.countBuyPlanet - idShip - 1) * 15;
         targetValue = targetValue > 60 ? 60 : targetValue;
         if (idShip == 7)
         {
@@ -456,11 +477,11 @@ public class Stats : MonoBehaviour
         }
         else
         {
-            speedMineOk = YG2.saves.countBuffs1[idShip - 1] == targetValue;
-            countMineOk = YG2.saves.countBuffs2[idShip - 1] == targetValue;
-            speedOk = YG2.saves.countBuffs3[idShip - 1] == targetValue;
-            cloudMaxOk = YG2.saves.countBuffs4[idShip - 1] == targetValue;
-            countOk = YG2.saves.countBuffs5[idShip - 1] == targetValue;
+            speedMineOk = YG2.saves.countBuffs1[idShip] == targetValue;
+            countMineOk = YG2.saves.countBuffs2[idShip] == targetValue;
+            speedOk = YG2.saves.countBuffs3[idShip] == targetValue;
+            cloudMaxOk = YG2.saves.countBuffs4[idShip] == targetValue;
+            countOk = YG2.saves.countBuffs5[idShip] == targetValue;
         }
 
 
@@ -526,58 +547,58 @@ public class Stats : MonoBehaviour
         {
             case 1:
                 isON =
-                    YG2.saves.countBuffs3.SequenceEqual(new int[] { 1, 1, 1, 1, 1, 1, 1, 1 }) &&
-                    YG2.saves.countBuffs4.SequenceEqual(new int[] { 1, 1, 1, 1, 1, 1, 1, 1 }) &&
                     YG2.saves.countBuffs1.SequenceEqual(new int[] { 1, 1, 1, 1, 1, 1, 1, 15 }) &&
                     YG2.saves.countBuffs2.SequenceEqual(new int[] { 1, 1, 1, 1, 1, 1, 1, 15 }) &&
+                    YG2.saves.countBuffs3.SequenceEqual(new int[] { 1, 1, 1, 1, 1, 1, 1, 1 }) &&
+                    YG2.saves.countBuffs4.SequenceEqual(new int[] { 1, 1, 1, 1, 1, 1, 1, 1 }) &&
                     YG2.saves.countBuffs5.SequenceEqual(new int[] { 1, 1, 1, 1, 1, 1, 1, 1 });
                 break;
             case 2:
                 isON =
-                    YG2.saves.countBuffs3.SequenceEqual(new int[] { 15, 1, 1, 1, 1, 1, 1, 1 }) &&
-                    YG2.saves.countBuffs4.SequenceEqual(new int[] { 15, 1, 1, 1, 1, 1, 1, 1 }) &&
                     YG2.saves.countBuffs1.SequenceEqual(new int[] { 15, 1, 1, 1, 1, 1, 1, 30 }) &&
                     YG2.saves.countBuffs2.SequenceEqual(new int[] { 15, 1, 1, 1, 1, 1, 1, 30 }) &&
+                    YG2.saves.countBuffs3.SequenceEqual(new int[] { 15, 1, 1, 1, 1, 1, 1, 1 }) &&
+                    YG2.saves.countBuffs4.SequenceEqual(new int[] { 15, 1, 1, 1, 1, 1, 1, 1 }) &&
                     YG2.saves.countBuffs5.SequenceEqual(new int[] { 15, 1, 1, 1, 1, 1, 1, 1 });
                 break;
             case 3:
                 isON =
-                    YG2.saves.countBuffs3.SequenceEqual(new int[] { 30, 15, 1, 1, 1, 1, 1, 1 }) &&
-                    YG2.saves.countBuffs4.SequenceEqual(new int[] { 30, 15, 1, 1, 1, 1, 1, 1 }) &&
                     YG2.saves.countBuffs1.SequenceEqual(new int[] { 30, 15, 1, 1, 1, 1, 1, 45 }) &&
                     YG2.saves.countBuffs2.SequenceEqual(new int[] { 30, 15, 1, 1, 1, 1, 1, 45 }) &&
+                    YG2.saves.countBuffs3.SequenceEqual(new int[] { 30, 15, 1, 1, 1, 1, 1, 1 }) &&
+                    YG2.saves.countBuffs4.SequenceEqual(new int[] { 30, 15, 1, 1, 1, 1, 1, 1 }) &&
                     YG2.saves.countBuffs5.SequenceEqual(new int[] { 30, 15, 1, 1, 1, 1, 1, 1 });
                 break;
             case 4:
                 isON =
-                    YG2.saves.countBuffs3.SequenceEqual(new int[] { 45, 30, 15, 1, 1, 1, 1, 1 }) &&
-                    YG2.saves.countBuffs4.SequenceEqual(new int[] { 45, 30, 15, 1, 1, 1, 1, 1 }) &&
                     YG2.saves.countBuffs1.SequenceEqual(new int[] { 45, 30, 15, 1, 1, 1, 1, 60 }) &&
                     YG2.saves.countBuffs2.SequenceEqual(new int[] { 45, 30, 15, 1, 1, 1, 1, 60 }) &&
+                    YG2.saves.countBuffs3.SequenceEqual(new int[] { 45, 30, 15, 1, 1, 1, 1, 1 }) &&
+                    YG2.saves.countBuffs4.SequenceEqual(new int[] { 45, 30, 15, 1, 1, 1, 1, 1 }) &&
                     YG2.saves.countBuffs5.SequenceEqual(new int[] { 45, 30, 15, 1, 1, 1, 1, 1 });
                 break;
             case 5:
                 isON =
-                    YG2.saves.countBuffs3.SequenceEqual(new int[] { 60, 45, 30, 15, 1, 1, 1, 1 }) &&
-                    YG2.saves.countBuffs4.SequenceEqual(new int[] { 60, 45, 30, 15, 1, 1, 1, 1 }) &&
                     YG2.saves.countBuffs1.SequenceEqual(new int[] { 60, 45, 30, 15, 1, 1, 1, 60 }) &&
                     YG2.saves.countBuffs2.SequenceEqual(new int[] { 60, 45, 30, 15, 1, 1, 1, 60 }) &&
+                    YG2.saves.countBuffs3.SequenceEqual(new int[] { 60, 45, 30, 15, 1, 1, 1, 1 }) &&
+                    YG2.saves.countBuffs4.SequenceEqual(new int[] { 60, 45, 30, 15, 1, 1, 1, 1 }) &&
                     YG2.saves.countBuffs5.SequenceEqual(new int[] { 60, 45, 30, 15, 1, 1, 1, 1 });
                 break;
             case 6:
                 isON =
+                    YG2.saves.countBuffs1.SequenceEqual(new int[] { 60, 60, 45, 30, 15, 1, 1, 60 }) &&
+                    YG2.saves.countBuffs2.SequenceEqual(new int[] { 60, 60, 45, 30, 15, 1, 1, 60 }) &&
                     YG2.saves.countBuffs3.SequenceEqual(new int[] { 60, 60, 45, 30, 15, 1, 1, 1 }) &&
                     YG2.saves.countBuffs4.SequenceEqual(new int[] { 60, 60, 45, 30, 15, 1, 1, 1 }) &&
-                    YG2.saves.countBuffs1.SequenceEqual(new int[] { 60, 60, 45, 30, 15, 1, 1, 60 }) &&
-                    YG2.saves.countBuffs2.SequenceEqual(new int[] { 60, 60, 45, 30, 15, 1, 1, 15 }) &&
                     YG2.saves.countBuffs5.SequenceEqual(new int[] { 60, 60, 45, 30, 15, 1, 1, 1 });
                 break;
             case 7:
                 isON =
-                    YG2.saves.countBuffs3.SequenceEqual(new int[] { 60, 60, 60, 45, 30, 15, 1, 1 }) &&
-                    YG2.saves.countBuffs4.SequenceEqual(new int[] { 60, 60, 60, 45, 30, 15, 1, 1 }) &&
                     YG2.saves.countBuffs1.SequenceEqual(new int[] { 60, 60, 60, 45, 30, 15, 1, 60 }) &&
                     YG2.saves.countBuffs2.SequenceEqual(new int[] { 60, 60, 60, 45, 30, 15, 1, 60 }) &&
+                    YG2.saves.countBuffs3.SequenceEqual(new int[] { 60, 60, 60, 45, 30, 15, 1, 1 }) &&
+                    YG2.saves.countBuffs4.SequenceEqual(new int[] { 60, 60, 60, 45, 30, 15, 1, 1 }) &&
                     YG2.saves.countBuffs5.SequenceEqual(new int[] { 60, 60, 60, 45, 30, 15, 1, 1 });
                 break;
 
@@ -794,7 +815,7 @@ public class Stats : MonoBehaviour
         int countOrs = 0;
         int buff = 0;
         int allPrice = 0;
-        int price = 0;
+        long price = 0;
 
         switch (idBuff)
         {
@@ -982,7 +1003,7 @@ public class Stats : MonoBehaviour
 
 
 
-    public int PriseOre(int buff, int idOre, int idShip)
+    public long PriseOre(int buff, int idOre, int idShip)
     {
         double baseValue = 10;
         double exponentBase = YG2.saves.indexPrice;
@@ -1022,7 +1043,7 @@ public class Stats : MonoBehaviour
             price *= 0.8;
         }
 
-        return (int)price;
+        return (long)price;
     }
     #endregion
 

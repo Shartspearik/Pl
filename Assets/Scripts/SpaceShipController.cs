@@ -1,15 +1,15 @@
-using UnityEngine;
+п»їusing UnityEngine;
 using YG;
 
 public class SpaceShipController : MonoBehaviour
 {
     public GameObject planetParant;
-    public Transform targetPlanet; // Целевая планета (таргет)
-    public float speed = 5f; // Скорость движения по направлению
-    public float rotationSpeed = 200f; // Скорость вращения корабля
-    public float detectionDistance = 2f; // Расстояние для обнаружения планеты
-    public float orbitRadius = 2f; // Радиус орбиты (используется как базовое значение)
-    public float orbitSpeed = 100f; // Скорость вращения по орбите (градусов в секунду)
+    public Transform targetPlanet; // Р¦РµР»РµРІР°СЏ РїР»Р°РЅРµС‚Р° (С‚Р°СЂРіРµС‚)
+    public float speed = 5f; // РЎРєРѕСЂРѕСЃС‚СЊ РґРІРёР¶РµРЅРёСЏ РїРѕ РЅР°РїСЂР°РІР»РµРЅРёСЋ
+    public float rotationSpeed = 200f; // РЎРєРѕСЂРѕСЃС‚СЊ РІСЂР°С‰РµРЅРёСЏ РєРѕСЂР°Р±Р»СЏ
+    public float detectionDistance = 0.1f; // РћС‡РµРЅСЊ РјР°Р»РµРЅСЊРєРѕРµ СЂР°СЃСЃС‚РѕСЏРЅРёРµ вЂ” РєР°Рє С‚С‹ С…РѕС‡РµС€СЊ!
+    public float orbitRadius = 2f; // РќРµ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РЅР°РїСЂСЏРјСѓСЋ
+    public float orbitSpeed = 100f; // РЎРєРѕСЂРѕСЃС‚СЊ РІСЂР°С‰РµРЅРёСЏ РїРѕ РѕСЂР±РёС‚Рµ (РіСЂР°РґСѓСЃРѕРІ РІ СЃРµРєСѓРЅРґСѓ)
 
     public bool isOrbiting = false;
     private float orbitAngle;
@@ -25,8 +25,9 @@ public class SpaceShipController : MonoBehaviour
     public int HPRegen;
     public int id;
 
-    private float currentOrbitRadius; // Текущий радиус орбиты
-    private int orbitDirection = 1; // 1 - по часовой, -1 - против часовой
+    private float currentOrbitRadius; // РўРµРєСѓС‰РёР№ СЂР°РґРёСѓСЃ РѕСЂР±РёС‚С‹
+    private int orbitDirection = 1; // 1 - РїРѕ С‡Р°СЃРѕРІРѕР№, -1 - РїСЂРѕС‚РёРІ С‡Р°СЃРѕРІРѕР№
+    private bool orbitDirectionSet = false;
 
     private void Start()
     {
@@ -36,7 +37,7 @@ public class SpaceShipController : MonoBehaviour
         }
         else
         {
-            rangPlanet = 1f; // Значение по умолчанию, если целевая планета не назначена
+            rangPlanet = 1f;
         }
     }
 
@@ -46,18 +47,17 @@ public class SpaceShipController : MonoBehaviour
         {
             OrbitAroundPlanet();
 
-            // Проверка, мешает ли текущая планета продолжать орбиту
             if (!IsPlanetBlocking())
             {
                 isOrbiting = false;
+                orbitDirectionSet = false;
             }
             else
             {
-                // Проверка угла между целевой планетой и текущей орбитальной планетой
                 if (ArePlanetsAtWideAngle())
                 {
-                    // Если угол >= 90°, отцепляемся от текущей планеты
                     isOrbiting = false;
+                    orbitDirectionSet = false;
                 }
             }
         }
@@ -69,7 +69,6 @@ public class SpaceShipController : MonoBehaviour
             {
                 targetPlanet.GetComponent<Planet>().FinishShip();
 
-                
                 if (targetPlanet.gameObject == earth)
                 {
                     menegerUI.PrintOre(id);
@@ -86,32 +85,25 @@ public class SpaceShipController : MonoBehaviour
 
     void DetectPlanetAndMove()
     {
+        // РСЃРїРѕР»СЊР·СѓРµРј РѕС‡РµРЅСЊ РєРѕСЂРѕС‚РєРёР№ Р»СѓС‡ (0.1f)
         RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.up, detectionDistance);
-        if (hit.collider != null && hit.collider.CompareTag("Planet") && hit.collider.gameObject != targetPlanet.gameObject && hit.collider.gameObject != planetParant)
+        if (hit.collider != null &&
+            hit.collider.CompareTag("Planet") &&
+            hit.collider.gameObject != targetPlanet?.gameObject &&
+            hit.collider.gameObject != planetParant)
         {
+            // РќР°С‡РёРЅР°РµРј РѕСЂР±РёС‚Сѓ РЅРµРјРµРґР»РµРЅРЅРѕ вЂ” РґР°Р¶Рµ РµСЃР»Рё РІРЅСѓС‚СЂРё
             StartOrbiting(hit.collider.transform);
-            currentOrbitPlanet = hit.collider.transform; // запоминаем текущую орбитальную планету
-
-            // После попадания на новую планету вычисляем и выводим угол
-            bool isTargetOnRightSide = CalculateAngle();
-
-            // Устанавливаем направление вращения
-            orbitDirection = isTargetOnRightSide ? 1 : -1;
-
+            currentOrbitPlanet = hit.collider.transform;
             return;
         }
 
-        if (targetPlanet == null)
-            return;
+        if (targetPlanet == null) return;
 
         Vector2 direction = (targetPlanet.position - transform.position).normalized;
-
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         targetRotation = Quaternion.Euler(0, 0, angle - 90);
-
-        // Плавное вращение к целевому направлению
         transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
-
         transform.position += transform.up * speed * Time.deltaTime;
     }
 
@@ -120,108 +112,98 @@ public class SpaceShipController : MonoBehaviour
         isOrbiting = true;
         currentOrbitPlanet = planet;
 
+        Planet planetScript = planet.GetComponent<Planet>();
+        float planetRadius = planetScript != null ? planetScript.radius : 1f;
+
         Vector3 offset = transform.position - planet.position;
         float currentDistance = offset.magnitude;
 
-        // Устанавливаем текущий радиус орбиты равным текущему расстоянию
-        currentOrbitRadius = currentDistance;
+        // рџ”Ґ РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј РјРёРЅРёРјР°Р»СЊРЅС‹Р№ СЂР°РґРёСѓСЃ РѕСЂР±РёС‚С‹, РќРћ РќР• РїРµСЂРµРјРµС‰Р°РµРј РєРѕСЂР°Р±Р»СЊ!
+        currentOrbitRadius = Mathf.Max(currentDistance, planetRadius + 0.1f);
 
-        // Обеспечиваем, что позиция находится на правильном радиусе
-        if (Mathf.Abs(currentDistance - currentOrbitRadius) > 0.1f)
-        {
-            float scaleFactor = currentOrbitRadius / currentDistance;
-            transform.position = planet.position + offset * scaleFactor;
-        }
+        // рџ”Ґ Р’РђР–РќРћ: РќР• РјРµРЅСЏРµРј transform.position вЂ” РєРѕСЂР°Р±Р»СЊ РѕСЃС‚Р°С‘С‚СЃСЏ РЅР° РјРµСЃС‚Рµ!
 
         orbitAngle = Mathf.Atan2(transform.position.y - planet.position.y,
-                                   transform.position.x - planet.position.x) * Mathf.Rad2Deg;
+                                 transform.position.x - planet.position.x) * Mathf.Rad2Deg;
 
-        // Плавное вращение корабля в сторону орбитальной точки
-        Vector3 directionToStartOrbitPoint = new Vector3(
+        // РџРµСЂРµСЃС‡РёС‚С‹РІР°РµРј РЅР°РїСЂР°РІР»РµРЅРёРµ РѕР±Р»С‘С‚Р°
+        orbitDirectionSet = false;
+        bool isTargetOnRightSide = CalculateAngle();
+        orbitDirection = isTargetOnRightSide ? 1 : -1;
+        orbitDirectionSet = true;
+
+        // РћСЂРёРµРЅС‚Р°С†РёСЏ РєРѕСЂР°Р±Р»СЏ РїРѕ РєР°СЃР°С‚РµР»СЊРЅРѕР№
+        Vector3 directionToStart = new Vector3(
             Mathf.Cos(orbitAngle * Mathf.Deg2Rad),
             Mathf.Sin(orbitAngle * Mathf.Deg2Rad),
-            0);
-
-        if (directionToStartOrbitPoint != Vector3.zero)
-            targetRotation = Quaternion.LookRotation(Vector3.forward, directionToStartOrbitPoint);
-
-        // После начала орбиты вычисляем и выводим угол между ракетой и таргетом относительно этой планеты
-
+            0
+        );
+        if (directionToStart != Vector3.zero)
+        {
+            targetRotation = Quaternion.LookRotation(Vector3.forward, directionToStart);
+            transform.rotation = targetRotation;
+        }
     }
 
     void OrbitAroundPlanet()
     {
-        if (currentOrbitPlanet == null)
-            return;
+        if (currentOrbitPlanet == null) return;
 
-        orbitAngle += orbitSpeed * Time.deltaTime * orbitDirection; // Угловая скорость в градусах
-
+        orbitAngle += orbitSpeed * Time.deltaTime * orbitDirection;
         float radian = orbitAngle * Mathf.Deg2Rad;
 
         float x = Mathf.Cos(radian) * currentOrbitRadius + currentOrbitPlanet.position.x;
         float y = Mathf.Sin(radian) * currentOrbitRadius + currentOrbitPlanet.position.y;
-
         Vector3 targetPosition = new Vector3(x, y, transform.position.z);
 
-        // Двигаемся к целевой точке с постоянной скоростью
-        float moveSpeed = orbitSpeed; // Можно настроить отдельно при необходимости
-        transform.position = Vector3.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
+        // Р”РІРёРіР°РµРјСЃСЏ Рє С‚РѕС‡РєРµ РѕСЂР±РёС‚С‹ СЃ С‚РµРєСѓС‰РµР№ СЃРєРѕСЂРѕСЃС‚СЊСЋ
+        transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
 
-        // Вращение в сторону касательной для ориентации корабля
+        // РћСЂРёРµРЅС‚Р°С†РёСЏ РїРѕ РєР°СЃР°С‚РµР»СЊРЅРѕР№
         Vector3 tangentDirection = new Vector3(-Mathf.Sin(radian), Mathf.Cos(radian), 0);
-
         if (tangentDirection != Vector3.zero)
+        {
             targetRotation = Quaternion.LookRotation(Vector3.forward, tangentDirection * orbitDirection);
-
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+        }
     }
 
+    // рџ”Ґ РСЃРїСЂР°РІР»РµРЅРѕ: РЅРµ РёСЃРїРѕР»СЊР·СѓРµРј Raycast СЃ 0.1f вЂ” РѕРЅ Р±РµСЃРїРѕР»РµР·РµРЅ
     bool IsPlanetBlocking()
     {
-        if (currentOrbitPlanet == null)
-            return false;
+        if (currentOrbitPlanet == null) return false;
 
-        Vector2 directionToPlanet = (currentOrbitPlanet.position - transform.position).normalized;
+        float distanceToCenter = Vector2.Distance(transform.position, currentOrbitPlanet.position);
+        Planet planetScript = currentOrbitPlanet.GetComponent<Planet>();
+        float planetRadius = planetScript != null ? planetScript.radius : 1f;
 
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, directionToPlanet, detectionDistance);
-
-        if (hit.collider != null && hit.collider.CompareTag("Planet"))
-            return true; // Планета мешает движению вперед
-
-        return false;
+        // РџР»Р°РЅРµС‚Р° "Р±Р»РѕРєРёСЂСѓРµС‚", РїРѕРєР° РєРѕСЂР°Р±Р»СЊ Р±Р»РёР·РєРѕ Рє РЅРµР№
+        return distanceToCenter < planetRadius + 0.5f;
     }
 
     bool ArePlanetsAtWideAngle()
     {
-        if (targetPlanet == null || currentOrbitPlanet == null)
-            return false;
+        if (targetPlanet == null || currentOrbitPlanet == null) return false;
 
-        Vector2 toTargetPlanets = targetPlanet.position - transform.position;
-        Vector2 toCurrentPlanets = currentOrbitPlanet.position - transform.position;
+        Vector2 toTarget = (Vector2)(targetPlanet.position - transform.position);
+        Vector2 toCurrent = (Vector2)(currentOrbitPlanet.position - transform.position);
 
-        float dotProduct = Vector2.Dot(toTargetPlanets.normalized, toCurrentPlanets.normalized);
-        dotProduct = Mathf.Clamp(dotProduct, -1f, 1f);
-        float angleDeg = Mathf.Acos(dotProduct) * Mathf.Rad2Deg;
-
-        return angleDeg >= 90f;
+        float dot = Vector2.Dot(toTarget.normalized, toCurrent.normalized);
+        dot = Mathf.Clamp(dot, -1f, 1f);
+        float angle = Mathf.Acos(dot) * Mathf.Rad2Deg;
+        return angle >= 90f;
     }
+
     bool CalculateAngle()
     {
-        // Вектор от планеты к ракете
         Vector2 vectorToShip = (Vector2)(transform.position - currentOrbitPlanet.position);
-        // Вектор от планеты к таргету
         Vector2 vectorToTarget = (Vector2)(targetPlanet.position - currentOrbitPlanet.position);
 
-        // Вычисляем углы каждого вектора относительно оси X
         float angleToShip = Mathf.Atan2(vectorToShip.y, vectorToShip.x) * Mathf.Rad2Deg;
         float angleToTarget = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg;
 
-        // Находим разницу между углами
         float deltaAngle = angleToTarget - angleToShip;
-
-        // Приводим к диапазону [0, 360]
-        if (deltaAngle < 0)
-            deltaAngle += 360f;
+        if (deltaAngle < 0) deltaAngle += 360f;
 
         return deltaAngle <= 180f;
     }

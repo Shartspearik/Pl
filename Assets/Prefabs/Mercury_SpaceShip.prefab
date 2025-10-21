@@ -49,9 +49,9 @@ MonoBehaviour:
   planetParant: {fileID: 0}
   targetPlanet: {fileID: 0}
   speed: 0.5
-  rotationSpeed: 1000
+  rotationSpeed: 11111
   detectionDistance: 0.1
-  orbitRadius: 0.05
+  orbitRadius: 0.1
   orbitSpeed: 100
   isOrbiting: 0
   rangPlanet: 0

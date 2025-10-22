@@ -344,47 +344,47 @@ public class Stats : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.S))
-        {
+        //if (Input.GetKeyDown(KeyCode.S))
+        //{
 
-            YG2.SaveProgress();
-        }
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
+        //    YG2.SaveProgress();
+        //}
+        //if (Input.GetKeyDown(KeyCode.Q))
+        //{
 
-            for (int i = 0; i < YG2.saves.countOre.Count; i++)
-            {
-                YG2.saves.countOre[i] = 0;
-            }
-        }
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-                YG2.saves.gems = 100;
+        //    for (int i = 0; i < YG2.saves.countOre.Count; i++)
+        //    {
+        //        YG2.saves.countOre[i] = 0;
+        //    }
+        //}
+        //if (Input.GetKeyDown(KeyCode.Z))
+        //{
+        //        YG2.saves.gems = 100;
 
-        }
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            YG2.saves.autoClick = 0;
-            YG2.saves.x2ores = 0;
-            YG2.saves.speedBoost = 0;
+        //}
+        //if (Input.GetKeyDown(KeyCode.X))
+        //{
+        //    YG2.saves.autoClick = 0;
+        //    YG2.saves.x2ores = 0;
+        //    YG2.saves.speedBoost = 0;
 
-        }
-        if (Input.GetKeyDown(KeyCode.W))
-        {
+        //}
+        //if (Input.GetKeyDown(KeyCode.W))
+        //{
 
-            for (int i = 0; i < YG2.saves.countOre.Count; i++)
-            {
-                YG2.saves.countOre[i] = 10000000000000000;
-            }
-        }
-        if (Input.GetKeyDown(KeyCode.E))
-        {
+        //    for (int i = 0; i < YG2.saves.countOre.Count; i++)
+        //    {
+        //        YG2.saves.countOre[i] = 10000000000000000;
+        //    }
+        //}
+        //if (Input.GetKeyDown(KeyCode.E))
+        //{
 
-            for (int i = 0; i < YG2.saves.countOre.Count; i++)
-            {
-                YG2.saves.countOre[i] = 100;
-            }
-        }
+        //    for (int i = 0; i < YG2.saves.countOre.Count; i++)
+        //    {
+        //        YG2.saves.countOre[i] = 100;
+        //    }
+        //}
     }
 
     private void Start()
